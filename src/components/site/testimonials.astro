@@ -2,25 +2,18 @@
 import { TestimonialCarousel } from "@/components/site/testimonial-carousel"
 ---
 
-<section id="testimonials" class="relative overflow-hidden border-y border-border bg-background">
-  <!-- depth - soft spot, no flat empty -->
-  <div class="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" style="background: radial-gradient(700px 400px at 70% 0%, oklch(0.935 0.03 231 / 0.55), transparent 60%);"></div>
-
-  <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+<section id="testimonials" class="bg-background">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
     <div class="max-w-3xl">
-      <p class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand">
-        <span class="h-1.5 w-1.5 rounded-full bg-brand"></span>
-        Client feedback - 07 verified
-      </p>
-      <h2 class="mt-4 text-3xl font-bold leading-[1.05] tracking-tighter text-ink sm:text-4xl lg:text-[2.6rem]">
-        Landlords and managers on working with CellWaves
+      <h2 class="text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl lg:text-[3rem]">
+        What landlords say after the lease is signed
       </h2>
-      <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-        Seven reports from Quebec to British Columbia. Unedited excerpts, tied to outcome - not hourly.
+      <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
+        Seven reports from Quebec to British Columbia. Huge names, cities, and sites you can verify. Feedback first, identity below. No stock quotes.
       </p>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-10 sm:mt-14 lg:mt-16">
       <TestimonialCarousel client:visible />
     </div>
   </div>

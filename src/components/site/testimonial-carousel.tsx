@@ -1,13 +1,16 @@
+"use client"
 import useEmblaCarousel from "embla-carousel-react"
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { motion, useReducedMotion } from "motion/react"
 import { useEffect, useState } from "react"
 import { TESTIMONIALS } from "@/lib/content"
 import { cn } from "@/lib/utils"
 
 export function TestimonialCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" })
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" })
   const [selected, setSelected] = useState(0)
   const [snaps, setSnaps] = useState<number[]>([])
+  const reduce = useReducedMotion()
 
   useEffect(() => {
     if (!emblaApi) return
@@ -24,68 +27,97 @@ export function TestimonialCarousel() {
   }, [emblaApi])
 
   return (
-    <div>
-      <div className="overflow-hidden -mx-1" ref={emblaRef}>
+    <div className="relative">
+      <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {TESTIMONIALS.map((t, i) => {
-            const hasImage = i % 2 === 0
-            return (
-              <figure
-                key={t.name}
-                className="min-w-0 flex-[0_0_100%] px-1 py-1 sm:flex-[0_0_50%] sm:px-3 lg:flex-[0_0_33.333%]"
-              >
-                <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-                  {hasImage ? (
-                    <div className="relative h-[132px] overflow-hidden border-b border-border bg-secondary/60">
-                      <img src={t.image} alt={t.alt} className="h-full w-full object-cover" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                      <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/55 px-2 py-1 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur">
-                        {String(i + 1).padStart(2, "0")} - Verified
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="border-b border-border bg-brand-muted px-5 py-3">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-brand shadow-sm">
-                        <span className="h-1.5 w-1.5 rounded-full bg-brand"></span>
-                        Verified - {t.location}
-                      </span>
-                    </div>
-                  )}
+          {TESTIMONIALS.map((t, i) => (
+            <figure key={t.name} className="min-w-0 flex-[0_0_100%] pl-4 first:pl-0">
+              <div className="grid gap-8 py-6 md:grid-cols-12 md:items-center md:gap-10 lg:gap-14">
+                {/* Left: feedback at top, huge type, then identity */}
+                <div className="md:col-span-7">
+                  <motion.div
+                    initial={reduce ? false : { opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <p className="text-xs font-semibold uppercase tracking-widest text-brand">{t.title}</p>
+                  </motion.div>
 
-                  <div className="flex flex-1 flex-col p-6 sm:p-6">
-                    <Quote className="h-6 w-6 text-brand/70" strokeWidth="1.6" aria-hidden="true" />
-                    <h3 className="mt-3 line-clamp-2 text-sm font-semibold leading-snug text-ink">{t.title}</h3>
-                    <blockquote className="mt-2.5 line-clamp-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {t.quote}
-                    </blockquote>
-                    <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                      <img
-                        src={t.image}
-                        alt=""
-                        aria-hidden="true"
-                        className="h-9 w-9 rounded-full object-cover ring-1 ring-border"
-                        loading="lazy"
-                      />
-                      <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-ink">{t.name}</p>
-                        <p className="truncate text-xs text-muted-foreground">{t.location}</p>
-                      </div>
-                    </figcaption>
-                  </div>
+                  <motion.blockquote
+                    initial={reduce ? false : { opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    className="mt-4 max-w-[28ch] text-[1.6rem] font-bold leading-[1.05] tracking-tighter text-ink sm:text-[1.95rem] md:text-[2.15rem] lg:text-[2.45rem]"
+                  >
+                    <span className="text-brand/30">"</span>
+                    {t.quote}
+                    <span className="text-brand/30">"</span>
+                  </motion.blockquote>
+
+                  <motion.div
+                    initial={reduce ? false : { opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                    className="mt-10 flex items-center gap-4 border-t border-border pt-6"
+                  >
+                    <img
+                      src={t.image}
+                      alt={t.alt}
+                      width={80}
+                      height={80}
+                      loading="lazy"
+                      className="h-16 w-16 shrink-0 rounded-full object-cover ring-1 ring-border sm:h-20 sm:w-20 lg:h-[84px] lg:w-[84px]"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[1.45rem] font-bold leading-none tracking-tighter text-ink sm:text-[1.6rem] lg:text-[1.7rem]">{t.name}</p>
+                      <p className="mt-1.5 text-[15px] font-medium leading-none tracking-wide text-muted-foreground sm:text-[16px]">{t.location}</p>
+                    </div>
+                  </motion.div>
                 </div>
-              </figure>
-            )
-          })}
+
+                {/* Right: huge profile / site image - bento diversity without card */}
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  className="md:col-span-5"
+                >
+                  <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
+                    <img
+                      src={t.image}
+                      alt={t.alt}
+                      width={640}
+                      height={480}
+                      loading={i === 0 ? "eager" : "lazy"}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent" aria-hidden="true" />
+                    <span className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur">
+                      {String(i + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")} - Verified
+                    </span>
+                  </div>
+                  <p className="mt-3 text-xs leading-5 text-muted-foreground">
+                    Site image from {t.location}. Landlord file {String(i + 1).padStart(2, "0")}.
+                  </p>
+                </motion.div>
+              </div>
+            </figure>
+          ))}
         </div>
       </div>
 
-      <div className="mt-8 flex items-center justify-between">
+      <div className="mt-8 flex items-center justify-between gap-4 sm:mt-10">
         <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial pages">
-          {snaps.map((snap, i) => (
+          {snaps.map((_, i) => (
             <button
-              key={snap}
+              key={i}
               type="button"
-              aria-label={`Go to testimonial page ${i + 1}`}
+              aria-label={`Go to testimonial ${i + 1}`}
+              aria-selected={selected === i}
               onClick={() => emblaApi?.scrollTo(i)}
               className={cn(
                 "h-2 rounded-full transition-all",
@@ -93,26 +125,27 @@ export function TestimonialCarousel() {
               )}
             />
           ))}
-          <span className="ml-3 hidden font-mono text-xs tracking-widest text-muted-foreground sm:inline">
+          <span className="ml-3 hidden font-mono text-xs tracking-widest text-muted-foreground sm:inline" aria-live="polite">
             {String(selected + 1).padStart(2, "0")} / {String(snaps.length).padStart(2, "0")}
           </span>
         </div>
+
         <div className="flex gap-2">
           <button
             type="button"
             aria-label="Previous testimonial"
             onClick={() => emblaApi?.scrollPrev()}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent active:scale-[0.98]"
           >
-            <ChevronLeft className="h-5 w-5" strokeWidth="2" />
+            <ChevronLeft className="h-5 w-5" strokeWidth={2} />
           </button>
           <button
             type="button"
             aria-label="Next testimonial"
             onClick={() => emblaApi?.scrollNext()}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent active:scale-[0.98]"
           >
-            <ChevronRight className="h-5 w-5" strokeWidth="2" />
+            <ChevronRight className="h-5 w-5" strokeWidth={2} />
           </button>
         </div>
       </div>
