@@ -1,0 +1,37 @@
+---
+import { REASONS } from "@/lib/content"
+---
+
+<section id="why" class="bg-background">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <!-- Heading column -->
+      <div class="lg:col-span-4">
+        <h2 class="text-3xl font-bold leading-tight text-ink sm:text-4xl">
+          Why landlords choose CellWaves
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
+          Carriers negotiate hundreds of leases a year. Most landlords sign one
+          in a lifetime. We close that experience gap.
+        </p>
+      </div>
+
+      <!-- Reasons grid -->
+      <div class="lg:col-span-8">
+        <div class="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+          {REASONS.map((r, i) => (
+            <div class="border-t-2 border-brand/20 pt-5">
+              <span class="font-heading text-sm font-bold tracking-widest text-brand">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="mt-2 text-lg font-semibold text-ink">{r.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {r.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

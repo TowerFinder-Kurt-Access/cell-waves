@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content"
+import Footer from "@/components/site/footer.astro"
+import Header from "@/components/site/header.astro"
+import Base from "@/layouts/base.astro"
+import { POSTS } from "@/lib/content"
+
+const entries = await getCollection("blog")
+const bySlug = new Map(entries.map((e) => [e.id, e]))
+const posts = POSTS.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
+---
+
+<Base
+  title="Blog - CellWaves"
+  description="Expert articles on cell tower lease rates, negotiation, renewals, and buyouts for Canadian landlords."
+>
+  <Header />
+  <main class="bg-background">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand">Blog and articles</p>
+        <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
+          Insights for landlords
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
+          Practical reading on lease rates, negotiation, renewals, and what your
+          site is really worth.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map(({ meta, entry }) => (
+          <a
+            href={entry ? `/blog/${meta.slug}` : "#"}
+            class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+          >
+            <div class="overflow-hidden">
+              <img
+                src={meta.image}
+                alt={meta.alt}
+                class="aspect-[16/9] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <time class="text-xs font-medium uppercase tracking-wider text-brand">
+                {meta.date}
+              </time>
+              <h2 class="mt-2.5 text-lg font-semibold leading-snug text-ink transition-colors group-hover:text-brand">
+                {meta.title}
+              </h2>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                {meta.excerpt}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,31 @@
+---
+import { ArrowUpRight } from "lucide-react"
+import { LEASE_TOPICS } from "@/lib/content"
+---
+
+<section class="border-y border-border bg-card">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="max-w-2xl text-2xl font-bold text-ink sm:text-3xl">
+      Cell tower lease. Where landlords lose money without knowing it
+    </h2>
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {LEASE_TOPICS.map((topic) => (
+        <a
+          href={topic.href}
+          class="group flex flex-col rounded-xl border border-border bg-background p-5 transition-all hover:border-brand/40 hover:shadow-md"
+        >
+          <h3 class="text-base font-semibold leading-snug text-ink">
+            {topic.title}
+          </h3>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+            {topic.body}
+          </p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
+            Learn more
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth="2" />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
