@@ -94,9 +94,9 @@ export function ContactForm() {
           <textarea
             id="contact-message"
             name="message"
-            rows={4}
+            rows={6}
             placeholder="Tell us about your lease or the carrier's offer."
-            className="w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="min-h-[160px] w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:min-h-[184px]"
           />
         </div>
       </div>

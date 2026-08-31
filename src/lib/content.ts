@@ -1,5 +1,5 @@
-export const PHONE_DISPLAY = "1-780-613-0226"
-export const PHONE_HREF = "tel:+17806130226"
+export const PHONE_DISPLAY = "1 -780-230-1364"
+export const PHONE_HREF = "tel:+17802301364"
 export const PHONE_ALT_DISPLAY = "1-587-882-8813"
 export const EMAIL = "brett@cell-waves.ca"
 export const SITE_NAME = "CellWaves"
