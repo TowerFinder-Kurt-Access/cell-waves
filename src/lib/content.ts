@@ -56,7 +56,6 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   { label: "Blog", href: "/blog" },
-  { label: "Contact Us", href: "/#contact" },
 ]
 
 export const FOOTER_USEFUL_LINKS: NavItem[] = [

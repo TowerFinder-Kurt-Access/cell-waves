@@ -1,5 +1,5 @@
 import { ChevronDown, Menu, Phone, Radio, X } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF, SITE_NAME } from "@/lib/content"
 import { cn } from "@/lib/utils"
@@ -7,7 +7,25 @@ import { cn } from "@/lib/utils"
 export function MobileNav() {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
-
+  const [loc, setLoc] = useState({ path: "/", hash: "" })
+  useEffect(() => {
+    const upd = () => setLoc({ path: window.location.pathname, hash: window.location.hash })
+    upd()
+    window.addEventListener("hashchange", upd)
+    window.addEventListener("popstate", upd)
+    return () => {
+      window.removeEventListener("hashchange", upd)
+      window.removeEventListener("popstate", upd)
+    }
+  }, [])
+  const isActive = (href: string) => {
+    if (href === "/") return loc.path === "/" && !loc.hash
+    if (href === "/blog") return loc.path.startsWith("/blog")
+    if (href.startsWith("/#")) return loc.hash === href.slice(1)
+    return false
+  }
+  const isParentActive = (href: string, children?: { href: string }[]) =>
+    isActive(href) || (children?.some((c) => isActive(c.href)) ?? false)
   const panel = (
     <div
       className={cn(
@@ -53,7 +71,10 @@ export function MobileNav() {
                   type="button"
                   onClick={() => setExpanded(expanded === item.label ? null : item.label)}
                   aria-expanded={expanded === item.label}
-                  className="flex w-full items-center justify-between rounded-full px-3 py-3 text-left text-base font-medium text-white transition-colors hover:bg-white/10"
+                  className={cn(
+                    "flex w-full items-center justify-between rounded-full px-3 py-3 text-left text-base font-medium transition-colors",
+                    isParentActive(item.href, item.children) ? "bg-white text-ink shadow-sm" : "text-white hover:bg-white/10",
+                  )}
                 >
                   {item.label}
                   <ChevronDown
@@ -73,7 +94,10 @@ export function MobileNav() {
                         key={child.label}
                         href={child.href}
                         onClick={() => setOpen(false)}
-                        className="block rounded-xl py-2.5 pl-6 pr-3 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                        className={cn(
+                          "block rounded-xl py-2.5 pl-6 pr-3 text-sm transition-colors",
+                          isActive(child.href) ? "bg-white text-ink" : "text-white/70 hover:bg-white/10 hover:text-white",
+                        )}
                       >
                         {child.label}
                       </a>
@@ -86,7 +110,10 @@ export function MobileNav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
+                className={cn(
+                  "rounded-full px-3 py-3 text-base font-medium transition-colors",
+                  isActive(item.href) ? "bg-white text-ink shadow-sm" : "text-white hover:bg-white/10",
+                )}
               >
                 {item.label}
               </a>
@@ -95,10 +122,7 @@ export function MobileNav() {
         </nav>
 
         <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-6">
-          <a
-            href={PHONE_HREF}
-            className="flex items-center gap-2 text-sm font-semibold text-brand"
-          >
+          <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-semibold text-brand">
             <Phone className="h-4 w-4" strokeWidth="2" />
             {PHONE_DISPLAY}
           </a>
