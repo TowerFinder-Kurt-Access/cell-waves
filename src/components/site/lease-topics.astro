@@ -1,31 +1,48 @@
 ---
-import { ArrowUpRight } from "lucide-react"
+import { ArrowRight, BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp } from "lucide-react"
 import { LEASE_TOPICS } from "@/lib/content"
+
+const icons = [BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp]
 ---
 
-<section class="border-y border-border bg-card">
-  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <h2 class="max-w-2xl text-2xl font-bold text-ink sm:text-3xl">
-      Cell tower lease. Where landlords lose money without knowing it
-    </h2>
-    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {LEASE_TOPICS.map((topic) => (
-        <a
-          href={topic.href}
-          class="group flex flex-col rounded-xl border border-border bg-background p-5 transition-all hover:border-brand/40 hover:shadow-md"
-        >
-          <h3 class="text-base font-semibold leading-snug text-ink">
-            {topic.title}
-          </h3>
-          <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-            {topic.body}
-          </p>
-          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand">
-            Learn more
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth="2" />
-          </span>
-        </a>
-      ))}
+<section class="bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      {
+        LEASE_TOPICS.map((topic, i) => {
+          const Icon = icons[i] ?? BadgeDollarSign
+          const isAccent = i % 2 === 1
+          return (
+            <a
+              href={topic.href}
+              class:list={[
+                "group relative flex flex-col overflow-hidden rounded-2xl border p-5 transition-all hover:-translate-y-1 hover:shadow-md",
+                isAccent
+                  ? "border-brand/20 bg-gradient-to-b from-white to-brand-muted/40"
+                  : "border-border bg-card shadow-sm",
+              ]}
+            >
+              <div class="flex items-start justify-between gap-3">
+                <span
+                  class:list={[
+                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl",
+                    isAccent ? "bg-brand text-brand-foreground" : "bg-brand-muted text-brand",
+                  ]}
+                >
+                  <Icon className="h-4.5 w-4.5" strokeWidth="2" />
+                </span>
+                <span class="font-mono text-[11px] font-semibold tracking-widest text-muted-foreground/50">0{i + 1}</span>
+              </div>
+              <h3 class="mt-4 text-sm font-semibold leading-snug text-ink">{topic.title}</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{topic.body}</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand">
+                Learn more
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth="2" />
+              </span>
+            </a>
+          )
+        })
+      }
     </div>
   </div>
 </section>

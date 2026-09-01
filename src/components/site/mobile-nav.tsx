@@ -73,7 +73,7 @@ export function MobileNav() {
                   aria-expanded={expanded === item.label}
                   className={cn(
                     "flex w-full items-center justify-between rounded-full px-3 py-3 text-left text-base font-medium transition-colors",
-                    isParentActive(item.href, item.children) ? "bg-white text-ink shadow-sm" : "text-white hover:bg-white/10",
+                    isParentActive(item.href, item.children) ? "text-white" : "text-white/70 hover:bg-white/10 hover:text-white",
                   )}
                 >
                   {item.label}
@@ -96,7 +96,7 @@ export function MobileNav() {
                         onClick={() => setOpen(false)}
                         className={cn(
                           "block rounded-xl py-2.5 pl-6 pr-3 text-sm transition-colors",
-                          isActive(child.href) ? "bg-white text-ink" : "text-white/70 hover:bg-white/10 hover:text-white",
+                          isActive(child.href) ? "text-white" : "text-white/70 hover:bg-white/10 hover:text-white",
                         )}
                       >
                         {child.label}
@@ -112,7 +112,7 @@ export function MobileNav() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-full px-3 py-3 text-base font-medium transition-colors",
-                  isActive(item.href) ? "bg-white text-ink shadow-sm" : "text-white hover:bg-white/10",
+                  isActive(item.href) ? "text-white" : "text-white/70 hover:bg-white/10 hover:text-white",
                 )}
               >
                 {item.label}
