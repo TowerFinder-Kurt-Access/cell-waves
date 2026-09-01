@@ -8,7 +8,9 @@ export function MobileNav() {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [loc, setLoc] = useState({ path: "/", hash: "" })
+  const [mounted, setMounted] = useState(false)
   useEffect(() => {
+    setMounted(true)
     const upd = () => setLoc({ path: window.location.pathname, hash: window.location.hash })
     upd()
     window.addEventListener("hashchange", upd)
@@ -66,7 +68,7 @@ export function MobileNav() {
         <nav className="mt-8 flex flex-col gap-1 overflow-y-auto" aria-label="Mobile">
           {NAV_ITEMS.map((item) =>
             item.children ? (
-              <div key={item.href}>
+              <div key={`p-${item.href}-${item.label}`}>
                 <button
                   type="button"
                   onClick={() => setExpanded(expanded === item.label ? null : item.label)}
@@ -91,7 +93,7 @@ export function MobileNav() {
                   <div className="overflow-hidden">
                     {item.children.map((child) => (
                       <a
-                        key={child.label}
+                        key={`c-${child.label}-${child.href}`}
                         href={child.href}
                         onClick={() => setOpen(false)}
                         className={cn(
@@ -107,7 +109,7 @@ export function MobileNav() {
               </div>
             ) : (
               <a
-                key={item.href}
+                key={`l-${item.label}-${item.href}`}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={cn(
@@ -150,7 +152,7 @@ export function MobileNav() {
         <Menu className="h-5 w-5" strokeWidth="2" />
       </button>
 
-      {typeof document !== "undefined" ? createPortal(panel, document.body) : null}
+      {mounted && createPortal(panel, document.body)}
     </>
   )
 }
