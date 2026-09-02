@@ -7,7 +7,7 @@ const pathname = Astro.url.pathname
 const isActive = (href: string) => {
   if (href === "/") return pathname === "/"
   if (href === "/blog") return pathname.startsWith("/blog")
-  return false
+  return pathname === href
 }
 const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
   isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false)

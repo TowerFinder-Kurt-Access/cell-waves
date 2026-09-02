@@ -1,0 +1,71 @@
+---
+import { ArrowRight } from "lucide-react"
+import Footer from "@/components/site/footer.astro"
+import Header from "@/components/site/header.astro"
+import Base from "@/layouts/base.astro"
+import { FOOTER_ABOUT, TEAM } from "@/lib/content"
+---
+
+<Base
+  title="About Us - CellWaves"
+  description="Learn about CellWaves, a trusted consulting firm specializing in cell tower lease agreements, landlord negotiations, and wireless carrier contracts. Meet our team."
+>
+  <Header />
+  <main class="bg-background">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <!-- Intro -->
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand">About us</p>
+        <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
+          Meet our team
+        </h1>
+        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
+          {FOOTER_ABOUT}
+        </p>
+      </div>
+
+      <!-- Team -->
+      <div class="mt-14 grid grid-cols-1 gap-10 md:grid-cols-3">
+        {
+          TEAM.map((member) => (
+            <article class="flex flex-col">
+              <div class="overflow-hidden rounded-2xl shadow-sm ring-1 ring-border">
+                <img
+                  src={member.image}
+                  alt={member.alt}
+                  class="aspect-[6/7] w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <p class="mt-5 text-xs font-semibold uppercase tracking-widest text-brand">
+                {member.role}
+              </p>
+              <h2 class="mt-1.5 text-2xl font-bold text-ink">{member.name}</h2>
+              <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{member.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-20 rounded-2xl bg-brand px-6 py-12 text-center sm:px-12">
+        <h2 class="text-3xl font-bold leading-tight text-brand-foreground">
+          Ready to unlock your property's full value?
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-foreground/85">
+          Don't settle for less when it comes to your telecom lease. Take the
+          first step toward maximizing your lease income. With CellWaves, your
+          property's potential is just a negotiation away.
+        </p>
+        <a
+          href="/#contact"
+          class="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold uppercase tracking-wide text-brand shadow-sm transition-all hover:brightness-95 active:translate-y-[1px]"
+        >
+          Schedule a free consultation
+          <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>
