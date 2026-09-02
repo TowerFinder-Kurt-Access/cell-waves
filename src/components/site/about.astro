@@ -1,10 +1,10 @@
 ---
+import { Building2, Handshake } from "lucide-react"
 import { ABOUT_IMAGE } from "@/lib/content"
 
 const STATS = [
-  { value: "24", label: "Significant lease terms we review" },
-  { value: "20+", label: "Branch affiliates nationwide" },
-  { value: "35+", label: "Years of combined expertise" },
+  { icon: Handshake, value: "24", label: "Significant lease terms we review" },
+  { icon: Building2, value: "20+", label: "Branch affiliates nationwide" },
 ]
 ---
 
@@ -13,13 +13,25 @@ const STATS = [
     <div class="grid items-center gap-12 lg:grid-cols-12">
       <!-- Visual -->
       <div class="order-2 lg:order-1 lg:col-span-5">
-        <div class="overflow-hidden rounded-2xl shadow-md ring-1 ring-border">
-          <img
-            src={ABOUT_IMAGE}
-            alt="Rooftop with wireless antenna equipment"
-            class="aspect-[4/5] w-full object-cover"
-            loading="lazy"
-          />
+        <div class="relative">
+          <div class="overflow-hidden rounded-2xl shadow-md ring-1 ring-border">
+            <img
+              src={ABOUT_IMAGE}
+              alt="Two professionals shaking hands over a lease agreement"
+              class="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="absolute -right-4 top-8 flex items-baseline gap-2 rounded-2xl bg-brand px-6 py-4 text-brand-foreground shadow-md sm:-right-6"
+          >
+            <span
+              id="about-years"
+              data-target="35"
+              class="font-heading text-4xl font-bold tabular-nums sm:text-5xl">1</span
+            >
+            <span class="text-lg font-semibold">Years</span>
+          </div>
         </div>
       </div>
 
@@ -41,16 +53,66 @@ const STATS = [
           few hundred dollars into a deal worth thousands.
         </p>
 
-        <dl class="mt-10 grid grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
-          {STATS.map((s) => (
-            <div>
-              <dt class="sr-only">{s.label}</dt>
-              <dd class="font-heading text-4xl font-bold text-brand">{s.value}</dd>
-              <dd class="mt-1.5 text-sm leading-snug text-muted-foreground">{s.label}</dd>
-            </div>
-          ))}
+        <dl
+          class="mt-10 grid grid-cols-1 gap-6 rounded-2xl bg-muted px-6 py-6 sm:grid-cols-2 sm:px-8"
+        >
+          {
+            STATS.map((s) => (
+              <div class="flex items-center gap-4">
+                <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand text-brand-foreground">
+                  <s.icon className="size-6" strokeWidth={1.8} aria-hidden="true" />
+                </span>
+                <div>
+                  <dt class="sr-only">{s.label}</dt>
+                  <dd class="font-heading text-2xl font-bold text-brand">{s.value}</dd>
+                  <dd class="mt-0.5 text-sm leading-snug text-muted-foreground">{s.label}</dd>
+                </div>
+              </div>
+            ))
+          }
         </dl>
+        <a
+          href="/about-us"
+          class="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold uppercase tracking-wide text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px]"
+        >
+          Read about us
+        </a>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const el = document.getElementById("about-years")
+  if (el) {
+    const target = Number(el.dataset.target ?? 35)
+    const duration = 1400
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    const run = () => {
+      if (reduced) {
+        el.textContent = String(target)
+        return
+      }
+      const start = performance.now()
+      const tick = (now: number) => {
+        const p = Math.min((now - start) / duration, 1)
+        const eased = 1 - Math.pow(1 - p, 3)
+        el.textContent = String(Math.max(1, Math.round(eased * target)))
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect()
+          run()
+        }
+      },
+      { threshold: 0.5 },
+    )
+    io.observe(el)
+  }
+</script>
