@@ -6,7 +6,8 @@ import type { APIRoute } from "astro"
 const RECIPIENT = "bretth@slvtechnical.com"
 
 // Test sender Resend allows without domain verification; delivers to the account owner only.
-const SENDER = "CellWaves Website <onboarding@resend.dev>"
+// The email address inside <> is required; swap it for a verified domain once available.
+const SENDER = "Cell Waves Canada <onboarding@resend.dev>"
 
 export const prerender = false
 
