@@ -7,7 +7,7 @@ const [first, ...rest] = SERVICES
 
 <section id="services" class="border-y border-border bg-secondary/40">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div class="max-w-2xl">
+    <div class="reveal max-w-2xl">
       <h2 class="text-3xl font-bold leading-tight text-ink sm:text-4xl">
         Our expertise covers the full life of your lease
       </h2>
@@ -21,7 +21,7 @@ const [first, ...rest] = SERVICES
       <!-- Large cell -->
       <a
         href={first.href}
-        class="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+        class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
       >
         <div class="relative overflow-hidden">
           <img
@@ -45,10 +45,11 @@ const [first, ...rest] = SERVICES
 
       <!-- Stacked cells -->
       <div class="grid grid-cols-1 gap-6">
-        {rest.map((s) => (
+        {rest.map((s, i) => (
           <a
             href={s.href}
-            class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md sm:flex-row"
+            style={`--reveal-delay: ${(i + 1) * 70}ms`}
+            class="reveal group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md sm:flex-row"
           >
             <div class="relative shrink-0 overflow-hidden sm:w-44">
               <img

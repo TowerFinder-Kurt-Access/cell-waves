@@ -17,7 +17,7 @@ const posts = POSTS.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
   <Header />
   <main class="bg-background">
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div class="max-w-2xl">
+      <div class="reveal max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-widest text-brand">Blog and articles</p>
         <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
           Insights for landlords
@@ -29,10 +29,11 @@ const posts = POSTS.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
       </div>
 
       <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map(({ meta, entry }) => (
+        {posts.map(({ meta, entry }, i) => (
           <a
             href={entry ? `/blog/${meta.slug}` : "#"}
-            class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+            style={`--reveal-delay: ${(i % 3) * 80}ms`}
+            class="reveal group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
           >
             <div class="overflow-hidden">
               <img

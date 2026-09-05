@@ -25,5 +25,27 @@ const {
   </head>
   <body>
     <slot />
+    <script>
+      // Scroll-reveal trigger: hide .reveal elements only once JS is confirmed,
+      // then play each entrance once when it enters the viewport.
+      document.documentElement.dataset.reveal = "on"
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed")
+                observer.unobserve(entry.target)
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+        )
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el))
+      } else {
+        delete document.documentElement.dataset.reveal
+      }
+    </script>
   </body>
 </html>
