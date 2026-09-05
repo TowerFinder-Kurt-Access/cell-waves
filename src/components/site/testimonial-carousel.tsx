@@ -29,79 +29,49 @@ export function TestimonialCarousel() {
     <div className="relative">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {TESTIMONIALS.map((t, i) => (
+          {TESTIMONIALS.map((t) => (
             <figure key={t.name} className="min-w-0 flex-[0_0_100%] pl-4 first:pl-0">
-              <div className="grid gap-8 py-6 md:grid-cols-12 md:items-center md:gap-10 lg:gap-14">
-                {/* Left: feedback at top, huge type, then identity */}
-                <div className="md:col-span-7">
-                  <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-widest text-brand">{t.title}</p>
-                  </motion.div>
-
-                  <motion.blockquote
-                    initial={reduce ? false : { opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-4 max-w-[28ch] text-[1.6rem] font-bold leading-[1.05] tracking-tighter text-ink sm:text-[1.95rem] md:text-[2.15rem] lg:text-[2.45rem]"
-                  >
-                    <span className="text-brand/30">"</span>
-                    {t.quote}
-                    <span className="text-brand/30">"</span>
-                  </motion.blockquote>
-
-                  <motion.div
-                    initial={reduce ? false : { opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-10 flex items-center gap-4 border-t border-border pt-6"
-                  >
-                    <img
-                      src={t.image}
-                      alt={t.alt}
-                      width={80}
-                      height={80}
-                      loading="lazy"
-                      className="h-16 w-16 shrink-0 rounded-full object-cover ring-1 ring-border sm:h-20 sm:w-20 lg:h-[84px] lg:w-[84px]"
-                    />
-                    <div className="min-w-0">
-                      <p className="text-[1.45rem] font-bold leading-none tracking-tighter text-ink sm:text-[1.6rem] lg:text-[1.7rem]">{t.name}</p>
-                      <p className="mt-1.5 text-[15px] font-medium leading-none tracking-wide text-muted-foreground sm:text-[16px]">{t.location}</p>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Right: huge profile / site image - bento diversity without card */}
+              <div className="py-6">
                 <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-widest text-brand">{t.title}</p>
+                </motion.div>
+
+                <motion.blockquote
                   initial={reduce ? false : { opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  className="md:col-span-5"
+                  transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="mt-4 max-w-[36ch] text-[1.6rem] font-bold leading-[1.05] tracking-tighter text-ink sm:text-[1.95rem] md:text-[2.15rem] lg:text-[2.45rem]"
                 >
-                  <div className="relative overflow-hidden rounded-2xl border border-border bg-card">
-                    <img
-                      src={t.image}
-                      alt={t.alt}
-                      width={640}
-                      height={480}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      className="aspect-[4/3] w-full object-cover"
-                    />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/20 via-transparent to-transparent" aria-hidden="true" />
-                    <span className="absolute bottom-3 left-3 rounded-full border border-white/20 bg-black/55 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur">
-                      {String(i + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")} - Verified
-                    </span>
+                  <span className="text-brand/30">&ldquo;</span>
+                  {t.quote}
+                  <span className="text-brand/30">&rdquo;</span>
+                </motion.blockquote>
+
+                <motion.div
+                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                  className="mt-10 flex items-center gap-4 border-t border-border pt-6"
+                >
+                  <img
+                    src={t.image}
+                    alt={t.alt}
+                    width={80}
+                    height={80}
+                    loading="lazy"
+                    className="h-16 w-16 shrink-0 rounded-full object-cover ring-1 ring-border sm:h-20 sm:w-20 lg:h-[84px] lg:w-[84px]"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-[1.45rem] font-bold leading-none tracking-tighter text-ink sm:text-[1.6rem] lg:text-[1.7rem]">{t.name}</p>
+                    <p className="mt-1.5 text-[15px] font-medium leading-none tracking-wide text-muted-foreground sm:text-[16px]">{t.location}</p>
                   </div>
-                  <p className="mt-3 text-xs leading-5 text-muted-foreground">
-                    Site image from {t.location}. Landlord file {String(i + 1).padStart(2, "0")}.
-                  </p>
                 </motion.div>
               </div>
             </figure>
