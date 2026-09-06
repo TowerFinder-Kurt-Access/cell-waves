@@ -258,7 +258,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Janet and Mark Ellison",
     location: "Quebec City, Quebec",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/cell-tower-5207588_1280-1-r6g9lrd1mryvyji4z5iiiuenessocbkswr27agxsw8.jpg",
+      "/images/testimonials/carousel/t1.jpg",
     alt: "Cell tower",
   },
   {
@@ -268,7 +268,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Brad Lawson",
     location: "Kelowna, B.C.",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/monte-brione-357576_1280-r6g9lrd1mryvyji4z5iiiuenessocbkswr27agxsw8.jpg",
+      "/images/testimonials/carousel/t2.jpg",
     alt: "Cell tower",
   },
   {
@@ -278,7 +278,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Francis Lemieux",
     location: "Trois-Rivières, Quebec",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/pexels-cloudett-20034963-r6g9lphd93wbbbkva4p9duvq811xwxdc8hr8bx0l8o.jpg",
+      "/images/testimonials/carousel/t3.jpg",
     alt: "Cell tower",
   },
   {
@@ -288,7 +288,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Sam Riedman",
     location: "Condominium Board Chair",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/signal-mountain-cell-tower-3847257_1280-r6g9lrd1mryvyji4z5iiiuenessocbkswr27agxsw8.jpg",
+      "/images/testimonials/carousel/t4.jpg",
     alt: "Cell tower",
   },
   {
@@ -298,7 +298,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Andy Wasylyshen",
     location: "Halifax, Nova Scotia",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/th-1-r6g9lrd1mryvyji4z5iiiuenessocbkswr27agxsw8.jpg",
+      "/images/testimonials/carousel/t5.jpg",
     alt: "Cell tower",
   },
   {
@@ -308,7 +308,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Raj Patel",
     location: "Prince George, British Columbia",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/telecommunication-towers-6000558_1280-r6g9lrd1mryvyji4z5iiiuenessocbkswr27agxsw8.jpg",
+      "/images/testimonials/carousel/t7.jpg",
     alt: "Cell tower",
   },
   {
@@ -318,7 +318,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "James Landry",
     location: "Red Deer, Alberta",
     image:
-      "https://cell-waves.ca/wp-content/uploads/elementor/thumbs/pexels-danielsulfit-9131870-1-r6g9lsavtm06a5grtnx53c6406o1k0oj8vporqweq0.jpg",
+      "/images/testimonials/carousel/t6.jpg",
     alt: "Cell tower",
   },
 ]
@@ -340,7 +340,7 @@ export const POSTS: Post[] = [
       "Looking for a smart way to generate passive income from your land? Leasing to cell tower companies could be the perfect solution.",
     date: "March 15, 2025",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/05/telecommunications-tower-6609433_1920.jpg",
+      "/images/blog/blog-11.jpg",
     alt: "Telecommunications tower",
   },
   {
@@ -350,7 +350,7 @@ export const POSTS: Post[] = [
       "Caught off guard by a cell tower lease offer? It feels like a golden opportunity, but the details decide whether it really is.",
     date: "March 6, 2025",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/05/antenna-498438_1280.jpg",
+      "/images/blog/blog-10.jpg",
     alt: "Cell tower antenna",
   },
   {
@@ -360,7 +360,7 @@ export const POSTS: Post[] = [
       "If you've thought about leasing your property for a cell tower, it takes more than having space to spare.",
     date: "January 30, 2025",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/01/telecommunication-5053730_1280.jpg",
+      "/images/blog/blog-5.jpg",
     alt: "Telecommunication tower",
   },
   {
@@ -370,7 +370,7 @@ export const POSTS: Post[] = [
       "Turning your land into passive income through a cell tower lease sounds appealing. Here's how to make sure the deal works for you.",
     date: "September 25, 2024",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2024/09/Cell-phone-tower-cell-combination-microwave.webp",
+      "/images/blog/blog-2.webp",
     alt: "Cell tower and microwave equipment",
   },
   {
@@ -380,7 +380,7 @@ export const POSTS: Post[] = [
       "If you have a cell tower lease, you might wonder if you're maximizing its potential. Here's how to push for more.",
     date: "September 25, 2024",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/03/pexels-tima-miroshnichenko-6694543.jpg",
+      "/images/blog/blog-8.jpg",
     alt: "Reviewing lease documents",
   },
   {
@@ -390,7 +390,7 @@ export const POSTS: Post[] = [
       "Approached by a telecom company to lease space for a tower? Your first question is likely what it's actually worth.",
     date: "September 25, 2024",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2024/09/transmission-system-1090036_1920.jpg",
+      "/images/blog/blog-3.jpg",
     alt: "Transmission system",
   },
   {
@@ -400,7 +400,7 @@ export const POSTS: Post[] = [
       "A wireless consultant works for you, not the carrier. Here's what that changes at the negotiating table.",
     date: "May 5, 2023",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/04/businessman-4914044_1280-1.jpg",
+      "/images/blog/blog-9.jpg",
     alt: "Consultant at work",
   },
   {
@@ -410,7 +410,7 @@ export const POSTS: Post[] = [
       "Carriers are densifying networks with small cells. Here's what that means for property owners and lease value.",
     date: "October 1, 2019",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/02/New-Project-2022-07-07T092522.458-1024x743-1.jpg",
+      "/images/blog/blog-6.jpg",
     alt: "Small cell deployment",
   },
   {
@@ -420,7 +420,7 @@ export const POSTS: Post[] = [
       "Many landowners want a tower on their property. Here's the reality of how carriers actually pick sites.",
     date: "September 5, 2017",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/02/catus-tower.jpg",
+      "/images/blog/blog-7.jpg",
     alt: "Cell tower in a desert",
   },
   {
@@ -430,7 +430,7 @@ export const POSTS: Post[] = [
       "5G upgrades are changing what carriers need from existing sites. Here's how it affects your lease.",
     date: "August 30, 2017",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2017/08/GettyImages-1126630372.jpg",
+      "/images/blog/blog-1.jpg",
     alt: "5G cell site",
   },
   {
@@ -440,7 +440,7 @@ export const POSTS: Post[] = [
       "The FirstNet build reshapes carrier spending. Here's what it could mean for the value of your site.",
     date: "August 5, 2017",
     image:
-      "https://cell-waves.ca/wp-content/uploads/2025/01/firstnet_1280x720_techybg-1024x576-1.jpg",
+      "/images/blog/blog-4.jpg",
     alt: "FirstNet network graphic",
   },
 ]
