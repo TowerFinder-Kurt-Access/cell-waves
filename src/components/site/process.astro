@@ -15,8 +15,12 @@ const icons = [Radar, Handshake, TrendingUp]
     </div>
 
     <div class="relative mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
-      <!-- Signal path: dashed line behind the step icons on desktop -->
-      <div class="absolute left-[16%] right-[16%] top-5 hidden border-t border-dashed border-brand-foreground/30 md:block" aria-hidden="true"></div>
+      <!-- Signal path: dashed line drawn from icon 1 center to icon 3 center on desktop -->
+      <div
+        data-process-line
+        class="absolute left-5 right-[calc((100%-64px)/3-20px)] top-5 hidden border-t-2 border-dashed border-brand-foreground/40 md:block"
+        aria-hidden="true"
+      ></div>
       {STEPS.map((step, i) => {
         const Icon = icons[i] ?? Radar
         return (
@@ -47,3 +51,24 @@ const icons = [Radar, Handshake, TrendingUp]
     </div>
   </div>
 </section>
+
+<script>
+  // Arm the signal line (hidden via scaleX(0)) once JS is live, then draw it
+  // left to right when the section scrolls into view. Without JS or with
+  // reduced motion the line renders statically.
+  const line = document.querySelector("[data-process-line]")
+  const section = document.getElementById("process")
+  if (line && section && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    line.classList.add("process-line-armed")
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          line.classList.add("process-line-run")
+          io.disconnect()
+        }
+      },
+      { threshold: 0.3 },
+    )
+    io.observe(section)
+  }
+</script>

@@ -224,3 +224,20 @@
     transform: none;
   }
 }
+
+/* Process signal line: draws from step 1 to step 3 when the section enters view. */
+@media (prefers-reduced-motion: no-preference) {
+  .process-line-armed {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .process-line-armed.process-line-run {
+    animation: process-line 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  }
+}
+
+@keyframes process-line {
+  to {
+    transform: scaleX(1);
+  }
+}
