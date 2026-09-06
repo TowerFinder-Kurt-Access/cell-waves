@@ -1,4 +1,4 @@
-![Cell Waves](public/cellwaves-logo.webp)
+![Cell Waves](public/OpenGraph.webp)
 
 # Cell Waves Canada - Cell Tower Lease Experts
 
@@ -20,16 +20,15 @@
 - [Astro](https://astro.build/): Modern static site generator for building fast, content-focused websites.
 - [React](https://react.dev/): Component library powering interactive islands such as the testimonial carousel and contact form.
 - [TypeScript](https://www.typescriptlang.org/): Strongly typed programming language that builds on JavaScript.
-- [Tailwind CSS v4](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
+- [Tailwind](https://tailwindcss.com/): Utility-first CSS framework for rapid UI development.
 - [shadcn/ui](https://ui.shadcn.com/): Re-usable components built using Radix UI and Tailwind CSS.
-- [Embla Carousel](https://www.embla-carousel.com/): Lightweight, dependency-free carousel library.
 - [Motion](https://motion.dev/): Animation library for entrance and state transitions in React islands.
 - [Resend](https://resend.com/): Transactional email API behind the contact form.
-- [@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/): Adapter that keeps pages static while running `/api/*` on Vercel functions.
 
 ## ☁️ Deploy your own
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TowerFinder-Kurt-Access/cell-waves)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/TowerFinder-Kurt-Access/cell-waves)
 
 ## 🚀 Getting Started
 
