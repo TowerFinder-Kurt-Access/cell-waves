@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from "lucide-react"
 import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
-import { PHONE_DISPLAY, PHONE_HREF, TEAM } from "@/lib/content"
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 
 const PILLARS = [
   {
@@ -38,8 +38,6 @@ const EXPERTISE = [
     body: "Contacts are important, and the information gathered from the industry on a case-by-case basis has proven to be invaluable for our clients.",
   },
 ]
-
-const LARRY = TEAM[0]
 
 const WSU_IMAGE =
   "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop"
@@ -134,53 +132,6 @@ const WSU_IMAGE =
               </div>
             ))
           }
-        </div>
-      </div>
-
-      <!-- Senior team -->
-      <div class="reveal mt-20 grid items-center gap-10 rounded-2xl bg-muted p-6 sm:p-10 lg:grid-cols-12">
-        <div class="lg:col-span-4">
-          <div class="overflow-hidden rounded-2xl shadow-sm ring-1 ring-border">
-            <img
-              src={LARRY.image}
-              alt={LARRY.alt}
-              class="aspect-[6/7] w-full object-cover"
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div class="lg:col-span-8">
-          <p class="text-sm font-semibold uppercase tracking-widest text-brand">Our senior team</p>
-          <h2 class="mt-2 text-2xl font-bold text-ink">
-            {LARRY.name} <span class="font-medium text-muted-foreground">(President)</span>
-          </h2>
-          <p class="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Larry is the Wall Street guy. His extensive finance and Wall Street
-            experience makes him ideal to identify finance solutions for our
-            clients. Whether our clients want payment in a single lump sum,
-            spread out over the course of several years, or some other
-            arrangement, chances are that Larry will be speaking with the
-            client.
-          </p>
-          <p class="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Larry is extremely creative in solving deal points and arrangements,
-            financial details, and complications that require his expertise to
-            help resolve. His experience has come from decades of
-            feet-on-the-street as a site acquisition guy knocking on doors. He
-            used to knock on doors of landlords and ask if he could place cell
-            sites on their property for $500 a month. Those were the early days
-            of the industry. Today, Larry can work for you in getting the
-            highest rents for your cell tower lease contracts.
-          </p>
-          <p class="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            Now that Larry is representing landlords on the same transactions,
-            he can be a real asset to best understand how your lease works. If
-            you already have a site on your property, the next time the wireless
-            carrier asks for permission to perform upgrades you should deny the
-            upgrade and call us immediately. Larry will tell you if the
-            carrier's upgrade request is fair, and if not, what we should do
-            about it to benefit the landlord equitably.
-          </p>
         </div>
       </div>
 
