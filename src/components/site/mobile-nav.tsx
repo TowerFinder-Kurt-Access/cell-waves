@@ -58,7 +58,10 @@ export function MobileNav() {
               className="h-9 w-auto"
               loading="lazy"
             />
-            <span className="font-heading text-lg font-bold tracking-tight text-white">Cell Waves</span>
+            <span className="flex flex-col leading-none">
+              <span className="font-heading text-lg font-bold tracking-tight text-white">Cell Waves</span>
+              <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60">Canada</span>
+            </span>
           </span>
           <button
             type="button"
