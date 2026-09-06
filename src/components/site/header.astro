@@ -15,18 +15,28 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
 
 <header class="fixed inset-x-0 top-4 z-50 px-4 sm:top-5 sm:px-6">
   <div
-    class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
+    class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
   >
-    <a href="/" class="flex shrink-0 items-center" aria-label="CellWaves home">
+    <div class="flex shrink-0 items-center gap-3">
+      <a href="/" class="flex items-center" aria-label="CellWaves home">
+        <img
+          src="/cellwaves-logo.webp"
+          alt="CellWaves"
+          width={600}
+          height={480}
+          class="h-11 w-auto"
+          loading="eager"
+        />
+      </a>
       <img
-        src="/cellwaves-logo.webp"
-        alt="CellWaves"
-        width={600}
-        height={480}
-        class="h-11 w-auto"
+        src="/canadian.webp"
+        alt="Proudly Canadian"
+        width={1280}
+        height={393}
+        class="h-7 w-auto sm:h-8"
         loading="eager"
       />
-    </a>
+    </div>
 
     <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
       {
