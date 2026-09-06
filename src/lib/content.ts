@@ -41,19 +41,13 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Our Advice",
     href: "/blog",
     children: [
-      { label: "Cell Phone Tower Lease Rates", href: "/blog" },
-      {
-        label: "What Is My Wireless Lease Worth?",
-        href: "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
-      },
-      { label: "Mergers and Technology Risks to Revenue", href: "/blog" },
-      {
-        label: "Market Value Of Your Rent",
-        href: "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
-      },
-      { label: "Should I Consent to Upgrade Requests?", href: "/blog" },
-      { label: "Tenant Requests to Renew My Lease", href: "/blog" },
-      { label: "Cell Tower Attorney", href: "/blog" },
+      { label: "Cell Phone Tower Lease Rates", href: "/advice/cell-phone-tower-lease-rates" },
+      { label: "What Is My Wireless Lease Worth?", href: "/advice/what-is-my-wireless-lease-worth" },
+      { label: "Mergers and Technology Risks to Revenue", href: "/advice/mergers-and-technology-risks-to-revenue" },
+      { label: "Market Value Of Your Rent", href: "/advice/market-value-of-your-rent" },
+      { label: "Should I Consent to Upgrade Requests?", href: "/advice/should-i-consent-to-upgrade-requests" },
+      { label: "Tenant Requests to Renew My Lease", href: "/advice/tenant-requests-to-renew-my-lease" },
+      { label: "Cell Tower Attorney", href: "/advice/cell-tower-attorney" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -118,6 +112,44 @@ export const SERVICE_PAGES: ServicePage[] = [
     title: "Hiring a Cell Tower Lease Consultant",
     href: "/services/hiring-a-cell-tower-lease-consultant",
     description: "What to look for before you sign with a consultant.",
+  },
+]
+
+export const ADVICE_PAGES: ServicePage[] = [
+  {
+    title: "Cell Phone Tower Lease Rates",
+    href: "/advice/cell-phone-tower-lease-rates",
+    description: "How wireless lease rates are set and what yours should pay.",
+  },
+  {
+    title: "What Is My Wireless Lease Worth?",
+    href: "/advice/what-is-my-wireless-lease-worth",
+    description: "The factors that drive the real value of your lease.",
+  },
+  {
+    title: "Mergers and Technology Risks to Revenue",
+    href: "/advice/mergers-and-technology-risks-to-revenue",
+    description: "Carrier mergers and network changes that threaten rent.",
+  },
+  {
+    title: "Market Value Of Your Rent",
+    href: "/advice/market-value-of-your-rent",
+    description: "Benchmarking your rent against true market comparables.",
+  },
+  {
+    title: "Should I Consent to Upgrade Requests?",
+    href: "/advice/should-i-consent-to-upgrade-requests",
+    description: "What carrier upgrade requests mean for your leverage.",
+  },
+  {
+    title: "Tenant Requests to Renew My Lease",
+    href: "/advice/tenant-requests-to-renew-my-lease",
+    description: "How to respond when the tenant moves to renew first.",
+  },
+  {
+    title: "Cell Tower Attorney",
+    href: "/advice/cell-tower-attorney",
+    description: "Where a lease attorney helps, and where we do more.",
   },
 ]
 
