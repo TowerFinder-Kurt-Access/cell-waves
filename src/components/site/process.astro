@@ -1,6 +1,8 @@
 ---
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Handshake, Radar, TrendingUp } from "lucide-react"
 import { STEPS } from "@/lib/content"
+
+const icons = [Radar, Handshake, TrendingUp]
 ---
 
 <section id="process" class="border-y border-border bg-brand text-brand-foreground">
@@ -12,18 +14,26 @@ import { STEPS } from "@/lib/content"
       </p>
     </div>
 
-    <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-      {STEPS.map((step, i) => (
-        <div class="reveal relative" style={`--reveal-delay: ${i * 90}ms`}>
-          <span class="font-heading text-5xl font-bold text-brand-foreground/25">
-            {i + 1}
-          </span>
-          <h3 class="mt-3 text-xl font-semibold">{step.title}</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-brand-foreground/80">
-            {step.body}
-          </p>
-        </div>
-      ))}
+    <div class="relative mt-12 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+      <!-- Signal path: dashed line behind the step icons on desktop -->
+      <div class="absolute left-[16%] right-[16%] top-5 hidden border-t border-dashed border-brand-foreground/30 md:block" aria-hidden="true"></div>
+      {STEPS.map((step, i) => {
+        const Icon = icons[i] ?? Radar
+        return (
+          <div class="reveal relative" style={`--reveal-delay: ${i * 90}ms`}>
+            <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg border border-brand-foreground/25 bg-brand text-brand-foreground">
+              <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+            </span>
+            <span class="mt-4 block font-heading text-5xl font-bold text-brand-foreground/25">
+              {i + 1}
+            </span>
+            <h3 class="mt-3 text-xl font-semibold">{step.title}</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-brand-foreground/80">
+              {step.body}
+            </p>
+          </div>
+        )
+      })}
     </div>
 
     <div class="reveal mt-12">
@@ -32,7 +42,7 @@ import { STEPS } from "@/lib/content"
         class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-background px-6 text-base font-semibold text-ink shadow-sm transition-all hover:bg-background/90 active:translate-y-[1px]"
       >
         Start your free review
-        <ArrowRight className="h-4 w-4" strokeWidth="2" />
+        <ArrowRight className="h-4 w-4" strokeWidth={2} />
       </a>
     </div>
   </div>

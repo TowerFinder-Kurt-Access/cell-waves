@@ -1,5 +1,8 @@
 ---
+import { FileCheck, PenLine, RadioTower, TrendingUp } from "lucide-react"
 import { REASONS } from "@/lib/content"
+
+const icons = [TrendingUp, PenLine, RadioTower, FileCheck]
 ---
 
 <section id="why" class="bg-background">
@@ -19,17 +22,27 @@ import { REASONS } from "@/lib/content"
       <!-- Reasons grid -->
       <div class="lg:col-span-8">
         <div class="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
-          {REASONS.map((r, i) => (
-            <div class="reveal border-t-2 border-brand/20 pt-5" style={`--reveal-delay: ${i * 70}ms`}>
-              <span class="font-heading text-sm font-bold tracking-widest text-brand">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 class="mt-2 text-lg font-semibold text-ink">{r.title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {r.body}
-              </p>
-            </div>
-          ))}
+          {
+            REASONS.map((r, i) => {
+              const Icon = icons[i] ?? RadioTower
+              return (
+                <div class="reveal border-t-2 border-brand/20 pt-5" style={`--reveal-delay: ${i * 70}ms`}>
+                  <div class="flex items-center justify-between">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-muted text-brand">
+                      <Icon className="h-5 w-5" strokeWidth={1.8} aria-hidden="true" />
+                    </span>
+                    <span class="font-heading text-sm font-bold tracking-widest text-brand/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 class="mt-4 text-lg font-semibold text-ink">{r.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {r.body}
+                  </p>
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     </div>
