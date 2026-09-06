@@ -5,7 +5,7 @@ import { STEPS } from "@/lib/content"
 
 <section id="process" class="border-y border-border bg-brand text-brand-foreground">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div class="max-w-2xl">
+    <div class="reveal max-w-2xl">
       <h2 class="text-3xl font-bold leading-tight sm:text-4xl">How it works</h2>
       <p class="mt-4 text-base leading-relaxed text-brand-foreground/80">
         Three steps, no upfront fees, and you keep control of every decision.
@@ -14,7 +14,7 @@ import { STEPS } from "@/lib/content"
 
     <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
       {STEPS.map((step, i) => (
-        <div class="relative">
+        <div class="reveal relative" style={`--reveal-delay: ${i * 90}ms`}>
           <span class="font-heading text-5xl font-bold text-brand-foreground/25">
             {i + 1}
           </span>
@@ -26,7 +26,7 @@ import { STEPS } from "@/lib/content"
       ))}
     </div>
 
-    <div class="mt-12">
+    <div class="reveal mt-12">
       <a
         href="#contact"
         class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-background px-6 text-base font-semibold text-ink shadow-sm transition-all hover:bg-background/90 active:translate-y-[1px]"

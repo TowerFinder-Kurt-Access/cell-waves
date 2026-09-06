@@ -5,10 +5,41 @@ import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 
-export function ContactForm() {
-  const [sent, setSent] = useState(false)
+type SubmitStatus = "idle" | "sending" | "sent" | "error"
 
-  if (sent) {
+export function ContactForm() {
+  const [status, setStatus] = useState<SubmitStatus>("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = Object.fromEntries(new FormData(form).entries())
+
+    setStatus("sending")
+    setErrorMessage("")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { message?: string } | null
+        setErrorMessage(body?.message ?? "Something went wrong. Please try again.")
+        setStatus("error")
+        return
+      }
+      form.reset()
+      setStatus("sent")
+    } catch {
+      setErrorMessage("Network error. Please check your connection and try again.")
+      setStatus("error")
+    }
+  }
+
+  if (status === "sent") {
     return (
       <div className="flex h-full min-h-[24rem] flex-col items-center justify-center rounded-2xl border border-border bg-card p-8 text-center shadow-sm">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-muted text-brand">
@@ -26,10 +57,7 @@ export function ContactForm() {
   return (
     <form
       className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
-      onSubmit={(e) => {
-        e.preventDefault()
-        setSent(true)
-      }}
+      onSubmit={handleSubmit}
       noValidate
     >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -100,11 +128,17 @@ export function ContactForm() {
           />
         </div>
       </div>
+      {status === "error" && errorMessage && (
+        <p role="alert" className="mt-4 rounded-lg border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-sm text-destructive">
+          {errorMessage}
+        </p>
+      )}
       <button
         type="submit"
-        className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand px-6 text-base font-semibold text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px] sm:w-auto"
+        disabled={status === "sending"}
+        className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand px-6 text-base font-semibold text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
-        Request free consultation
+        {status === "sending" ? "Sending..." : "Request free consultation"}
         <Send className="h-4 w-4" strokeWidth="2" />
       </button>
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">

@@ -8,6 +8,7 @@ dist
 build
 .astro
 .output
+.vercel
 
 # env
 .env

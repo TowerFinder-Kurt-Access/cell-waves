@@ -160,3 +160,67 @@
     scroll-behavior: auto;
   }
 }
+
+/* Scroll-reveal: elements stay hidden until scrolled into view, then play a
+   one-shot entrance. The <html data-reveal> flag is set by the observer script
+   in base.astro, so without JS everything renders visible. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] .reveal {
+    opacity: 0;
+  }
+  [data-reveal] .reveal.is-revealed {
+    opacity: 1;
+    animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms) backwards;
+  }
+  [data-reveal] .reveal-left.is-revealed {
+    animation-name: reveal-left;
+  }
+  [data-reveal] .reveal-right.is-revealed {
+    animation-name: reveal-right;
+  }
+  .reveal-load {
+    animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .reveal-load-d2 {
+    animation-delay: 110ms;
+  }
+  .reveal-load-d3 {
+    animation-delay: 220ms;
+  }
+  .reveal-load-d4 {
+    animation-delay: 330ms;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
