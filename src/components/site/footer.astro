@@ -1,5 +1,5 @@
 ---
-import { Mail, MapPin, Phone, Radio } from "lucide-react"
+import { Mail, MapPin, Phone } from "lucide-react"
 import {
   EMAIL,
   FOOTER_ABOUT,
@@ -28,11 +28,15 @@ const year = new Date().getFullYear()
     <div class="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.25fr] lg:gap-16">
       <!-- Brand - editorial, airy -->
       <div class="lg:pr-8">
-        <a href="/" class="inline-flex items-center gap-2.5 font-heading text-lg font-bold tracking-tight text-white">
-          <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-black">
-            <Radio className="h-5 w-5" strokeWidth="2" />
-          </span>
-          {SITE_NAME}
+        <a href="/" class="inline-flex items-center" aria-label="CellWaves home">
+          <img
+            src="/cellwaves-logo.webp"
+            alt="CellWaves"
+            width={600}
+            height={480}
+            class="h-14 w-auto"
+            loading="lazy"
+          />
         </a>
         <p class="mt-5 max-w-sm text-sm leading-7 text-white/55">
           {FOOTER_ABOUT}

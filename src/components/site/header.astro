@@ -1,6 +1,6 @@
 ---
-import { ChevronDown, Phone, Radio } from "lucide-react"
-import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF, SITE_NAME } from "@/lib/content"
+import { ChevronDown, Phone } from "lucide-react"
+import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { MobileNav } from "@/components/site/mobile-nav"
 
 const pathname = Astro.url.pathname
@@ -17,11 +17,15 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
   <div
     class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
   >
-    <a href="/" class="flex shrink-0 items-center gap-2.5 font-heading text-base font-bold text-white">
-      <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-brand-foreground">
-        <Radio className="h-4.5 w-4.5" strokeWidth="2" />
-      </span>
-      {SITE_NAME}
+    <a href="/" class="flex shrink-0 items-center" aria-label="CellWaves home">
+      <img
+        src="/cellwaves-logo.webp"
+        alt="CellWaves"
+        width={600}
+        height={480}
+        class="h-11 w-auto"
+        loading="eager"
+      />
     </a>
 
     <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label="Primary">

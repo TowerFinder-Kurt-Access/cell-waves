@@ -1,7 +1,7 @@
-import { ChevronDown, Menu, Phone, Radio, X } from "lucide-react"
+import { ChevronDown, Menu, Phone, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
-import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF, SITE_NAME } from "@/lib/content"
+import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { cn } from "@/lib/utils"
 
 export function MobileNav() {
@@ -49,11 +49,15 @@ export function MobileNav() {
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-2 font-heading text-lg font-bold text-white">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-brand-foreground">
-              <Radio className="h-4 w-4" strokeWidth="2" />
-            </span>
-            {SITE_NAME}
+          <span className="flex items-center">
+            <img
+              src="/cellwaves-logo.webp"
+              alt="CellWaves"
+              width={600}
+              height={480}
+              className="h-9 w-auto"
+              loading="lazy"
+            />
           </span>
           <button
             type="button"
