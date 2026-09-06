@@ -2,7 +2,7 @@
 
 # Cell Waves Canada - Cell Tower Lease Experts
 
-🗼 Expert cell tower lease negotiation for Canadian landlords, built with Astro, React, TypeScript, Tailwind, and shadcn/ui — maximizing lease renewals, extensions, and buyouts nationwide.
+🗼 Landing page for Cell Waves Canada — helping landlords negotiate cell tower lease renewals and buyouts. Built with Astro, React, Tailwind, and shadcn/ui.
 
 ## ✨ Features
 
