@@ -1,9 +1,9 @@
 ---
-import { Phone } from "lucide-react"
+import { ArrowRight, Phone } from "lucide-react"
 import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
-import { PHONE_ALT_DISPLAY, PHONE_ALT_HREF, TEAM } from "@/lib/content"
+import { PHONE_DISPLAY, PHONE_HREF, TEAM } from "@/lib/content"
 
 const PILLARS = [
   {
@@ -40,6 +40,9 @@ const EXPERTISE = [
 ]
 
 const LARRY = TEAM[0]
+
+const WSU_IMAGE =
+  "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop"
 ---
 
 <Base
@@ -49,91 +52,89 @@ const LARRY = TEAM[0]
   <Header />
   <main class="bg-background">
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <!-- Intro -->
-      <div class="reveal max-w-3xl">
-        <p class="text-sm font-semibold uppercase tracking-widest text-brand">Why select us</p>
-        <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
-          CellWaves empowers landlords with greater control and enhanced value
-        </h1>
-        <p class="mt-5 text-base leading-relaxed text-muted-foreground">
-          In the wireless industry, carriers and tower companies often employ
-          seasoned negotiators who have handled hundreds of lease agreements. In
-          contrast, most property owners have negotiated only a single wireless
-          lease in their lifetime. During that process, who truly dictated the
-          terms, such as rent and contract language? Typically, it's the
-          carriers. Many landlords enter negotiations with limited knowledge of
-          wireless technology, valuation, pricing, and legal terms, making them
-          vulnerable to one-sided agreements crafted by carrier attorneys.
-        </p>
-        <p class="mt-4 text-base leading-relaxed text-muted-foreground">
-          Even for those who wish to negotiate, the challenge is knowing what to
-          change and why. Without a clear understanding of market comparables,
-          especially when wireless lease terms are confidential and not publicly
-          recorded, landlords often rely on information provided by the site
-          acquisition representative. But is that representative working in your
-          best interest, or are they incentivized to secure lower lease rates
-          that benefit the carrier and increase their own compensation?
-        </p>
+      <!-- Intro: visual + years badge left, copy right -->
+      <div class="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+        <div class="reveal reveal-left order-2 lg:order-1 lg:col-span-5">
+          <div class="relative">
+            <div class="overflow-hidden rounded-2xl shadow-md ring-1 ring-border">
+              <img
+                src={WSU_IMAGE}
+                alt="Rooftop wireless carrier site on a residential building"
+                class="aspect-[4/5] w-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div
+              class="absolute -right-4 top-8 flex items-baseline gap-2 rounded-2xl bg-brand px-6 py-4 text-brand-foreground shadow-md sm:-right-6"
+            >
+              <span class="font-heading text-4xl font-bold tabular-nums sm:text-5xl">
+                <span data-count-up data-target="35">1</span>+
+              </span>
+              <span class="text-lg font-semibold">Years</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-right order-1 lg:order-2 lg:col-span-7">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand">Why select us</p>
+          <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
+            CellWaves empowers landlords with greater control and enhanced value
+          </h1>
+          <p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            In the wireless industry, carriers and tower companies often employ
+            seasoned negotiators who have handled hundreds of lease agreements. In
+            contrast, most property owners have negotiated only a single wireless
+            lease in their lifetime. During that process, who truly dictated the
+            terms, such as rent and contract language? Typically, it's the
+            carriers. Many landlords enter negotiations with limited knowledge of
+            wireless technology, valuation, pricing, and legal terms, making them
+            vulnerable to one-sided agreements crafted by carrier attorneys.
+          </p>
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+            Even for those who wish to negotiate, the challenge is knowing what to
+            change and why. Without a clear understanding of market comparables,
+            especially when wireless lease terms are confidential and not publicly
+            recorded, landlords often rely on information provided by the site
+            acquisition representative. But is that representative working in your
+            best interest, or are they incentivized to secure lower lease rates
+            that benefit the carrier and increase their own compensation?
+          </p>
+        </div>
       </div>
 
       <!-- Pillars -->
       <div class="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2">
         {
           PILLARS.map((p, i) => (
-            <div class="reveal border-t-2 border-brand/20 pt-5" style={`--reveal-delay: ${i * 80}ms`}>
+            <div class="reveal rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8" style={`--reveal-delay: ${i * 80}ms`}>
               <span class="font-heading text-sm font-bold tracking-widest text-brand">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h2 class="mt-2 text-xl font-semibold text-ink">{p.title}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+              <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
             </div>
           ))
         }
       </div>
 
-      <!-- Call band -->
-      <a
-        href={PHONE_ALT_HREF}
-        class="reveal mt-16 flex items-center justify-center gap-4 rounded-2xl bg-muted px-6 py-6 transition-colors hover:bg-muted/70"
-      >
-        <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand text-brand-foreground">
-          <Phone className="size-5" strokeWidth={1.8} aria-hidden="true" />
-        </span>
-        <span>
-          <span class="block text-lg font-semibold text-ink">Call us anytime</span>
-          <span class="block text-sm font-medium text-brand">{PHONE_ALT_DISPLAY}</span>
-        </span>
-      </a>
-
       <!-- Expertise -->
       <div class="mt-20">
-        <h2 class="text-3xl font-bold leading-tight text-ink sm:text-4xl">Our expertise</h2>
-        <ol class="mt-10 space-y-10">
+        <h2 class="reveal text-3xl font-bold leading-tight text-ink sm:text-4xl">Our expertise</h2>
+        <div class="mt-10 grid grid-cols-1 gap-x-12 gap-y-10 md:grid-cols-2">
           {
             EXPERTISE.map((e, i) => (
-              <li class="reveal grid gap-3 border-t border-border pt-6 sm:grid-cols-12 sm:gap-6" style={`--reveal-delay: ${(i % 2) * 60}ms`}>
-                <span class="font-heading text-2xl font-bold text-brand sm:col-span-2">
+              <div class="reveal border-t-2 border-brand/20 pt-5" style={`--reveal-delay: ${(i % 2) * 70}ms`}>
+                <span class="font-heading text-2xl font-bold text-brand">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div class="sm:col-span-10">
-                  <h3 class="text-lg font-semibold text-ink">{e.title}</h3>
-                  <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                    {e.body}
-                  </p>
-                </div>
-              </li>
+                <h3 class="mt-2 text-lg font-semibold text-ink">{e.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {e.body}
+                </p>
+              </div>
             ))
           }
-        </ol>
-        <p class="mt-10 max-w-3xl text-base leading-relaxed text-muted-foreground">
-          CellWaves meets all the above conditions. Nowhere else can you find
-          the combination of experience, skills, and passion to deliver
-          incredible value for our clients. Don't disadvantage yourself by
-          hiring inexperienced self-professed internet negotiators working on
-          one of your most valuable assets. We have negotiated thousands of cell
-          site transactions on behalf of property owners. Call us anytime for a
-          no-obligation consultation.
-        </p>
+        </div>
       </div>
 
       <!-- Senior team -->
@@ -182,7 +183,37 @@ const LARRY = TEAM[0]
           </p>
         </div>
       </div>
+
+      <!-- Closing CTA band -->
+      <div class="reveal mt-20 rounded-2xl bg-brand px-6 py-12 text-center sm:px-12">
+        <h2 class="text-3xl font-bold leading-tight text-brand-foreground">
+          Don't disadvantage yourself on one of your most valuable assets
+        </h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-brand-foreground/85">
+          We have negotiated thousands of cell site transactions on behalf of
+          property owners. Call us anytime for a no-obligation consultation.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="/#contact"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-brand shadow-sm transition-all hover:bg-white/90 active:translate-y-[1px]"
+          >
+            Get a free review
+            <ArrowRight className="h-4 w-4" strokeWidth={2} />
+          </a>
+          <a
+            href={PHONE_HREF}
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-white/30 px-6 text-base font-semibold text-brand-foreground transition-colors hover:bg-white/10 active:translate-y-[1px]"
+          >
+            <Phone className="h-4 w-4" strokeWidth={2} />
+            {PHONE_DISPLAY}
+          </a>
+        </div>
+      </div>
     </div>
   </main>
   <Footer />
+  <script>
+    import "@/scripts/count-up"
+  </script>
 </Base>
