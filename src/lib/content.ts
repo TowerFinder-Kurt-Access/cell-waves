@@ -28,13 +28,13 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Our Services",
     href: "/#services",
     children: [
-      { label: "Cell Tower Lease Agreements", href: "/#services" },
-      { label: "Lease Renewals and Extensions", href: "/#services" },
-      { label: "Negotiating Cell Tower Leases", href: "/#services" },
-      { label: "Rooftop Leases", href: "/#services" },
-      { label: "Wireless Lease Buyout Available", href: "/#services" },
-      { label: "Consultant Services Cost", href: "/#contact" },
-      { label: "Hiring a Cell Tower Lease Consultant", href: "/#why" },
+      { label: "Cell Tower Lease Agreements", href: "/services/cell-tower-lease-agreements" },
+      { label: "Lease Renewals and Extensions", href: "/services/lease-renewals-and-extensions" },
+      { label: "Negotiating Cell Tower Leases", href: "/services/negotiating-cell-tower-leases" },
+      { label: "Rooftop Leases", href: "/services/rooftop-leases" },
+      { label: "Wireless Lease Buyout Available", href: "/services/wireless-lease-buyout-available" },
+      { label: "Consultant Services Cost", href: "/services/how-much-do-cell-tower-lease-consultant-services-cost" },
+      { label: "Hiring a Cell Tower Lease Consultant", href: "/services/hiring-a-cell-tower-lease-consultant" },
     ],
   },
   {
@@ -69,12 +69,56 @@ export const FOOTER_USEFUL_LINKS: NavItem[] = [
 ]
 
 export const FOOTER_SERVICES: NavItem[] = [
-  { label: "Cell Tower Lease Agreements", href: "/#services" },
-  { label: "Lease Renewals and Extensions", href: "/#services" },
-  { label: "Negotiating Cell Tower Leases", href: "/#services" },
-  { label: "Rooftop Leases", href: "/#services" },
-  { label: "Wireless Lease Buyout", href: "/#services" },
-  { label: "Hiring a Lease Consultant", href: "/#why" },
+  { label: "Cell Tower Lease Agreements", href: "/services/cell-tower-lease-agreements" },
+  { label: "Lease Renewals and Extensions", href: "/services/lease-renewals-and-extensions" },
+  { label: "Negotiating Cell Tower Leases", href: "/services/negotiating-cell-tower-leases" },
+  { label: "Rooftop Leases", href: "/services/rooftop-leases" },
+  { label: "Wireless Lease Buyout", href: "/services/wireless-lease-buyout-available" },
+  { label: "Hiring a Lease Consultant", href: "/services/hiring-a-cell-tower-lease-consultant" },
+]
+
+export interface ServicePage {
+  title: string
+  href: string
+  description: string
+}
+
+export const SERVICE_PAGES: ServicePage[] = [
+  {
+    title: "Cell Tower Lease Agreements",
+    href: "/services/cell-tower-lease-agreements",
+    description: "Fair, profitable terms for new and existing tower agreements.",
+  },
+  {
+    title: "Lease Renewals and Extensions",
+    href: "/services/lease-renewals-and-extensions",
+    description: "Renegotiate expiring leases before the carrier locks terms in.",
+  },
+  {
+    title: "Negotiating Cell Tower Leases",
+    href: "/services/negotiating-cell-tower-leases",
+    description: "Landlord-side negotiation against carrier site agents.",
+  },
+  {
+    title: "Rooftop Leases",
+    href: "/services/rooftop-leases",
+    description: "Rooftop antenna and equipment agreements for building owners.",
+  },
+  {
+    title: "Wireless Lease Buyout Available",
+    href: "/services/wireless-lease-buyout-available",
+    description: "Lump-sum buyout offers that reflect long-term lease value.",
+  },
+  {
+    title: "How Much do Cell Tower Lease Consultant Services Cost?",
+    href: "/services/how-much-do-cell-tower-lease-consultant-services-cost",
+    description: "How consultant fees work and what to expect.",
+  },
+  {
+    title: "Hiring a Cell Tower Lease Consultant",
+    href: "/services/hiring-a-cell-tower-lease-consultant",
+    description: "What to look for before you sign with a consultant.",
+  },
 ]
 
 export const FOOTER_ABOUT =
