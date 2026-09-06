@@ -28,16 +28,27 @@ const year = new Date().getFullYear()
     <div class="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.25fr] lg:gap-16">
       <!-- Brand - editorial, airy -->
       <div class="lg:pr-8">
-        <a href="/" class="inline-flex items-center" aria-label="CellWaves home">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+          <a href="/" class="flex items-center gap-2.5" aria-label="CellWaves home">
+            <img
+              src="/cellwaves-logo.webp"
+              alt=""
+              width={385}
+              height={385}
+              class="h-12 w-auto"
+              loading="lazy"
+            />
+            <span class="font-heading text-xl font-bold tracking-tight text-white">CellWaves</span>
+          </a>
           <img
-            src="/cellwaves-logo.webp"
-            alt="CellWaves"
-            width={600}
-            height={480}
-            class="h-14 w-auto"
+            src="/canadian.webp"
+            alt="Proudly Canadian"
+            width={1280}
+            height={393}
+            class="h-10 w-auto"
             loading="lazy"
           />
-        </a>
+        </div>
         <p class="mt-5 max-w-sm text-sm leading-7 text-white/55">
           {FOOTER_ABOUT}
         </p>

@@ -18,24 +18,17 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
     class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
   >
     <div class="flex shrink-0 items-center gap-3">
-      <a href="/" class="flex items-center" aria-label="CellWaves home">
+      <a href="/" class="flex items-center gap-2.5" aria-label="CellWaves home">
         <img
           src="/cellwaves-logo.webp"
-          alt="CellWaves"
-          width={600}
-          height={480}
+          alt=""
+          width={385}
+          height={385}
           class="h-11 w-auto"
           loading="eager"
         />
+        <span class="font-heading text-lg font-bold tracking-tight text-white">CellWaves</span>
       </a>
-      <img
-        src="/canadian.webp"
-        alt="Proudly Canadian"
-        width={1280}
-        height={393}
-        class="h-7 w-auto sm:h-8"
-        loading="eager"
-      />
     </div>
 
     <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label="Primary">

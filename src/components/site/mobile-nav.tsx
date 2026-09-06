@@ -49,15 +49,16 @@ export function MobileNav() {
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center">
+          <span className="flex items-center gap-2.5">
             <img
               src="/cellwaves-logo.webp"
-              alt="CellWaves"
-              width={600}
-              height={480}
+              alt=""
+              width={385}
+              height={385}
               className="h-9 w-auto"
               loading="lazy"
             />
+            <span className="font-heading text-lg font-bold tracking-tight text-white">CellWaves</span>
           </span>
           <button
             type="button"
