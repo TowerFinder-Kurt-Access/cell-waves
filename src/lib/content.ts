@@ -75,6 +75,7 @@ export interface ServicePage {
   title: string
   href: string
   description: string
+  keywords?: string[]
 }
 
 export const SERVICE_PAGES: ServicePage[] = [
@@ -82,36 +83,43 @@ export const SERVICE_PAGES: ServicePage[] = [
     title: "Cell Tower Lease Agreements",
     href: "/services/cell-tower-lease-agreements",
     description: "Fair, profitable terms for new and existing tower agreements.",
+    keywords: ["cell tower lease agreement", "tower lease contract", "cell site lease terms", "wireless lease agreement"],
   },
   {
     title: "Lease Renewals and Extensions",
     href: "/services/lease-renewals-and-extensions",
     description: "Renegotiate expiring leases before the carrier locks terms in.",
+    keywords: ["cell tower lease renewal", "tower lease extension", "lease renegotiation", "carrier lease renewal"],
   },
   {
     title: "Negotiating Cell Tower Leases",
     href: "/services/negotiating-cell-tower-leases",
     description: "Landlord-side negotiation against carrier site agents.",
+    keywords: ["cell tower lease negotiation", "negotiate tower lease", "tower lease lawyer alternative", "landlord lease negotiation"],
   },
   {
     title: "Rooftop Leases",
     href: "/services/rooftop-leases",
     description: "Rooftop antenna and equipment agreements for building owners.",
+    keywords: ["rooftop cell site lease", "rooftop antenna lease", "roof lease wireless carrier", "commercial rooftop lease"],
   },
   {
     title: "Wireless Lease Buyout Available",
     href: "/services/wireless-lease-buyout-available",
     description: "Lump-sum buyout offers that reflect long-term lease value.",
+    keywords: ["cell tower lease buyout", "wireless lease buyout", "tower lease lump sum", "lease buyout offer"],
   },
   {
     title: "How Much do Cell Tower Lease Consultant Services Cost?",
     href: "/services/how-much-do-cell-tower-lease-consultant-services-cost",
     description: "How consultant fees work and what to expect.",
+    keywords: ["cell tower consultant fees", "lease consultant cost", "tower lease consulting cost"],
   },
   {
     title: "Hiring a Cell Tower Lease Consultant",
     href: "/services/hiring-a-cell-tower-lease-consultant",
     description: "What to look for before you sign with a consultant.",
+    keywords: ["cell tower lease consultant", "tower lease consultant hiring", "wireless lease expert", "tower site consultant"],
   },
 ]
 
@@ -120,36 +128,43 @@ export const ADVICE_PAGES: ServicePage[] = [
     title: "Cell Phone Tower Lease Rates",
     href: "/advice/cell-phone-tower-lease-rates",
     description: "How wireless lease rates are set and what yours should pay.",
+    keywords: ["cell tower lease rates", "tower lease rental rates", "cell site rent", "tower rent per month"],
   },
   {
     title: "What Is My Wireless Lease Worth?",
     href: "/advice/what-is-my-wireless-lease-worth",
     description: "The factors that drive the real value of your lease.",
+    keywords: ["wireless lease value", "cell tower lease worth", "tower lease valuation", "cell site value"],
   },
   {
     title: "Mergers and Technology Risks to Revenue",
     href: "/advice/mergers-and-technology-risks-to-revenue",
     description: "Carrier mergers and network changes that threaten rent.",
+    keywords: ["tower lease merger risk", "5G lease impact", "wireless revenue risk", "telecom consolidation"],
   },
   {
     title: "Market Value Of Your Rent",
     href: "/advice/market-value-of-your-rent",
     description: "Benchmarking your rent against true market comparables.",
+    keywords: ["cell tower market rent", "lease rent market value", "tower rent comparison"],
   },
   {
     title: "Should I Consent to Upgrade Requests?",
     href: "/advice/should-i-consent-to-upgrade-requests",
     description: "What carrier upgrade requests mean for your leverage.",
+    keywords: ["cell tower upgrade consent", "5G upgrade lease", "tower upgrade agreement", "antenna upgrade consent"],
   },
   {
     title: "Tenant Requests to Renew My Lease",
     href: "/advice/tenant-requests-to-renew-my-lease",
     description: "How to respond when the tenant moves to renew first.",
+    keywords: ["lease renewal request", "carrier lease renewal rights", "tower lease renewal response"],
   },
   {
     title: "Cell Tower Attorney",
     href: "/advice/cell-tower-attorney",
     description: "Where a lease attorney helps, and where we do more.",
+    keywords: ["cell tower attorney", "tower lease lawyer", "wireless lease attorney", "telecom attorney"],
   },
 ]
 
