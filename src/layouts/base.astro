@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css"
 import Analytics from "@vercel/analytics/astro"
+import { CookieConsent } from "@/components/site/cookie-consent"
 import {
   SITE,
   absoluteUrl,
@@ -91,6 +92,7 @@ const allSchema = [
   <body>
     <slot />
     <Analytics />
+    <CookieConsent client:load />
     <script>
       // Scroll-reveal trigger: hide .reveal elements only once JS is confirmed,
       // then play each entrance once when it enters the viewport.
