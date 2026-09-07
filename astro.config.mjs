@@ -11,7 +11,15 @@ export default defineConfig({
   // Static output + adapter: pages prerender, /api/* routes run on-demand (Vercel functions).
   adapter: vercel(),
   site: "https://cell-waves.ca",
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: { en: "en-CA" },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {

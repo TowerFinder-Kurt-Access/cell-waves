@@ -1,29 +1,90 @@
 ---
 import "@/styles/global.css"
+import {
+  SITE,
+  absoluteUrl,
+  articleSchema,
+  ogImageSchema,
+  organizationSchema,
+  webPageSchema,
+  websiteSchema,
+} from "@/lib/seo"
 
 interface Props {
   title?: string
   description?: string
+  /** Absolute or site-relative URL of the Open Graph image. */
+  image?: string
+  type?: "website" | "article"
+  keywords?: string
+  noindex?: boolean
+  /** Extra JSON-LD blocks merged after the defaults. */
+  schema?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 const {
   title = "Cell Waves Canada - Cell Tower Lease Experts for Landlords",
   description = "Cell Waves Canada: expert cell tower lease negotiation for Canadian landlords. Maximize your lease renewals and buyouts.",
+  image = SITE.ogImage,
+  type = "website",
+  keywords = SITE.keywords.join(", "),
+  noindex = false,
+  schema,
 } = Astro.props
+
+const canonical = absoluteUrl(Astro.url.pathname)
+const imageUrl = absoluteUrl(image)
+const extraSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : []
+const allSchema = [
+  organizationSchema(),
+  websiteSchema(),
+  ogImageSchema(),
+  webPageSchema({ title, description, url: canonical, type }),
+  ...extraSchema,
+]
 ---
 
-<html lang="en">
+<html lang={SITE.locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico?v=2" sizes="48x48" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={SITE.name} />
+    <meta name="creator" content={SITE.name} />
+    <meta name="publisher" content={SITE.name} />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"}
+    />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" type="image/webp" href="/brand.webp?v=1" />
+    <link rel="icon" href="/favicon.ico?v=3" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content={String(SITE.ogImageWidth)} />
+    <meta property="og:image:height" content={String(SITE.ogImageHeight)} />
+    <meta property="og:image:alt" content="Cell Waves Canada - cell tower lease experts for landlords" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    {allSchema.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body>
     <slot />
