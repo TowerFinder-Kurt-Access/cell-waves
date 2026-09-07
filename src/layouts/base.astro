@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css"
+import Analytics from "@vercel/analytics/astro"
 import {
   SITE,
   absoluteUrl,
@@ -89,6 +90,7 @@ const allSchema = [
   </head>
   <body>
     <slot />
+    <Analytics />
     <script>
       // Scroll-reveal trigger: hide .reveal elements only once JS is confirmed,
       // then play each entrance once when it enters the viewport.
