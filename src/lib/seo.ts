@@ -1,4 +1,4 @@
-import { EMAIL, PHONE_ALT_HREF, PHONE_HREF } from "@/lib/content"
+import { EMAIL, PHONE_ALT_HREF, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
 
 export const SITE = {
   name: "Cell Waves Canada",
@@ -6,7 +6,7 @@ export const SITE = {
   url: "https://cell-waves.ca",
   locale: "en-CA",
   description:
-    "Cell Waves Canada: expert cell tower lease negotiation for Canadian landlords. Maximize your lease renewals and buyouts.",
+    "Cell Waves Canada negotiates cell tower and rooftop leases for Canadian landlords. Maximize income from renewals, buyouts, and site upgrades.",
   keywords: [
     "cell tower lease",
     "cell tower lease negotiation",
@@ -34,16 +34,39 @@ export function absoluteUrl(path: string): string {
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
     legalName: SITE.name,
     alternateName: SITE.brandName,
+    slogan: "Cell tower lease experts for Canadian landlords",
     url: SITE.url,
     logo: absoluteUrl(SITE.favicon),
     image: absoluteUrl(SITE.ogImage),
     email: SITE.email,
     telephone: SITE.phone,
+    knowsAbout: [
+      "cell tower lease negotiation",
+      "wireless lease buyouts",
+      "rooftop leases",
+      "lease renewals and extensions",
+      "telecommunications site leasing",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Cell tower lease consulting services",
+      itemListElement: SERVICE_PAGES.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.description,
+          url: absoluteUrl(s.href),
+          provider: { "@id": `${SITE.url}/#organization` },
+          areaServed: { "@type": "Country", name: "Canada" },
+        },
+      })),
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "1539 Bradwell Avenue",
@@ -94,6 +117,7 @@ export function webPageSchema({ title, description, url, type = "website" }: Web
     isPartOf: { "@id": `${SITE.url}/#website` },
     about: { "@id": `${SITE.url}/#organization` },
     primaryImageOfPage: { "@id": `${SITE.url}/#og-image` },
+    breadcrumb: { "@id": `${url}#breadcrumb` },
   }
 }
 
@@ -108,6 +132,60 @@ export function ogImageSchema() {
   }
 }
 
+const SECTION_LABELS: Record<string, string> = {
+  services: "Services",
+  advice: "Advice",
+  blog: "Blog",
+}
+
+/** Build a BreadcrumbList for a page path, e.g. /services/foo/ → Home > Services > Foo. */
+export function breadcrumbSchema(pathname: string, pageTitle: string) {
+  const segments = pathname.split("/").filter(Boolean)
+  const crumbs = [{ position: 1, name: "Home", item: SITE.url }]
+  let cursor = SITE.url
+
+  for (const segment of segments) {
+    cursor = `${cursor}/${segment}`
+    crumbs.push({
+      position: crumbs.length + 1,
+      name: SECTION_LABELS[segment] ?? segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      item: `${cursor}/`,
+    })
+  }
+
+  if (crumbs.length > 1) {
+    crumbs[crumbs.length - 1].name = pageTitle
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE.url}${pathname}#breadcrumb`,
+    itemListElement: crumbs.map(({ position, name, item }) => ({ "@type": "ListItem", position, name, item })),
+  }
+}
+
+interface ServiceSchemaArgs {
+  name: string
+  description: string
+  url: string
+}
+
+/** Service schema for a service page; provider points at the site Organization. */
+export function serviceSchema({ name, description, url }: ServiceSchemaArgs) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    serviceType: name,
+    description,
+    url,
+    provider: { "@id": `${SITE.url}/#organization` },
+    areaServed: { "@type": "Country", name: "Canada" },
+    category: "Telecommunications real estate lease consulting",
+  }
+}
+
 interface ArticleSchemaArgs {
   title: string
   description: string
@@ -116,10 +194,10 @@ interface ArticleSchemaArgs {
   image?: string
 }
 
-export function articleSchema({ title, description, url, datePublished, image }: ArticleSchemaArgs) {
+export function blogPostingSchema({ title, description, url, datePublished, image }: ArticleSchemaArgs) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "@id": `${url}#article`,
     headline: title,
     description,

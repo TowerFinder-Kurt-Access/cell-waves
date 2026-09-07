@@ -4,7 +4,7 @@ import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
-import { articleSchema, absoluteUrl } from "@/lib/seo"
+import { absoluteUrl, blogPostingSchema } from "@/lib/seo"
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog")
@@ -31,7 +31,7 @@ const date = post.data.pubDate.toLocaleDateString("en-CA", {
   title={`${post.data.title} - CellWaves`}
   description={post.data.description}
   type="article"
-  schema={articleSchema({
+  schema={blogPostingSchema({
     title: post.data.title,
     description: post.data.description,
     url: absoluteUrl(`/blog/${post.id}`),

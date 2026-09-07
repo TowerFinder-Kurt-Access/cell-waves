@@ -3,7 +3,7 @@ import "@/styles/global.css"
 import {
   SITE,
   absoluteUrl,
-  articleSchema,
+  breadcrumbSchema,
   ogImageSchema,
   organizationSchema,
   webPageSchema,
@@ -24,7 +24,7 @@ interface Props {
 
 const {
   title = "Cell Waves Canada - Cell Tower Lease Experts for Landlords",
-  description = "Cell Waves Canada: expert cell tower lease negotiation for Canadian landlords. Maximize your lease renewals and buyouts.",
+  description = SITE.description,
   image = SITE.ogImage,
   type = "website",
   keywords = SITE.keywords.join(", "),
@@ -40,6 +40,7 @@ const allSchema = [
   websiteSchema(),
   ogImageSchema(),
   webPageSchema({ title, description, url: canonical, type }),
+  breadcrumbSchema(Astro.url.pathname, title),
   ...extraSchema,
 ]
 ---
