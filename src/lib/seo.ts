@@ -75,6 +75,11 @@ export function organizationSchema() {
       postalCode: "S7N 2K5",
       addressCountry: "CA",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 52.1454925,
+      longitude: -106.595578,
+    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SITE.phone,
