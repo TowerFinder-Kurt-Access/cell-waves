@@ -62,17 +62,15 @@ export function CookieConsent() {
               <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-semibold text-ink">Your privacy matters</p>
-              <p className="mt-0.5 text-[13px] leading-snug text-muted-foreground">
-                We use privacy-friendly analytics to understand how visitors use our site. No
-                cookies, no cross-site tracking. Decline anytime.
+              <p className="text-[13px] leading-snug text-muted-foreground">
+                We use privacy-friendly analytics. No cookies. Decline anytime.{" "}
+                <a
+                  href="/privacy-policy"
+                  className="font-medium text-brand underline underline-offset-2"
+                >
+                  Privacy policy
+                </a>
               </p>
-              <a
-                href="/privacy-policy"
-                className="mt-1 inline-block text-[13px] font-medium text-brand underline underline-offset-4"
-              >
-                Privacy policy
-              </a>
             </div>
             <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-col sm:gap-2">
               <Button size="sm" variant="outline" onClick={() => decide("declined")}>
