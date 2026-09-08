@@ -2,7 +2,7 @@
 title: "The Blurbs of Wireless Towers – Why Hiring a Cell Tower Lease Consultant is Beneficial for Landowners"
 description: "Leasing land for a cell tower? Learn how hiring a wireless lease consultant helps landowners avoid bad deals, maximize rent, and protect property rights."
 pubDate: 2025-03-06
-heroImage: "https://cell-waves.ca/wp-content/uploads/2025/05/antenna-498438_1280.jpg"
+heroImage: "/images/blog/blog-10.jpg"
 ---
 
 ## **Caught Off Guard by a Cell Tower Lease Offer?**

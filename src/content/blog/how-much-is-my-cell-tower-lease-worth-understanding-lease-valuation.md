@@ -2,7 +2,7 @@
 title: "How Much Is My Cell Tower Lease Worth? Understanding Lease Valuation"
 description: "Curious about the value of your cell tower lease? Learn how lease valuation works, what affects your lease’s worth, and how to avoid being underpaid."
 pubDate: 2024-09-25
-heroImage: "https://cell-waves.ca/wp-content/uploads/2024/09/transmission-system-1090036_1920.jpg"
+heroImage: "/images/blog/blog-3.jpg"
 ---
 
 As a landowner approached by a telecom company to lease space for a cell tower, one of your initial questions is likely: [How much is my cell tower lease worth?](/what-is-my-wireless-lease-worth/) The value of your lease can vary based on several key factors, and understanding these elements is essential for securing a fair and beneficial agreement.
