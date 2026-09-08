@@ -1,5 +1,16 @@
 import type { Localized } from "@/lib/i18n"
 
+import dataEn from "@/i18n/locales/en/data.json"
+import dataFr from "@/i18n/locales/fr/data.json"
+
+// Structured content lives in the JSON locale catalogs (src/i18n/locales).
+function localized<T>(key: "nav" | "footerUsefulLinks" | "footerServices" | "footerAbout" | "servicePages" | "advicePages" | "services" | "reasons" | "steps" | "leaseTopics"): Localized<T> {
+  return {
+    en: (dataEn as Record<string, unknown>)[key] as T,
+    fr: (dataFr as Record<string, unknown>)[key] as T,
+  }
+}
+
 export const PHONE_DISPLAY = "1 -780-230-1364"
 export const PHONE_HREF = "tel:+17802301364"
 export const PHONE_ALT_DISPLAY = "1-587-882-8813"
@@ -15,124 +26,11 @@ export interface NavItem {
   children?: NavItem[]
 }
 
-export const NAV_ITEMS = {
-  en: [
-    { label: "Homepage", href: "/" },
-    {
-      label: "About",
-      href: "/about-us",
-      children: [
-        { label: "About Cell Waves", href: "/about-us" },
-        { label: "Why select us", href: "/why-select-us" },
-        { label: "Testimonials", href: "/testimonials" },
-      ],
-    },
-    {
-      label: "Our Services",
-      href: "/#services",
-      children: [
-        { label: "Cell Tower Lease Agreements", href: "/services/cell-tower-lease-agreements" },
-        { label: "Lease Renewals and Extensions", href: "/services/lease-renewals-and-extensions" },
-        { label: "Negotiating Cell Tower Leases", href: "/services/negotiating-cell-tower-leases" },
-        { label: "Rooftop Leases", href: "/services/rooftop-leases" },
-        { label: "Wireless Lease Buyout Available", href: "/services/wireless-lease-buyout-available" },
-        { label: "Consultant Services Cost", href: "/services/how-much-do-cell-tower-lease-consultant-services-cost" },
-        { label: "Hiring a Cell Tower Lease Consultant", href: "/services/hiring-a-cell-tower-lease-consultant" },
-      ],
-    },
-    {
-      label: "Our Advice",
-      href: "/blog",
-      children: [
-        { label: "Cell Phone Tower Lease Rates", href: "/advice/cell-phone-tower-lease-rates" },
-        { label: "What Is My Wireless Lease Worth?", href: "/advice/what-is-my-wireless-lease-worth" },
-        { label: "Mergers and Technology Risks to Revenue", href: "/advice/mergers-and-technology-risks-to-revenue" },
-        { label: "Market Value Of Your Rent", href: "/advice/market-value-of-your-rent" },
-        { label: "Should I Consent to Upgrade Requests?", href: "/advice/should-i-consent-to-upgrade-requests" },
-        { label: "Tenant Requests to Renew My Lease", href: "/advice/tenant-requests-to-renew-my-lease" },
-        { label: "Cell Tower Attorney", href: "/advice/cell-tower-attorney" },
-      ],
-    },
-    { label: "Blog", href: "/blog" },
-  ],
-  fr: [
-    { label: "Accueil", href: "/" },
-    {
-      label: "À propos",
-      href: "/about-us",
-      children: [
-        { label: "À propos de Cell Waves", href: "/about-us" },
-        { label: "Pourquoi nous choisir", href: "/why-select-us" },
-        { label: "Témoignages", href: "/testimonials" },
-      ],
-    },
-    {
-      label: "Nos services",
-      href: "/#services",
-      children: [
-        { label: "Contrats de bail de tour de téléphonie mobile", href: "/services/cell-tower-lease-agreements" },
-        { label: "Renouvellements et prolongations de bail", href: "/services/lease-renewals-and-extensions" },
-        { label: "Négociation de baux de tours de téléphonie mobile", href: "/services/negotiating-cell-tower-leases" },
-        { label: "Baux sur toiture", href: "/services/rooftop-leases" },
-        { label: "Rachat de bail sans fil disponible", href: "/services/wireless-lease-buyout-available" },
-        { label: "Coût des services d'un consultant", href: "/services/how-much-do-cell-tower-lease-consultant-services-cost" },
-        { label: "Engager un consultant en bail de tour de téléphonie mobile", href: "/services/hiring-a-cell-tower-lease-consultant" },
-      ],
-    },
-    {
-      label: "Nos conseils",
-      href: "/blog",
-      children: [
-        { label: "Taux des baux de tours de téléphonie mobile", href: "/advice/cell-phone-tower-lease-rates" },
-        { label: "Quelle est la valeur de mon bail sans fil ?", href: "/advice/what-is-my-wireless-lease-worth" },
-        { label: "Fusions et risques technologiques pour vos revenus", href: "/advice/mergers-and-technology-risks-to-revenue" },
-        { label: "Valeur marchande de votre loyer", href: "/advice/market-value-of-your-rent" },
-        { label: "Dois-je accepter les demandes de mise à niveau ?", href: "/advice/should-i-consent-to-upgrade-requests" },
-        { label: "Le locataire demande le renouvellement de mon bail", href: "/advice/tenant-requests-to-renew-my-lease" },
-        { label: "Avocat en baux de tours de téléphonie mobile", href: "/advice/cell-tower-attorney" },
-      ],
-    },
-    { label: "Blogue", href: "/blog" },
-  ],
-} satisfies Localized<NavItem[]>
+export const NAV_ITEMS: Localized<NavItem[]> = localized("nav")
 
-export const FOOTER_USEFUL_LINKS = {
-  en: [
-    { label: "About Us", href: "/about-us" },
-    { label: "Testimonials", href: "/testimonials" },
-    { label: "Why Select Us", href: "/why-select-us" },
-    { label: "Our Advice", href: "/blog" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact Us", href: "/#contact" },
-  ],
-  fr: [
-    { label: "À propos", href: "/about-us" },
-    { label: "Témoignages", href: "/testimonials" },
-    { label: "Pourquoi nous choisir", href: "/why-select-us" },
-    { label: "Nos conseils", href: "/blog" },
-    { label: "Blogue", href: "/blog" },
-    { label: "Nous joindre", href: "/#contact" },
-  ],
-} satisfies Localized<NavItem[]>
+export const FOOTER_USEFUL_LINKS: Localized<NavItem[]> = localized("footerUsefulLinks")
 
-export const FOOTER_SERVICES = {
-  en: [
-    { label: "Cell Tower Lease Agreements", href: "/services/cell-tower-lease-agreements" },
-    { label: "Lease Renewals and Extensions", href: "/services/lease-renewals-and-extensions" },
-    { label: "Negotiating Cell Tower Leases", href: "/services/negotiating-cell-tower-leases" },
-    { label: "Rooftop Leases", href: "/services/rooftop-leases" },
-    { label: "Wireless Lease Buyout", href: "/services/wireless-lease-buyout-available" },
-    { label: "Hiring a Lease Consultant", href: "/services/hiring-a-cell-tower-lease-consultant" },
-  ],
-  fr: [
-    { label: "Contrats de bail de tour de téléphonie mobile", href: "/services/cell-tower-lease-agreements" },
-    { label: "Renouvellements et prolongations de bail", href: "/services/lease-renewals-and-extensions" },
-    { label: "Négociation de baux de tours de téléphonie mobile", href: "/services/negotiating-cell-tower-leases" },
-    { label: "Baux sur toiture", href: "/services/rooftop-leases" },
-    { label: "Rachat de bail sans fil", href: "/services/wireless-lease-buyout-available" },
-    { label: "Choisir un consultant en bail", href: "/services/hiring-a-cell-tower-lease-consultant" },
-  ],
-} satisfies Localized<NavItem[]>
+export const FOOTER_SERVICES: Localized<NavItem[]> = localized("footerServices")
 
 export interface ServicePage {
   title: string
@@ -141,192 +39,11 @@ export interface ServicePage {
   keywords?: string[]
 }
 
-export const SERVICE_PAGES = {
-  en: [
-    {
-      title: "Cell Tower Lease Agreements",
-      href: "/services/cell-tower-lease-agreements",
-      description: "Fair, profitable terms for new and existing tower agreements.",
-      keywords: ["cell tower lease agreement", "tower lease contract", "cell site lease terms", "wireless lease agreement"],
-    },
-    {
-      title: "Lease Renewals and Extensions",
-      href: "/services/lease-renewals-and-extensions",
-      description: "Renegotiate expiring leases before the carrier locks terms in.",
-      keywords: ["cell tower lease renewal", "tower lease extension", "lease renegotiation", "carrier lease renewal"],
-    },
-    {
-      title: "Negotiating Cell Tower Leases",
-      href: "/services/negotiating-cell-tower-leases",
-      description: "Landlord-side negotiation against carrier site agents.",
-      keywords: ["cell tower lease negotiation", "negotiate tower lease", "tower lease lawyer alternative", "landlord lease negotiation"],
-    },
-    {
-      title: "Rooftop Leases",
-      href: "/services/rooftop-leases",
-      description: "Rooftop antenna and equipment agreements for building owners.",
-      keywords: ["rooftop cell site lease", "rooftop antenna lease", "roof lease wireless carrier", "commercial rooftop lease"],
-    },
-    {
-      title: "Wireless Lease Buyout Available",
-      href: "/services/wireless-lease-buyout-available",
-      description: "Lump-sum buyout offers that reflect long-term lease value.",
-      keywords: ["cell tower lease buyout", "wireless lease buyout", "tower lease lump sum", "lease buyout offer"],
-    },
-    {
-      title: "How Much do Cell Tower Lease Consultant Services Cost?",
-      href: "/services/how-much-do-cell-tower-lease-consultant-services-cost",
-      description: "How consultant fees work and what to expect.",
-      keywords: ["cell tower consultant fees", "lease consultant cost", "tower lease consulting cost"],
-    },
-    {
-      title: "Hiring a Cell Tower Lease Consultant",
-      href: "/services/hiring-a-cell-tower-lease-consultant",
-      description: "What to look for before you sign with a consultant.",
-      keywords: ["cell tower lease consultant", "tower lease consultant hiring", "wireless lease expert", "tower site consultant"],
-    },
-  ],
-  fr: [
-    {
-      title: "Contrats de bail de tour de téléphonie mobile",
-      href: "/services/cell-tower-lease-agreements",
-      description: "Des conditions justes et rentables pour les ententes concernant les tours nouvelles ou déjà érigées.",
-      keywords: ["contrat de bail tour de téléphonie mobile", "bail de tour cellulaire", "conditions de bail de site cellulaire", "contrat de bail sans fil"],
-    },
-    {
-      title: "Renouvellements et prolongations de bail",
-      href: "/services/lease-renewals-and-extensions",
-      description: "Renegociez les baux qui arrivent à échéance avant que l'opérateur n'impose définitivement ses conditions.",
-      keywords: ["renouvellement de bail de tour de téléphonie mobile", "prolongation de bail de tour", "renégociation de bail", "renouvellement de bail opérateur sans fil"],
-    },
-    {
-      title: "Négociation de baux de tours de téléphonie mobile",
-      href: "/services/negotiating-cell-tower-leases",
-      description: "Négociation du côté des propriétaires face aux agents d'emplacement des opérateurs.",
-      keywords: ["négociation de bail de tour cellulaire", "négocier un bail de tour", "remplacer un avocat en bail de tour", "négociation de bail pour propriétaire"],
-    },
-    {
-      title: "Baux sur toiture",
-      href: "/services/rooftop-leases",
-      description: "Ententes relatives aux antennes et à l'équipement en toiture pour les propriétaires d'immeubles.",
-      keywords: ["bail de site cellulaire en toiture", "bail d'antenne sur toiture", "location de toiture pour opérateur sans fil", "bail de toiture commerciale"],
-    },
-    {
-      title: "Rachat de bail sans fil disponible",
-      href: "/services/wireless-lease-buyout-available",
-      description: "Des offres de rachat moyennant une somme forfaitaire qui reflètent la valeur à long terme de votre bail.",
-      keywords: ["rachat de bail de tour cellulaire", "rachat de bail sans fil", "somme forfaitaire pour bail de tour", "offre de rachat de bail"],
-    },
-    {
-      title: "Combien coûtent les services d'un consultant en bail de tour de téléphonie mobile ?",
-      href: "/services/how-much-do-cell-tower-lease-consultant-services-cost",
-      description: "Le fonctionnement des frais de consultation et ce à quoi vous attendre.",
-      keywords: ["frais de consultant en tour de téléphonie mobile", "coût d'un consultant en bail", "prix d'une consultation pour bail de tour"],
-    },
-    {
-      title: "Engager un consultant en bail de tour de téléphonie mobile",
-      href: "/services/hiring-a-cell-tower-lease-consultant",
-      description: "Les critères à vérifier avant de vous engager avec un consultant.",
-      keywords: ["consultant en bail de tour de téléphonie mobile", "engager un consultant en bail de tour", "expert en bail sans fil", "consultant en site de tour cellulaire"],
-    },
-  ],
-} satisfies Localized<ServicePage[]>
+export const SERVICE_PAGES: Localized<ServicePage[]> = localized("servicePages")
 
-export const ADVICE_PAGES = {
-  en: [
-    {
-      title: "Cell Phone Tower Lease Rates",
-      href: "/advice/cell-phone-tower-lease-rates",
-      description: "How wireless lease rates are set and what yours should pay.",
-      keywords: ["cell tower lease rates", "tower lease rental rates", "cell site rent", "tower rent per month"],
-    },
-    {
-      title: "What Is My Wireless Lease Worth?",
-      href: "/advice/what-is-my-wireless-lease-worth",
-      description: "The factors that drive the real value of your lease.",
-      keywords: ["wireless lease value", "cell tower lease worth", "tower lease valuation", "cell site value"],
-    },
-    {
-      title: "Mergers and Technology Risks to Revenue",
-      href: "/advice/mergers-and-technology-risks-to-revenue",
-      description: "Carrier mergers and network changes that threaten rent.",
-      keywords: ["tower lease merger risk", "5G lease impact", "wireless revenue risk", "telecom consolidation"],
-    },
-    {
-      title: "Market Value Of Your Rent",
-      href: "/advice/market-value-of-your-rent",
-      description: "Benchmarking your rent against true market comparables.",
-      keywords: ["cell tower market rent", "lease rent market value", "tower rent comparison"],
-    },
-    {
-      title: "Should I Consent to Upgrade Requests?",
-      href: "/advice/should-i-consent-to-upgrade-requests",
-      description: "What carrier upgrade requests mean for your leverage.",
-      keywords: ["cell tower upgrade consent", "5G upgrade lease", "tower upgrade agreement", "antenna upgrade consent"],
-    },
-    {
-      title: "Tenant Requests to Renew My Lease",
-      href: "/advice/tenant-requests-to-renew-my-lease",
-      description: "How to respond when the tenant moves to renew first.",
-      keywords: ["lease renewal request", "carrier lease renewal rights", "tower lease renewal response"],
-    },
-    {
-      title: "Cell Tower Attorney",
-      href: "/advice/cell-tower-attorney",
-      description: "Where a lease attorney helps, and where we do more.",
-      keywords: ["cell tower attorney", "tower lease lawyer", "wireless lease attorney", "telecom attorney"],
-    },
-  ],
-  fr: [
-    {
-      title: "Taux des baux de tours de téléphonie mobile",
-      href: "/advice/cell-phone-tower-lease-rates",
-      description: "Comment sont fixés les taux des baux sans fil et ce que le vôtre devrait vous rapporter.",
-      keywords: ["taux de bail de tour cellulaire", "tarif de loyer pour tour de téléphonie mobile", "loyer de site cellulaire", "loyer mensuel d'une tour cellulaire"],
-    },
-    {
-      title: "Quelle est la valeur de mon bail sans fil ?",
-      href: "/advice/what-is-my-wireless-lease-worth",
-      description: "Les facteurs qui déterminent la véritable valeur de votre bail.",
-      keywords: ["valeur d'un bail sans fil", "valeur d'un bail de tour cellulaire", "évaluation de bail de tour", "valeur d'un site cellulaire"],
-    },
-    {
-      title: "Fusions et risques technologiques pour vos revenus",
-      href: "/advice/mergers-and-technology-risks-to-revenue",
-      description: "Les fusions d'opérateurs et les transformations du réseau qui menacent votre loyer.",
-      keywords: ["risque de fusion pour un bail de tour", "impact de la 5G sur un bail de tour", "risque pour les revenus sans fil", "consolidation dans les télécommunications"],
-    },
-    {
-      title: "Valeur marchande de votre loyer",
-      href: "/advice/market-value-of-your-rent",
-      description: "Comparez votre loyer aux véritables données comparables du marché.",
-      keywords: ["loyer du marché pour tour de téléphonie mobile", "valeur marchande du loyer d'un bail", "comparaison de loyers de tours"],
-    },
-    {
-      title: "Dois-je accepter les demandes de mise à niveau ?",
-      href: "/advice/should-i-consent-to-upgrade-requests",
-      description: "Ce que les demandes de mise à niveau des opérateurs signifient pour votre levier de négociation.",
-      keywords: ["consentement à une mise à niveau de tour cellulaire", "bail et mise à niveau 5G", "entente de mise à niveau d'une tour", "consentement à une mise à niveau d'antenne"],
-    },
-    {
-      title: "Le locataire demande le renouvellement de mon bail",
-      href: "/advice/tenant-requests-to-renew-my-lease",
-      description: "Comment réagir lorsque le locataire prend l'initiative du renouvellement.",
-      keywords: ["demande de renouvellement de bail", "droits de renouvellement d'un opérateur sans fil", "réponse à une demande de renouvellement de bail de tour"],
-    },
-    {
-      title: "Avocat en baux de tours de téléphonie mobile",
-      href: "/advice/cell-tower-attorney",
-      description: "Ce qu'un avocat spécialisé peut faire pour vous, et ce que nous faisons de plus.",
-      keywords: ["avocat en tour de téléphonie mobile", "avocat en bail de tour cellulaire", "avocat en bail sans fil", "avocat en télécommunications"],
-    },
-  ],
-} satisfies Localized<ServicePage[]>
+export const ADVICE_PAGES: Localized<ServicePage[]> = localized("advicePages")
 
-export const FOOTER_ABOUT = {
-  en: "The CellWaves' leadership group brings more than 35 combined years of expertise in all facets of Cell Tower site leasing, development, wireless engineering, lump-sum lease buyouts, and cell tower construction.",
-  fr: "L'équipe de direction de CellWaves cumule plus de 35 années d'expérience dans tous les volets de l'industrie : location de sites de tours de téléphonie mobile, développement, génie sans fil, rachat de baux moyennant une somme forfaitaire et construction de tours de téléphonie mobile.",
-} satisfies Localized<string>
+export const FOOTER_ABOUT: Localized<string> = localized("footerAbout")
 
 export interface Service {
   title: string
@@ -337,148 +54,21 @@ export interface Service {
   large?: boolean
 }
 
-export const SERVICES = {
-  en: [
-    {
-      title: "New cell tower leases",
-      description:
-        "We help property owners secure better deals for existing towers on their land. While we don't broker new deals with new clients, our expertise ensures you receive maximum value for lease renewals on existing towers.",
-      image:
-        "https://images.unsplash.com/photo-1602823284936-463177448097?q=80&w=1600&auto=format&fit=crop",
-      alt: "Metal cell tower under a blue sky",
-      href: "/#services",
-      large: true,
-    },
-    {
-      title: "Existing cell tower leases",
-      description:
-        "Many telecom companies place antennas on rooftops under agreements lasting decades. As these 30-year leases near expiration, we renegotiate for higher payouts for the continued use of your space.",
-      image:
-        "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop",
-      alt: "Red and grey rooftop cell site",
-      href: "/#services",
-    },
-    {
-      title: "Cell tower lease buyouts",
-      description:
-        "Considering selling your lease income stream? We negotiate buyout agreements so you receive a lump sum that reflects the true long-term leasing value of your property.",
-      image:
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
-      alt: "Pen signing a financial document beside a calculator",
-      href: "/#services",
-    },
-  ],
-  fr: [
-    {
-      title: "Nouveaux baux de tours de téléphonie mobile",
-      description:
-        "Nous aidons les propriétaires à obtenir de meilleures ententes pour les tours déjà présentes sur leur terrain. Nous ne négocions pas de nouvelles ententes avec de nouveaux clients, mais notre expertise vous garantit de retirer la pleine valeur des renouvellements de bail des tours existantes.",
-      image:
-        "https://images.unsplash.com/photo-1602823284936-463177448097?q=80&w=1600&auto=format&fit=crop",
-      alt: "Tour de téléphonie mobile en métal sous un ciel bleu",
-      href: "/#services",
-      large: true,
-    },
-    {
-      title: "Baux de tours de téléphonie mobile existants",
-      description:
-        "De nombreuses sociétés de télécommunications installent des antennes sur des toitures dans le cadre d'ententes qui durent des décennies. À l'approche de l'échéance de ces baux de 30 ans, nous renegocions des versements plus élevés pour la poursuite de l'utilisation de votre espace.",
-      image:
-        "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop",
-      alt: "Site cellulaire rouge et gris installé sur une toiture",
-      href: "/#services",
-    },
-    {
-      title: "Rachats de baux de tours de téléphonie mobile",
-      description:
-        "Vous envisagez de vendre le flux de revenus généré par votre bail ? Nous négocions des ententes de rachat afin que vous receviez une somme forfaitaire qui reflète la véritable valeur locative à long terme de votre propriété.",
-      image:
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
-      alt: "Stylo signant un document financier à côté d'une calculatrice",
-      href: "/#services",
-    },
-  ],
-} satisfies Localized<Service[]>
+export const SERVICES: Localized<Service[]> = localized("services")
 
 export interface Reason {
   title: string
   body: string
 }
 
-export const REASONS = {
-  en: [
-    {
-      title: "Proven Success",
-      body: "With a deep understanding of the telecom industry and market rates, we've helped property owners achieve significant income increases. We know how to navigate the industry's complexities and advocate for your best interests.",
-    },
-    {
-      title: "Tailored Negotiation Strategies",
-      body: "Every property is unique, and so is every lease. We assess your situation, evaluate your property's market value, and craft a personalized strategy to secure the best possible deal.",
-    },
-    {
-      title: "No New Deals, Only Renewals",
-      body: "Unlike brokers chasing new clients, our niche expertise is dedicated exclusively to lease renewals. This specialized focus gives you an edge in negotiations.",
-    },
-    {
-      title: "Hassle-Free Process",
-      body: "We handle the complex negotiations, industry jargon, and paperwork, so you don't have to. From start to finish, we're by your side.",
-    },
-  ],
-  fr: [
-    {
-      title: "Un succès éprouvé",
-      body: "Fort d'une solide compréhension de l'industrie des télécommunications et des taux du marché, nous avons aidé des propriétaires à obtenir des hausses de revenus importantes. Nous savons évoluer dans la complexité de l'industrie et défendre vos meilleurs intérêts.",
-    },
-    {
-      title: "Des stratégies de négociation sur mesure",
-      body: "Chaque propriété est unique, et chaque bail aussi. Nous évaluons votre situation, estimons la valeur marchande de votre propriété et concevons une stratégie personnalisée pour obtenir la meilleure entente possible.",
-    },
-    {
-      title: "Aucune nouvelle entente, seulement des renouvellements",
-      body: "Contrairement aux courtiers à la recherche de nouveaux clients, notre expertise de niche est consacrée exclusivement aux renouvellements de baux. Cette spécialisation vous donne un avantage dans les négociations.",
-    },
-    {
-      title: "Un processus sans tracas",
-      body: "Nous prenons en charge les négociations complexes, le jargon du métier et la paperasse, afin que vous n'ayez pas à le faire. Du début à la fin, nous sommes à vos côtés.",
-    },
-  ],
-} satisfies Localized<Reason[]>
+export const REASONS: Localized<Reason[]> = localized("reasons")
 
 export interface Step {
   title: string
   body: string
 }
 
-export const STEPS = {
-  en: [
-    {
-      title: "Initial Assessment",
-      body: "We evaluate your property's market potential when you share your lease details. This step is simple and obligation-free, and identifies opportunities to increase the value of your lease.",
-    },
-    {
-      title: "Negotiation",
-      body: "Our team engages with the telecom company on your behalf, leveraging our expertise to secure a better deal. We handle the heavy lifting so your lease reflects your property's true value.",
-    },
-    {
-      title: "Maximized Earnings",
-      body: "Once negotiations are complete, you enjoy the benefits of a significantly improved lease agreement or buyout. More income, greater security, and a long-term advantage.",
-    },
-  ],
-  fr: [
-    {
-      title: "Évaluation initiale",
-      body: "Nous évaluons le potentiel marché de votre propriété dès que vous nous transmettez les détails de votre bail. Cette étape est simple et sans engagement, et permet de cerner les occasions d'accroître la valeur de votre bail.",
-    },
-    {
-      title: "Négociation",
-      body: "Notre équipe communique avec la société de télécommunications en votre nom et met son expertise à profit pour obtenir une meilleure entente. Nous faisons le travail lourd afin que votre bail reflète la véritable valeur de votre propriété.",
-    },
-    {
-      title: "Des revenus maximisés",
-      body: "Une fois les négociations terminées, vous profitez des avantages d'une entente de bail ou d'un rachat nettement améliorée. Plus de revenus, une meilleure sécurité et un avantage à long terme.",
-    },
-  ],
-} satisfies Localized<Step[]>
+export const STEPS: Localized<Step[]> = localized("steps")
 
 export interface Testimonial {
   title: string
@@ -685,54 +275,7 @@ export const POSTS: Post[] = [
   },
 ]
 
-const LEASE_TOPICS_EN = [
-  {
-    title: "Are you getting fair market rent?",
-    body: "Fair market value of your cell property can only be determined once you understand the value it delivers to the network.",
-    href: "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
-  },
-  {
-    title: "Terminated leases. Can this happen to you?",
-    body: "With rare exceptions, all wireless leases have early termination clauses that let the carrier walk away. Know your exposure.",
-    href: "/blog",
-  },
-  {
-    title: "You've been contacted. New tower on your land.",
-    body: "Rent matters, but the 30-year contract is 22 pages long. What are you missing in the other two dozen terms?",
-    href: "/blog/how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide",
-  },
-  {
-    title: "Why is your lease valuable?",
-    body: "What your lease is worth and what you are paid are often not in alignment. Here's why the gap exists.",
-    href: "/blog",
-  },
-]
-
-export const LEASE_TOPICS = {
-  en: LEASE_TOPICS_EN,
-  fr: [
-    {
-      title: "Recevez-vous un loyer équivalent à la valeur du marché ?",
-      body: "La juste valeur marchande de votre site cellulaire ne peut être établie qu'en fonction de la valeur qu'il apporte au réseau.",
-      href: "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
-    },
-    {
-      title: "Des baux résiliés. Cela peut-il vous arriver ?",
-      body: "À de rares exceptions près, tous les baux sans fil renferment des clauses de résiliation anticipée qui permettent à l'opérateur de passer son chemin. Mesurez votre niveau d'exposition.",
-      href: "/blog",
-    },
-    {
-      title: "On vous a contacté. Une nouvelle tour sur votre terrain.",
-      body: "Le loyer compte, mais le contrat de 30 ans en compte 22 pages. Qu'est-ce qui vous échappe dans les deux douzaines d'autres clauses ?",
-      href: "/blog/how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide",
-    },
-    {
-      title: "Pourquoi votre bail a-t-il de la valeur ?",
-      body: "Ce que vaut votre bail et ce qu'on vous verse ne correspondent souvent pas. Voici pourquoi cet écart existe.",
-      href: "/blog",
-    },
-  ],
-} satisfies Localized<typeof LEASE_TOPICS_EN>
+export const LEASE_TOPICS: Localized<{ title: string; body: string; href: string }[]> = localized("leaseTopics")
 
 export const HERO_IMAGE =
   "https://images.unsplash.com/photo-1602823284936-463177448097?q=80&w=1920&auto=format&fit=crop"

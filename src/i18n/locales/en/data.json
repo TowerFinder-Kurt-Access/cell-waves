@@ -1,0 +1,384 @@
+{
+  "nav": [
+    {
+      "label": "Homepage",
+      "href": "/"
+    },
+    {
+      "label": "About",
+      "href": "/about-us",
+      "children": [
+        {
+          "label": "About Cell Waves",
+          "href": "/about-us"
+        },
+        {
+          "label": "Why select us",
+          "href": "/why-select-us"
+        },
+        {
+          "label": "Testimonials",
+          "href": "/testimonials"
+        }
+      ]
+    },
+    {
+      "label": "Our Services",
+      "href": "/#services",
+      "children": [
+        {
+          "label": "Cell Tower Lease Agreements",
+          "href": "/services/cell-tower-lease-agreements"
+        },
+        {
+          "label": "Lease Renewals and Extensions",
+          "href": "/services/lease-renewals-and-extensions"
+        },
+        {
+          "label": "Negotiating Cell Tower Leases",
+          "href": "/services/negotiating-cell-tower-leases"
+        },
+        {
+          "label": "Rooftop Leases",
+          "href": "/services/rooftop-leases"
+        },
+        {
+          "label": "Wireless Lease Buyout Available",
+          "href": "/services/wireless-lease-buyout-available"
+        },
+        {
+          "label": "Consultant Services Cost",
+          "href": "/services/how-much-do-cell-tower-lease-consultant-services-cost"
+        },
+        {
+          "label": "Hiring a Cell Tower Lease Consultant",
+          "href": "/services/hiring-a-cell-tower-lease-consultant"
+        }
+      ]
+    },
+    {
+      "label": "Our Advice",
+      "href": "/blog",
+      "children": [
+        {
+          "label": "Cell Phone Tower Lease Rates",
+          "href": "/advice/cell-phone-tower-lease-rates"
+        },
+        {
+          "label": "What Is My Wireless Lease Worth?",
+          "href": "/advice/what-is-my-wireless-lease-worth"
+        },
+        {
+          "label": "Mergers and Technology Risks to Revenue",
+          "href": "/advice/mergers-and-technology-risks-to-revenue"
+        },
+        {
+          "label": "Market Value Of Your Rent",
+          "href": "/advice/market-value-of-your-rent"
+        },
+        {
+          "label": "Should I Consent to Upgrade Requests?",
+          "href": "/advice/should-i-consent-to-upgrade-requests"
+        },
+        {
+          "label": "Tenant Requests to Renew My Lease",
+          "href": "/advice/tenant-requests-to-renew-my-lease"
+        },
+        {
+          "label": "Cell Tower Attorney",
+          "href": "/advice/cell-tower-attorney"
+        }
+      ]
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    }
+  ],
+  "footerUsefulLinks": [
+    {
+      "label": "About Us",
+      "href": "/about-us"
+    },
+    {
+      "label": "Testimonials",
+      "href": "/testimonials"
+    },
+    {
+      "label": "Why Select Us",
+      "href": "/why-select-us"
+    },
+    {
+      "label": "Our Advice",
+      "href": "/blog"
+    },
+    {
+      "label": "Blog",
+      "href": "/blog"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/#contact"
+    }
+  ],
+  "footerServices": [
+    {
+      "label": "Cell Tower Lease Agreements",
+      "href": "/services/cell-tower-lease-agreements"
+    },
+    {
+      "label": "Lease Renewals and Extensions",
+      "href": "/services/lease-renewals-and-extensions"
+    },
+    {
+      "label": "Negotiating Cell Tower Leases",
+      "href": "/services/negotiating-cell-tower-leases"
+    },
+    {
+      "label": "Rooftop Leases",
+      "href": "/services/rooftop-leases"
+    },
+    {
+      "label": "Wireless Lease Buyout",
+      "href": "/services/wireless-lease-buyout-available"
+    },
+    {
+      "label": "Hiring a Lease Consultant",
+      "href": "/services/hiring-a-cell-tower-lease-consultant"
+    }
+  ],
+  "footerAbout": "The CellWaves' leadership group brings more than 35 combined years of expertise in all facets of Cell Tower site leasing, development, wireless engineering, lump-sum lease buyouts, and cell tower construction.",
+  "servicePages": [
+    {
+      "title": "Cell Tower Lease Agreements",
+      "href": "/services/cell-tower-lease-agreements",
+      "description": "Fair, profitable terms for new and existing tower agreements.",
+      "keywords": [
+        "cell tower lease agreement",
+        "tower lease contract",
+        "cell site lease terms",
+        "wireless lease agreement"
+      ]
+    },
+    {
+      "title": "Lease Renewals and Extensions",
+      "href": "/services/lease-renewals-and-extensions",
+      "description": "Renegotiate expiring leases before the carrier locks terms in.",
+      "keywords": [
+        "cell tower lease renewal",
+        "tower lease extension",
+        "lease renegotiation",
+        "carrier lease renewal"
+      ]
+    },
+    {
+      "title": "Negotiating Cell Tower Leases",
+      "href": "/services/negotiating-cell-tower-leases",
+      "description": "Landlord-side negotiation against carrier site agents.",
+      "keywords": [
+        "cell tower lease negotiation",
+        "negotiate tower lease",
+        "tower lease lawyer alternative",
+        "landlord lease negotiation"
+      ]
+    },
+    {
+      "title": "Rooftop Leases",
+      "href": "/services/rooftop-leases",
+      "description": "Rooftop antenna and equipment agreements for building owners.",
+      "keywords": [
+        "rooftop cell site lease",
+        "rooftop antenna lease",
+        "roof lease wireless carrier",
+        "commercial rooftop lease"
+      ]
+    },
+    {
+      "title": "Wireless Lease Buyout Available",
+      "href": "/services/wireless-lease-buyout-available",
+      "description": "Lump-sum buyout offers that reflect long-term lease value.",
+      "keywords": [
+        "cell tower lease buyout",
+        "wireless lease buyout",
+        "tower lease lump sum",
+        "lease buyout offer"
+      ]
+    },
+    {
+      "title": "How Much do Cell Tower Lease Consultant Services Cost?",
+      "href": "/services/how-much-do-cell-tower-lease-consultant-services-cost",
+      "description": "How consultant fees work and what to expect.",
+      "keywords": [
+        "cell tower consultant fees",
+        "lease consultant cost",
+        "tower lease consulting cost"
+      ]
+    },
+    {
+      "title": "Hiring a Cell Tower Lease Consultant",
+      "href": "/services/hiring-a-cell-tower-lease-consultant",
+      "description": "What to look for before you sign with a consultant.",
+      "keywords": [
+        "cell tower lease consultant",
+        "tower lease consultant hiring",
+        "wireless lease expert",
+        "tower site consultant"
+      ]
+    }
+  ],
+  "advicePages": [
+    {
+      "title": "Cell Phone Tower Lease Rates",
+      "href": "/advice/cell-phone-tower-lease-rates",
+      "description": "How wireless lease rates are set and what yours should pay.",
+      "keywords": [
+        "cell tower lease rates",
+        "tower lease rental rates",
+        "cell site rent",
+        "tower rent per month"
+      ]
+    },
+    {
+      "title": "What Is My Wireless Lease Worth?",
+      "href": "/advice/what-is-my-wireless-lease-worth",
+      "description": "The factors that drive the real value of your lease.",
+      "keywords": [
+        "wireless lease value",
+        "cell tower lease worth",
+        "tower lease valuation",
+        "cell site value"
+      ]
+    },
+    {
+      "title": "Mergers and Technology Risks to Revenue",
+      "href": "/advice/mergers-and-technology-risks-to-revenue",
+      "description": "Carrier mergers and network changes that threaten rent.",
+      "keywords": [
+        "tower lease merger risk",
+        "5G lease impact",
+        "wireless revenue risk",
+        "telecom consolidation"
+      ]
+    },
+    {
+      "title": "Market Value Of Your Rent",
+      "href": "/advice/market-value-of-your-rent",
+      "description": "Benchmarking your rent against true market comparables.",
+      "keywords": [
+        "cell tower market rent",
+        "lease rent market value",
+        "tower rent comparison"
+      ]
+    },
+    {
+      "title": "Should I Consent to Upgrade Requests?",
+      "href": "/advice/should-i-consent-to-upgrade-requests",
+      "description": "What carrier upgrade requests mean for your leverage.",
+      "keywords": [
+        "cell tower upgrade consent",
+        "5G upgrade lease",
+        "tower upgrade agreement",
+        "antenna upgrade consent"
+      ]
+    },
+    {
+      "title": "Tenant Requests to Renew My Lease",
+      "href": "/advice/tenant-requests-to-renew-my-lease",
+      "description": "How to respond when the tenant moves to renew first.",
+      "keywords": [
+        "lease renewal request",
+        "carrier lease renewal rights",
+        "tower lease renewal response"
+      ]
+    },
+    {
+      "title": "Cell Tower Attorney",
+      "href": "/advice/cell-tower-attorney",
+      "description": "Where a lease attorney helps, and where we do more.",
+      "keywords": [
+        "cell tower attorney",
+        "tower lease lawyer",
+        "wireless lease attorney",
+        "telecom attorney"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "New cell tower leases",
+      "description": "We help property owners secure better deals for existing towers on their land. While we don't broker new deals with new clients, our expertise ensures you receive maximum value for lease renewals on existing towers.",
+      "image": "https://images.unsplash.com/photo-1602823284936-463177448097?q=80&w=1600&auto=format&fit=crop",
+      "alt": "Metal cell tower under a blue sky",
+      "href": "/#services",
+      "large": true
+    },
+    {
+      "title": "Existing cell tower leases",
+      "description": "Many telecom companies place antennas on rooftops under agreements lasting decades. As these 30-year leases near expiration, we renegotiate for higher payouts for the continued use of your space.",
+      "image": "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop",
+      "alt": "Red and grey rooftop cell site",
+      "href": "/#services"
+    },
+    {
+      "title": "Cell tower lease buyouts",
+      "description": "Considering selling your lease income stream? We negotiate buyout agreements so you receive a lump sum that reflects the true long-term leasing value of your property.",
+      "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
+      "alt": "Pen signing a financial document beside a calculator",
+      "href": "/#services"
+    }
+  ],
+  "reasons": [
+    {
+      "title": "Proven Success",
+      "body": "With a deep understanding of the telecom industry and market rates, we've helped property owners achieve significant income increases. We know how to navigate the industry's complexities and advocate for your best interests."
+    },
+    {
+      "title": "Tailored Negotiation Strategies",
+      "body": "Every property is unique, and so is every lease. We assess your situation, evaluate your property's market value, and craft a personalized strategy to secure the best possible deal."
+    },
+    {
+      "title": "No New Deals, Only Renewals",
+      "body": "Unlike brokers chasing new clients, our niche expertise is dedicated exclusively to lease renewals. This specialized focus gives you an edge in negotiations."
+    },
+    {
+      "title": "Hassle-Free Process",
+      "body": "We handle the complex negotiations, industry jargon, and paperwork, so you don't have to. From start to finish, we're by your side."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Initial Assessment",
+      "body": "We evaluate your property's market potential when you share your lease details. This step is simple and obligation-free, and identifies opportunities to increase the value of your lease."
+    },
+    {
+      "title": "Negotiation",
+      "body": "Our team engages with the telecom company on your behalf, leveraging our expertise to secure a better deal. We handle the heavy lifting so your lease reflects your property's true value."
+    },
+    {
+      "title": "Maximized Earnings",
+      "body": "Once negotiations are complete, you enjoy the benefits of a significantly improved lease agreement or buyout. More income, greater security, and a long-term advantage."
+    }
+  ],
+  "leaseTopics": [
+    {
+      "title": "Are you getting fair market rent?",
+      "body": "Fair market value of your cell property can only be determined once you understand the value it delivers to the network.",
+      "href": "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation"
+    },
+    {
+      "title": "Terminated leases. Can this happen to you?",
+      "body": "With rare exceptions, all wireless leases have early termination clauses that let the carrier walk away. Know your exposure.",
+      "href": "/blog"
+    },
+    {
+      "title": "You've been contacted. New tower on your land.",
+      "body": "Rent matters, but the 30-year contract is 22 pages long. What are you missing in the other two dozen terms?",
+      "href": "/blog/how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide"
+    },
+    {
+      "title": "Why is your lease valuable?",
+      "body": "What your lease is worth and what you are paid are often not in alignment. Here's why the gap exists.",
+      "href": "/blog"
+    }
+  ]
+}
