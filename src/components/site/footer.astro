@@ -11,31 +11,12 @@ import {
   PHONE_HREF,
   SITE_NAME,
 } from "@/lib/content"
+import { getBundle } from "@/i18n"
 import { localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 const neutral = stripLocale(Astro.url.pathname)
-const en = {
-  useful: "Useful links",
-  services: "Our Services",
-  contact: "Contact Us",
-  cta: "Free consultation",
-  rights: "All rights reserved.",
-  privacy: "Privacy Policy",
-  terms: "Terms and Conditions",
-  language: "Language",
-}
-const fr: typeof en = {
-  useful: "Liens utiles",
-  services: "Nos services",
-  contact: "Nous joindre",
-  cta: "Consultation gratuite",
-  rights: "Tous droits réservés.",
-  privacy: "Politique de confidentialité",
-  terms: "Conditions générales",
-  language: "Langue",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "footer")
 const year = new Date().getFullYear()
 ---
 
@@ -53,7 +34,7 @@ const year = new Date().getFullYear()
       <!-- Brand - editorial, airy -->
       <div class="lg:pr-8">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
-          <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={locale === "fr" ? "CellWaves accueil" : "CellWaves home"}>
+          <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={t.homeAria}>
             <img
               src="/cellwaves-logo.webp"
               alt=""

@@ -1,48 +1,9 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react"
 import { useState } from "react"
+import { getBundle } from "@/i18n"
 import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { type Locale } from "@/lib/i18n"
 
-const en = {
-  fullName: "Full name",
-  namePlaceholder: "Jane Tremblay",
-  email: "Email",
-  emailPlaceholder: "jane@example.ca",
-  phone: "Phone",
-  phonePlaceholder: "(780) 555-0123",
-  address: "Cell site address",
-  addressPlaceholder: "123 Range Rd, Alberta",
-  message: "How can we help?",
-  messagePlaceholder: "Tell us about your lease or the carrier's offer.",
-  sending: "Sending...",
-  submit: "Request free consultation",
-  footnote: "No obligation. Your details stay confidential.",
-  successTitle: "Request received",
-  successBody:
-    "Thanks for reaching out. We will review your details and reply within one business day.",
-  networkError: "Network error. Please check your connection and try again.",
-  fallbackError: "Something went wrong. Please try again.",
-}
-const fr: typeof en = {
-  fullName: "Nom complet",
-  namePlaceholder: "Marie Tremblay",
-  email: "Courriel",
-  emailPlaceholder: "marie@example.ca",
-  phone: "Téléphone",
-  phonePlaceholder: "(780) 555-0123",
-  address: "Adresse du site de la tour",
-  addressPlaceholder: "123 Range Rd, Alberta",
-  message: "Comment pouvons-nous vous aider?",
-  messagePlaceholder: "Parlez-nous de votre bail ou de l’offre de l’opérateur.",
-  sending: "Envoi en cours...",
-  submit: "Demander une consultation gratuite",
-  footnote: "Sans obligation. Vos coordonnées restent confidentielles.",
-  successTitle: "Demande reçue",
-  successBody:
-    "Merci de nous avoir contactés. Nous examinerons vos informations et vous répondrons dans un délai d’un jour ouvrable.",
-  networkError: "Erreur réseau. Vérifiez votre connexion et réessayez.",
-  fallbackError: "Un problème est survenu. Veuillez réessayer.",
-}
 
 const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -50,7 +11,7 @@ const inputClass =
 type SubmitStatus = "idle" | "sending" | "sent" | "error"
 
 export function ContactForm({ locale }: { locale: Locale }) {
-  const t = locale === "fr" ? fr : en
+  const t = getBundle<Record<string, string>>(locale, "ui", "contactForm")
   const [status, setStatus] = useState<SubmitStatus>("idle")
   const [errorMessage, setErrorMessage] = useState("")
   const [startedAt] = useState(() => Date.now())

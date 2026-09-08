@@ -1,26 +1,11 @@
 ---
 import { ArrowRight, CheckCircle2 } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { HERO_IMAGE } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  towerAlt: "Cell tower against bright sky",
-  eyebrow: "Cell tower lease with wireless landlords",
-  headline: "CELL TOWER LEASE",
-  subhead: "Professionals on your side.",
-  body: "Fair market value starts with knowing what your site delivers. We negotiate renewals, extensions, and buyouts for Canadian property owners.",
-  cta: "Let's Get Started",
-}
-const fr: typeof en = {
-  towerAlt: "Tour de téléphonie mobile dans un ciel lumineux",
-  eyebrow: "Baux de tours de téléphonie mobile avec des propriétaires",
-  headline: "BAIL DE TOUR CELLULAIRE",
-  subhead: "Des professionnels à vos côtés.",
-  body: "La juste valeur marchande commence par connaître ce que votre site apporte au réseau. Nous négocions les renouvellements, les prolongations et les rachats de bail pour les propriétaires canadiens.",
-  cta: "Commencer",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "hero")
 ---
 
 <section id="top" class="relative -mt-6 flex min-h-[75dvh] flex-col overflow-hidden bg-background sm:-mt-8">

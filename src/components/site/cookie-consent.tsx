@@ -1,6 +1,7 @@
 import { ShieldCheck } from "lucide-react"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { getBundle } from "@/i18n"
 import { Button } from "@/components/ui/button"
 import { localizePath, type Locale } from "@/lib/i18n"
 
@@ -18,23 +19,9 @@ function loadCloudflareBeacon() {
   document.head.appendChild(script)
 }
 
-const en = {
-  label: "Cookie consent",
-  body: "We use privacy-friendly analytics. No cookies. Decline anytime.",
-  privacy: "Privacy policy",
-  decline: "Decline",
-  accept: "Accept",
-}
-const fr: typeof en = {
-  label: "Gestion des témoins",
-  body: "Nous utilisons des outils d’analyse respectueux de la vie privée. Aucun témoin. Vous pouvez refuser à tout moment.",
-  privacy: "Politique de confidentialité",
-  decline: "Refuser",
-  accept: "Accepter",
-}
 
 export function CookieConsent({ locale }: { locale: Locale }) {
-  const t = locale === "fr" ? fr : en
+  const t = getBundle<Record<string, string>>(locale, "ui", "cookieConsent")
   const [visible, setVisible] = useState(false)
   const reduceMotion = useReducedMotion()
 

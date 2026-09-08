@@ -1,20 +1,11 @@
 ---
 import { ArrowRight, Handshake, Radar, TrendingUp } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { STEPS } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  heading: "How it works",
-  sub: "Three steps, no upfront fees, and you keep control of every decision.",
-  cta: "Start your free review",
-}
-const fr: typeof en = {
-  heading: "Comment ça fonctionne",
-  sub: "Trois étapes, aucun frais initial, et vous gardez le contrôle de chaque décision.",
-  cta: "Lancez votre analyse gratuite",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "process")
 const icons = [Radar, Handshake, TrendingUp]
 ---
 

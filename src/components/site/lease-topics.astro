@@ -1,16 +1,11 @@
 ---
 import { ArrowRight, BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { LEASE_TOPICS } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  learnMore: "Learn more",
-}
-const fr: typeof en = {
-  learnMore: "En savoir plus",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "leaseTopics")
 const icons = [BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp]
 ---
 

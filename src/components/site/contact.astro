@@ -1,34 +1,12 @@
 ---
+import { getBundle } from "@/i18n"
 import { ContactForm } from "@/components/site/contact-form"
 import { EMAIL, LOCATION, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 import { Mail, MapPin, Phone } from "lucide-react"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  title: "Talk to a landlord side specialist",
-  intro:
-    "Free review. No obligation. Tell us about your lease and we respond within one business day.",
-  privacy: "Your details stay private. We never share with carriers. No carrier affiliation.",
-  phone: "Phone",
-  email: "Email",
-  office: "Office",
-  callAnytime: "Call anytime",
-  mapTitle: "CellWaves office on Google Maps",
-}
-const fr: typeof en = {
-  title: "Parlez à un spécialiste du côté propriétaire",
-  intro:
-    "Analyse gratuite. Sans obligation. Parlez-nous de votre bail et nous vous répondons dans un délai d’un jour ouvrable.",
-  privacy:
-    "Vos coordonnées restent confidentielles. Nous ne les partageons jamais avec les opérateurs. Aucune affiliation avec un opérateur.",
-  phone: "Téléphone",
-  email: "Courriel",
-  office: "Bureau",
-  callAnytime: "Appelez à toute heure",
-  mapTitle: "Bureau de CellWaves sur Google Maps",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "contact")
 ---
 
 <section id="contact" class="bg-background">

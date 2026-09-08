@@ -1,36 +1,11 @@
 ---
 import { Building2, Handshake } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { ABOUT_IMAGE } from "@/lib/content"
 import { localeFromPath, localizePath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  imageAlt: "Two professionals shaking hands over a lease agreement",
-  years: "Years",
-  eyebrow: "About us",
-  heading: "Unlock the full potential of your telecom lease renewal",
-  body1:
-    "At CellWaves, we specialize in helping property owners maximize the value of their telecom lease agreements. We negotiate better lease renewal deals for owners leasing their land to telecom companies, the antennas typically 15-24 feet tall.",
-  body2:
-    "Unlike other brokers, we don't secure new deals for property owners. We focus on those approached for lease renewals, turning an offer of a few hundred dollars into a deal worth thousands.",
-  statLeaseTerms: "Significant lease terms we review",
-  statAffiliates: "Branch affiliates nationwide",
-  cta: "Read about us",
-}
-const fr: typeof en = {
-  imageAlt: "Deux professionnels se serrant la main au-dessus d'un bail",
-  years: "ans",
-  eyebrow: "À propos de nous",
-  heading: "Libérez tout le potentiel de votre renouvellement de bail télécom",
-  body1:
-    "Chez CellWaves, nous aidons les propriétaires à tirer la pleine valeur de leurs baux télécoms. Nous négocions de meilleures ententes de renouvellement pour les propriétaires qui louent leur terrain aux entreprises de télécommunications, dont les antennes mesurent généralement 15 à 24 pieds.",
-  body2:
-    "Contrairement à d'autres courtiers, nous n'obtenons pas de nouvelles ententes pour les propriétaires. Nous nous concentrons sur ceux qu'on approche pour un renouvellement de bail, transformant une offre de quelques centaines de dollars en une entente valant des milliers de dollars.",
-  statLeaseTerms: "Baux d'envergure que nous passons en revue",
-  statAffiliates: "Succursales affiliées à l'échelle nationale",
-  cta: "À propos de nous",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "about")
 const STATS = [
   { icon: Handshake, value: "24", label: t.statLeaseTerms },
   { icon: Building2, value: "20+", label: t.statAffiliates },

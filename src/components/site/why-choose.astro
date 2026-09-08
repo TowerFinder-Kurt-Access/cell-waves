@@ -1,18 +1,11 @@
 ---
 import { FileCheck, PenLine, RadioTower, TrendingUp } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { REASONS } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  heading: "Why landlords choose CellWaves",
-  sub: "Carriers negotiate hundreds of leases a year. Most landlords sign one in a lifetime. We close that experience gap.",
-}
-const fr: typeof en = {
-  heading: "Pourquoi les propriétaires choisissent CellWaves",
-  sub: "Les opérateurs sans fil négocient des centaines de baux par année. La plupart des propriétaires en signent un seul dans leur vie. Nous comblons cet écart d'expérience.",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "whyChoose")
 const icons = [TrendingUp, PenLine, RadioTower, FileCheck]
 ---
 

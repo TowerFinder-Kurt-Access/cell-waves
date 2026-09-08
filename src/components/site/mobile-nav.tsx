@@ -1,25 +1,14 @@
 import { ChevronDown, Menu, Phone, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
+import { getBundle } from "@/i18n"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { localizePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-const en = {
-  openMenu: "Open menu",
-  closeMenu: "Close menu",
-  navLabel: "Mobile",
-  cta: "Free consultation",
-}
-const fr: typeof en = {
-  openMenu: "Ouvrir le menu",
-  closeMenu: "Fermer le menu",
-  navLabel: "Navigation mobile",
-  cta: "Consultation gratuite",
-}
 
 export function MobileNav({ locale }: { locale: Locale }) {
-  const t = locale === "fr" ? fr : en
+  const t = getBundle<Record<string, string>>(locale, "ui", "mobileNav")
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [loc, setLoc] = useState({ path: "/", hash: "" })

@@ -2,10 +2,12 @@
 import { ChevronDown, Phone } from "lucide-react"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { MobileNav } from "@/components/site/mobile-nav"
+import { getBundle } from "@/i18n"
 import { localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 const nav = NAV_ITEMS[locale]
+const t = getBundle<Record<string, string>>(locale, "ui", "header")
 const isActive = (href: string) => {
   const path = stripLocale(Astro.url.pathname)
   if (href === "/") return path === "/"
@@ -21,7 +23,7 @@ const isParentActive = (item: (typeof nav)[number]) =>
     class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
   >
     <div class="flex shrink-0 items-center gap-3">
-      <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={locale === "fr" ? "CellWaves accueil" : "CellWaves home"}>
+      <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={t.homeAria}>
         <img
           src="/cellwaves-logo.webp"
           alt=""
@@ -37,7 +39,7 @@ const isParentActive = (item: (typeof nav)[number]) =>
       </a>
     </div>
 
-    <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label={locale === "fr" ? "Principale" : "Primary"}>
+    <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label={t.primaryNav}>
       {
         nav.map((item) =>
           item.children ? (
@@ -103,7 +105,7 @@ const isParentActive = (item: (typeof nav)[number]) =>
         href={localizePath(locale, "/#contact")}
         class="inline-flex h-10 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-semibold text-brand-foreground transition-all hover:brightness-110 active:translate-y-[1px]"
       >
-        {locale === "fr" ? "Consultation gratuite" : "Free consultation"}
+        {t.cta}
       </a>
     </div>
 

@@ -5,6 +5,7 @@ import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { ADVICE_PAGES, PHONE_DISPLAY, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
 import { absoluteUrl, serviceSchema } from "@/lib/seo"
+import { getBundle } from "@/i18n"
 import { localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
 import type { Localized } from "@/lib/i18n"
 
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const locale = localeFromPath(Astro.url.pathname)
+const t = getBundle<Record<string, string>>(locale, "ui", "article")
 const {
   title,
   description,
@@ -36,9 +38,9 @@ const {
   intro,
   image,
   sections,
-  eyebrow = locale === "fr" ? "Nos services" : "Our services",
+  eyebrow = t.eyebrow,
   related: relatedProp = SERVICE_PAGES,
-  relatedLabel = locale === "fr" ? "Nos services" : "Our services",
+  relatedLabel = t.relatedLabel,
   showCta = true,
 } = Astro.props
 
@@ -55,21 +57,6 @@ const serviceSchemaBlock = isServicePage
       url: absoluteUrl(Astro.url.pathname),
     })
   : undefined
-const t =
-  locale === "fr"
-    ? {
-        callAnytime: "Appelez-nous en tout temps",
-        ctaHeading: "Obtenez une évaluation gratuite de votre bail",
-        ctaBody:
-          "Envoyez-nous les détails de votre bail et nous vous répondrons dans un jour ouvrable. Sans obligation.",
-        ctaButton: "Obtenir une évaluation gratuite",
-      }
-    : {
-        callAnytime: "Call us anytime",
-        ctaHeading: "Get a free review of your lease",
-        ctaBody: "Send us your lease details and we will come back within one business day. No obligation.",
-        ctaButton: "Get a free review",
-      }
 let revealIndex = 0
 ---
 

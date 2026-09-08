@@ -1,20 +1,11 @@
 ---
 import { ArrowRight, FileCheck, RadioTower, Signal } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { SERVICES } from "@/lib/content"
 import { localeFromPath, localizePath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
-const en = {
-  heading: "Our expertise covers the full life of your lease",
-  sub: "From the first proposal letter to the final buyout signature, we focus on one outcome: a stronger agreement for the property owner.",
-  readMore: "Read more",
-}
-const fr: typeof en = {
-  heading: "Notre expertise couvre toute la vie de votre bail",
-  sub: "De la première lettre de proposition jusqu'à la signature du rachat de bail, nous visons un seul résultat : une entente plus forte pour le propriétaire.",
-  readMore: "En savoir plus",
-}
-const t = locale === "fr" ? fr : en
+const t = getBundle<Record<string, string>>(locale, "ui", "sections")
 const [first, ...rest] = SERVICES[locale]
 const icons = [RadioTower, Signal, FileCheck]
 ---

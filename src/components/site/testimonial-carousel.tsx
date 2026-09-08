@@ -2,25 +2,13 @@ import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { useEffect, useState } from "react"
+import { getBundle, getT } from "@/i18n"
 import { TESTIMONIALS } from "@/lib/content"
 import { type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-const en = {
-  pages: "Testimonial pages",
-  goTo: (n: number) => `Go to testimonial ${n}`,
-  prev: "Previous testimonial",
-  next: "Next testimonial",
-}
-const fr: typeof en = {
-  pages: "Pages de témoignages",
-  goTo: (n: number) => `Aller au témoignage ${n}`,
-  prev: "Témoignage précédent",
-  next: "Témoignage suivant",
-}
-
 export function TestimonialCarousel({ locale }: { locale: Locale }) {
-  const t = locale === "fr" ? fr : en
+  const t = getBundle<Record<string, string>>(locale, "ui", "carousel")
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" })
   const [selected, setSelected] = useState(0)
   const [snaps, setSnaps] = useState<number[]>([])
@@ -100,7 +88,7 @@ export function TestimonialCarousel({ locale }: { locale: Locale }) {
             <button
               key={i}
               type="button"
-              aria-label={t.goTo(i + 1)}
+              aria-label={getT(locale)("carousel.goTo", { n: i + 1 })}
               aria-selected={selected === i}
               onClick={() => emblaApi?.scrollTo(i)}
               className={cn(
