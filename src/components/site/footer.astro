@@ -162,15 +162,7 @@ const year = new Date().getFullYear()
                 code === locale ? "bg-white/10 text-white" : "text-white/40 hover:text-white/70",
               ]}
             >
-              {code === "fr" ? (
-                <svg viewBox="0 0 3 2" class="h-3 w-[18px] shrink-0 rounded-[2px]" aria-hidden="true" focusable="false">
-                  <rect width="3" height="2" fill="#fff" />
-                  <rect width="1" height="2" fill="#002395" />
-                  <rect x="2" width="1" height="2" fill="#ed2939" />
-                </svg>
-              ) : (
-                <img src="/canadian.webp" alt="" width={1280} height={393} class="h-3 w-[18px] shrink-0 rounded-[2px] object-cover" loading="lazy" />
-              )}
+              <span class="text-sm leading-none" aria-hidden="true">🇨🇦</span>
               {code}
             </a>
           ))}
