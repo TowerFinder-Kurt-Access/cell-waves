@@ -58,6 +58,31 @@ const hasFrTwin = !/^\/blog\/.+/.test(neutralPath)
 <html lang={HTML_LANG[locale]}>
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      // Locale preference: explicit choice (footer toggle, stored in localStorage)
+      // wins; otherwise French-browser visitors land on the /fr twin. Runs before
+      // paint so the redirect is invisible. Blog posts are English-only: never touch.
+      ;(() => {
+        try {
+          const KEY = "cw-locale"
+          const path = location.pathname
+          if (/^\/blog\//.test(path)) return
+          const onFr = path === "/fr" || path.startsWith("/fr/")
+          const current = onFr ? "fr" : "en"
+          const browserFr = (navigator.language || "").toLowerCase().startsWith("fr")
+          const wanted = localStorage.getItem(KEY) || (browserFr ? "fr" : null)
+          if (wanted === "fr" && current !== "fr") {
+            location.replace("/fr" + path + location.search + location.hash)
+          } else if (wanted === "en" && current === "fr") {
+            location.replace(path.slice(3) + location.search + location.hash || "/")
+          }
+          document.addEventListener("click", (e) => {
+            const a = e.target && e.target.closest ? e.target.closest("a[data-locale]") : null
+            if (a) localStorage.setItem(KEY, a.getAttribute("data-locale"))
+          })
+        } catch {}
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{title}</title>
@@ -82,7 +107,7 @@ const hasFrTwin = !/^\/blog\/.+/.test(neutralPath)
 
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:locale" content={HTML_LANG[locale]} />
+    <meta property="og:locale" content={HTML_LANG[locale].replace("-", "_")} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
