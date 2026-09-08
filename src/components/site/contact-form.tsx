@@ -10,11 +10,18 @@ type SubmitStatus = "idle" | "sending" | "sent" | "error"
 export function ContactForm() {
   const [status, setStatus] = useState<SubmitStatus>("idle")
   const [errorMessage, setErrorMessage] = useState("")
+  const [startedAt] = useState(() => Date.now())
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = Object.fromEntries(new FormData(form).entries())
+
+    // Honeypot: real users never see or fill this field. Pretend success, never call the API.
+    if (data.website) {
+      setStatus("sent")
+      return
+    }
 
     setStatus("sending")
     setErrorMessage("")
@@ -60,6 +67,16 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       noValidate
     >
+      {/* Spam protection: hidden from users, filled only by bots. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
+      <input type="hidden" name="startedAt" value={startedAt} />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-name" className="text-sm font-medium text-ink">
