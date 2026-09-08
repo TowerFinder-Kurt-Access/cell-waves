@@ -2,9 +2,24 @@ import { ChevronDown, Menu, Phone, X } from "lucide-react"
 import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
+import { localizePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-export function MobileNav() {
+const en = {
+  openMenu: "Open menu",
+  closeMenu: "Close menu",
+  navLabel: "Mobile",
+  cta: "Free consultation",
+}
+const fr: typeof en = {
+  openMenu: "Ouvrir le menu",
+  closeMenu: "Fermer le menu",
+  navLabel: "Navigation mobile",
+  cta: "Consultation gratuite",
+}
+
+export function MobileNav({ locale }: { locale: Locale }) {
+  const t = locale === "fr" ? fr : en
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [loc, setLoc] = useState({ path: "/", hash: "" })
@@ -21,8 +36,9 @@ export function MobileNav() {
     }
   }, [])
   const isActive = (href: string) => {
-    if (href === "/") return loc.path === "/" && !loc.hash
-    if (href === "/blog") return loc.path.startsWith("/blog")
+    const path = stripLocale(loc.path)
+    if (href === "/") return path === "/" && !loc.hash
+    if (href === "/blog") return path.startsWith("/blog")
     if (href.startsWith("/#")) return loc.hash === href.slice(1)
     return false
   }
@@ -65,7 +81,7 @@ export function MobileNav() {
           </span>
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label={t.closeMenu}
             onClick={() => setOpen(false)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
           >
@@ -73,8 +89,8 @@ export function MobileNav() {
           </button>
         </div>
 
-        <nav className="mt-8 flex flex-col gap-1 overflow-y-auto" aria-label="Mobile">
-          {NAV_ITEMS.map((item) =>
+        <nav className="mt-8 flex flex-col gap-1 overflow-y-auto" aria-label={t.navLabel}>
+          {NAV_ITEMS[locale].map((item) =>
             item.children ? (
               <div key={`p-${item.href}-${item.label}`}>
                 <button
@@ -102,7 +118,7 @@ export function MobileNav() {
                     {item.children.map((child) => (
                       <a
                         key={`c-${child.label}-${child.href}`}
-                        href={child.href}
+                        href={localizePath(locale, child.href)}
                         onClick={() => setOpen(false)}
                         className={cn(
                           "block rounded-xl py-2.5 pl-6 pr-3 text-sm transition-colors",
@@ -118,7 +134,7 @@ export function MobileNav() {
             ) : (
               <a
                 key={`l-${item.label}-${item.href}`}
-                href={item.href}
+                href={localizePath(locale, item.href)}
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-full px-3 py-3 text-base font-medium transition-colors",
@@ -137,11 +153,11 @@ export function MobileNav() {
             {PHONE_DISPLAY}
           </a>
           <a
-            href="/#contact"
+            href={localizePath(locale, "/#contact")}
             onClick={() => setOpen(false)}
             className="inline-flex h-11 items-center justify-center rounded-full bg-brand px-5 text-sm font-semibold text-brand-foreground"
           >
-            Free consultation
+            {t.cta}
           </a>
         </div>
       </div>
@@ -152,7 +168,7 @@ export function MobileNav() {
     <>
       <button
         type="button"
-        aria-label="Open menu"
+        aria-label={t.openMenu}
         aria-expanded={open}
         onClick={() => setOpen(true)}
         className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white"

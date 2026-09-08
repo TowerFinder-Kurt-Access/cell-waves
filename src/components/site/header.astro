@@ -2,14 +2,17 @@
 import { ChevronDown, Phone } from "lucide-react"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { MobileNav } from "@/components/site/mobile-nav"
+import { localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
 
-const pathname = Astro.url.pathname
+const locale = localeFromPath(Astro.url.pathname)
+const nav = NAV_ITEMS[locale]
 const isActive = (href: string) => {
-  if (href === "/") return pathname === "/"
-  if (href === "/blog") return pathname.startsWith("/blog")
-  return pathname === href
+  const path = stripLocale(Astro.url.pathname)
+  if (href === "/") return path === "/"
+  if (href === "/blog") return path === "/blog" || path.startsWith("/blog/")
+  return path === href
 }
-const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
+const isParentActive = (item: (typeof nav)[number]) =>
   isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false)
 ---
 
@@ -18,7 +21,7 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
     class="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-full border border-white/10 bg-black/85 pl-4 pr-2 shadow-lg shadow-black/20 backdrop-blur-xl supports-[backdrop-filter]:bg-black/70 sm:pl-5"
   >
     <div class="flex shrink-0 items-center gap-3">
-      <a href="/" class="flex items-center gap-2.5" aria-label="CellWaves home">
+      <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={locale === "fr" ? "CellWaves accueil" : "CellWaves home"}>
         <img
           src="/cellwaves-logo.webp"
           alt=""
@@ -34,13 +37,13 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
       </a>
     </div>
 
-    <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
+    <nav id="primary-nav" class="hidden items-center gap-0.5 lg:flex" aria-label={locale === "fr" ? "Principale" : "Primary"}>
       {
-        NAV_ITEMS.map((item) =>
+        nav.map((item) =>
           item.children ? (
             <div class="group relative" data-nav-parent>
               <a
-                href={item.href}
+                href={localizePath(locale, item.href)}
                 data-href={item.href}
                 aria-current={isParentActive(item) ? "page" : undefined}
                 class:list={[
@@ -56,7 +59,7 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
                   {item.children.map((child) => (
                     <li>
                       <a
-                        href={child.href}
+                        href={localizePath(locale, child.href)}
                         data-href={child.href}
                         aria-current={isActive(child.href) ? "page" : undefined}
                         class:list={[
@@ -73,7 +76,7 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
             </div>
           ) : (
             <a
-              href={item.href}
+              href={localizePath(locale, item.href)}
               data-href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               class:list={[
@@ -97,15 +100,15 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
         {PHONE_DISPLAY}
       </a>
       <a
-        href="/#contact"
+        href={localizePath(locale, "/#contact")}
         class="inline-flex h-10 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-semibold text-brand-foreground transition-all hover:brightness-110 active:translate-y-[1px]"
       >
-        Free consultation
+        {locale === "fr" ? "Consultation gratuite" : "Free consultation"}
       </a>
     </div>
 
     <div class="lg:hidden">
-      <MobileNav client:load />
+      <MobileNav client:load locale={locale} />
     </div>
   </div>
 </header>
@@ -125,7 +128,8 @@ const isParentActive = (item: (typeof NAV_ITEMS)[number]) =>
       return h === "/" || h === "/blog";
     });
     function updateFromLocation() {
-      const path = location.pathname;
+      // data-href attrs stay EN; compare against the locale-stripped path.
+      const path = location.pathname.replace(/^\/fr(?=\/|$)/, "") || "/";
       const hash = location.hash;
       if (path.startsWith("/blog")) {
         links.forEach((el) => {

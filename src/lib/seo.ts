@@ -1,4 +1,5 @@
 import { EMAIL, PHONE_ALT_HREF, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
+import { HTML_LANG, stripLocale, type Locale } from "@/lib/i18n"
 
 export const SITE = {
   name: "Cell Waves Canada",
@@ -69,7 +70,7 @@ export function organizationSchema() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Cell tower lease consulting services",
-      itemListElement: SERVICE_PAGES.map((s) => ({
+      itemListElement: SERVICE_PAGES.en.map((s) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
@@ -99,7 +100,7 @@ export function organizationSchema() {
       telephone: SITE.phone,
       contactType: "customer service",
       areaServed: "CA",
-      availableLanguage: "en",
+      availableLanguage: ["en", "fr"],
     },
     areaServed: { "@type": "Country", name: "Canada" },
   }
@@ -122,9 +123,10 @@ interface WebPageSchemaArgs {
   description: string
   url: string
   type?: "website" | "article"
+  locale?: Locale
 }
 
-export function webPageSchema({ title, description, url, type = "website" }: WebPageSchemaArgs) {
+export function webPageSchema({ title, description, url, type = "website", locale = "en" }: WebPageSchemaArgs) {
   return {
     "@context": "https://schema.org",
     "@type": type === "article" ? "WebPage" : "WebPage",
@@ -132,7 +134,7 @@ export function webPageSchema({ title, description, url, type = "website" }: Web
     name: title,
     description,
     url,
-    inLanguage: SITE.locale,
+    inLanguage: HTML_LANG[locale],
     isPartOf: { "@id": `${SITE.url}/#website` },
     about: { "@id": `${SITE.url}/#organization` },
     primaryImageOfPage: { "@id": `${SITE.url}/#og-image` },
@@ -151,23 +153,24 @@ export function ogImageSchema() {
   }
 }
 
-const SECTION_LABELS: Record<string, string> = {
-  services: "Services",
-  advice: "Advice",
-  blog: "Blog",
+const SECTION_LABELS: Record<Locale, Record<string, string>> = {
+  en: { services: "Services", advice: "Advice", blog: "Blog" },
+  fr: { services: "Services", advice: "Conseils", blog: "Blogue" },
 }
 
 /** Build a BreadcrumbList for a page path, e.g. /services/foo/ → Home > Services > Foo. */
-export function breadcrumbSchema(pathname: string, pageTitle: string) {
-  const segments = pathname.split("/").filter(Boolean)
-  const crumbs = [{ position: 1, name: "Home", item: SITE.url }]
-  let cursor = SITE.url
+export function breadcrumbSchema(pathname: string, pageTitle: string, locale: Locale = "en") {
+  const segments = stripLocale(pathname).split("/").filter(Boolean)
+  const crumbs: { position: number; name: string; item: string }[] = [
+    { position: 1, name: locale === "fr" ? "Accueil" : "Home", item: SITE.url },
+  ]
+  let cursor: string = SITE.url
 
   for (const segment of segments) {
     cursor = `${cursor}/${segment}`
     crumbs.push({
       position: crumbs.length + 1,
-      name: SECTION_LABELS[segment] ?? segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      name: SECTION_LABELS[locale][segment] ?? segment.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
       item: `${cursor}/`,
     })
   }

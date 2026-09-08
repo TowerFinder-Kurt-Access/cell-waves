@@ -1,8 +1,21 @@
 ---
 import { ArrowRight, FileCheck, RadioTower, Signal } from "lucide-react"
 import { SERVICES } from "@/lib/content"
+import { localeFromPath, localizePath } from "@/lib/i18n"
 
-const [first, ...rest] = SERVICES
+const locale = localeFromPath(Astro.url.pathname)
+const en = {
+  heading: "Our expertise covers the full life of your lease",
+  sub: "From the first proposal letter to the final buyout signature, we focus on one outcome: a stronger agreement for the property owner.",
+  readMore: "Read more",
+}
+const fr: typeof en = {
+  heading: "Notre expertise couvre toute la vie de votre bail",
+  sub: "De la première lettre de proposition jusqu'à la signature du rachat de bail, nous visons un seul résultat : une entente plus forte pour le propriétaire.",
+  readMore: "En savoir plus",
+}
+const t = locale === "fr" ? fr : en
+const [first, ...rest] = SERVICES[locale]
 const icons = [RadioTower, Signal, FileCheck]
 ---
 
@@ -10,18 +23,17 @@ const icons = [RadioTower, Signal, FileCheck]
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
     <div class="reveal max-w-2xl">
       <h2 class="text-3xl font-bold leading-tight text-ink sm:text-4xl">
-        Our expertise covers the full life of your lease
+        {t.heading}
       </h2>
       <p class="mt-4 text-base leading-relaxed text-muted-foreground">
-        From the first proposal letter to the final buyout signature, we focus
-        on one outcome: a stronger agreement for the property owner.
+        {t.sub}
       </p>
     </div>
 
     <div class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
       <!-- Large cell -->
       <a
-        href={first.href}
+        href={localizePath(locale, first.href)}
         class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
       >
         <div class="relative overflow-hidden">
@@ -43,7 +55,7 @@ const icons = [RadioTower, Signal, FileCheck]
             {first.description}
           </p>
           <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-            Read more
+            {t.readMore}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth="2" />
           </span>
         </div>
@@ -55,7 +67,7 @@ const icons = [RadioTower, Signal, FileCheck]
           const Icon = icons[i + 1] ?? Signal
           return (
             <a
-              href={s.href}
+              href={localizePath(locale, s.href)}
               style={`--reveal-delay: ${(i + 1) * 70}ms`}
               class="reveal group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md sm:flex-row"
             >
@@ -78,7 +90,7 @@ const icons = [RadioTower, Signal, FileCheck]
                   {s.description}
                 </p>
                 <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
-                  Read more
+                  {t.readMore}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" strokeWidth="2" />
                 </span>
               </div>

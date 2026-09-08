@@ -1,10 +1,39 @@
 ---
 import { Building2, Handshake } from "lucide-react"
 import { ABOUT_IMAGE } from "@/lib/content"
+import { localeFromPath, localizePath } from "@/lib/i18n"
 
+const locale = localeFromPath(Astro.url.pathname)
+const en = {
+  imageAlt: "Two professionals shaking hands over a lease agreement",
+  years: "Years",
+  eyebrow: "About us",
+  heading: "Unlock the full potential of your telecom lease renewal",
+  body1:
+    "At CellWaves, we specialize in helping property owners maximize the value of their telecom lease agreements. We negotiate better lease renewal deals for owners leasing their land to telecom companies, the antennas typically 15-24 feet tall.",
+  body2:
+    "Unlike other brokers, we don't secure new deals for property owners. We focus on those approached for lease renewals, turning an offer of a few hundred dollars into a deal worth thousands.",
+  statLeaseTerms: "Significant lease terms we review",
+  statAffiliates: "Branch affiliates nationwide",
+  cta: "Read about us",
+}
+const fr: typeof en = {
+  imageAlt: "Deux professionnels se serrant la main au-dessus d'un bail",
+  years: "ans",
+  eyebrow: "À propos de nous",
+  heading: "Libérez tout le potentiel de votre renouvellement de bail télécom",
+  body1:
+    "Chez CellWaves, nous aidons les propriétaires à tirer la pleine valeur de leurs baux télécoms. Nous négocions de meilleures ententes de renouvellement pour les propriétaires qui louent leur terrain aux entreprises de télécommunications, dont les antennes mesurent généralement 15 à 24 pieds.",
+  body2:
+    "Contrairement à d'autres courtiers, nous n'obtenons pas de nouvelles ententes pour les propriétaires. Nous nous concentrons sur ceux qu'on approche pour un renouvellement de bail, transformant une offre de quelques centaines de dollars en une entente valant des milliers de dollars.",
+  statLeaseTerms: "Baux d'envergure que nous passons en revue",
+  statAffiliates: "Succursales affiliées à l'échelle nationale",
+  cta: "À propos de nous",
+}
+const t = locale === "fr" ? fr : en
 const STATS = [
-  { icon: Handshake, value: "24", label: "Significant lease terms we review" },
-  { icon: Building2, value: "20+", label: "Branch affiliates nationwide" },
+  { icon: Handshake, value: "24", label: t.statLeaseTerms },
+  { icon: Building2, value: "20+", label: t.statAffiliates },
 ]
 ---
 
@@ -17,7 +46,7 @@ const STATS = [
           <div class="overflow-hidden rounded-2xl shadow-md ring-1 ring-border">
             <img
               src={ABOUT_IMAGE}
-              alt="Two professionals shaking hands over a lease agreement"
+              alt={t.imageAlt}
               class="aspect-[4/5] w-full object-cover"
               loading="lazy"
             />
@@ -30,27 +59,22 @@ const STATS = [
               data-target="35"
               class="font-heading text-4xl font-bold tabular-nums sm:text-5xl">1</span
             >
-            <span class="text-lg font-semibold">Years</span>
+            <span class="text-lg font-semibold">{t.years}</span>
           </div>
         </div>
       </div>
 
       <!-- Copy -->
       <div class="reveal reveal-right order-1 lg:order-2 lg:col-span-7">
-        <p class="text-sm font-semibold uppercase tracking-widest text-brand">About us</p>
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand">{t.eyebrow}</p>
         <h2 class="mt-3 text-3xl font-bold leading-tight text-ink sm:text-4xl">
-          Unlock the full potential of your telecom lease renewal
+          {t.heading}
         </h2>
         <p class="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          At CellWaves, we specialize in helping property owners maximize the
-          value of their telecom lease agreements. We negotiate better lease
-          renewal deals for owners leasing their land to telecom companies, the
-          antennas typically 15-24 feet tall.
+          {t.body1}
         </p>
         <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Unlike other brokers, we don't secure new deals for property owners.
-          We focus on those approached for lease renewals, turning an offer of a
-          few hundred dollars into a deal worth thousands.
+          {t.body2}
         </p>
 
         <dl
@@ -72,10 +96,10 @@ const STATS = [
           }
         </dl>
         <a
-          href="/about-us"
+          href={localizePath(locale, "/about-us")}
           class="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-brand px-6 text-sm font-semibold uppercase tracking-wide text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px]"
         >
-          Read about us
+          {t.cta}
         </a>
       </div>
     </div>

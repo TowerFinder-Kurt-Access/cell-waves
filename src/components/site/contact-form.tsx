@@ -1,13 +1,56 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react"
 import { useState } from "react"
 import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
+import { type Locale } from "@/lib/i18n"
+
+const en = {
+  fullName: "Full name",
+  namePlaceholder: "Jane Tremblay",
+  email: "Email",
+  emailPlaceholder: "jane@example.ca",
+  phone: "Phone",
+  phonePlaceholder: "(780) 555-0123",
+  address: "Cell site address",
+  addressPlaceholder: "123 Range Rd, Alberta",
+  message: "How can we help?",
+  messagePlaceholder: "Tell us about your lease or the carrier's offer.",
+  sending: "Sending...",
+  submit: "Request free consultation",
+  footnote: "No obligation. Your details stay confidential.",
+  successTitle: "Request received",
+  successBody:
+    "Thanks for reaching out. We will review your details and reply within one business day.",
+  networkError: "Network error. Please check your connection and try again.",
+  fallbackError: "Something went wrong. Please try again.",
+}
+const fr: typeof en = {
+  fullName: "Nom complet",
+  namePlaceholder: "Marie Tremblay",
+  email: "Courriel",
+  emailPlaceholder: "marie@example.ca",
+  phone: "Téléphone",
+  phonePlaceholder: "(780) 555-0123",
+  address: "Adresse du site de la tour",
+  addressPlaceholder: "123 Range Rd, Alberta",
+  message: "Comment pouvons-nous vous aider?",
+  messagePlaceholder: "Parlez-nous de votre bail ou de l’offre de l’opérateur.",
+  sending: "Envoi en cours...",
+  submit: "Demander une consultation gratuite",
+  footnote: "Sans obligation. Vos coordonnées restent confidentielles.",
+  successTitle: "Demande reçue",
+  successBody:
+    "Merci de nous avoir contactés. Nous examinerons vos informations et vous répondrons dans un délai d’un jour ouvrable.",
+  networkError: "Erreur réseau. Vérifiez votre connexion et réessayez.",
+  fallbackError: "Un problème est survenu. Veuillez réessayer.",
+}
 
 const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 
 type SubmitStatus = "idle" | "sending" | "sent" | "error"
 
-export function ContactForm() {
+export function ContactForm({ locale }: { locale: Locale }) {
+  const t = locale === "fr" ? fr : en
   const [status, setStatus] = useState<SubmitStatus>("idle")
   const [errorMessage, setErrorMessage] = useState("")
   const [startedAt] = useState(() => Date.now())
@@ -34,14 +77,14 @@ export function ContactForm() {
       })
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { message?: string } | null
-        setErrorMessage(body?.message ?? "Something went wrong. Please try again.")
+        setErrorMessage(body?.message ?? t.fallbackError)
         setStatus("error")
         return
       }
       form.reset()
       setStatus("sent")
     } catch {
-      setErrorMessage("Network error. Please check your connection and try again.")
+      setErrorMessage(t.networkError)
       setStatus("error")
     }
   }
@@ -52,10 +95,9 @@ export function ContactForm() {
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-muted text-brand">
           <Send className="h-5 w-5" strokeWidth="2" />
         </span>
-        <h3 className="mt-4 text-xl font-semibold text-ink">Request received</h3>
+        <h3 className="mt-4 text-xl font-semibold text-ink">{t.successTitle}</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          Thanks for reaching out. We will review your details and reply within
-          one business day.
+          {t.successBody}
         </p>
       </div>
     )
@@ -80,7 +122,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-name" className="text-sm font-medium text-ink">
-            Full name
+            {t.fullName}
           </label>
           <input
             id="contact-name"
@@ -88,13 +130,13 @@ export function ContactForm() {
             type="text"
             required
             autoComplete="name"
-            placeholder="Jane Tremblay"
+            placeholder={t.namePlaceholder}
             className={inputClass}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-email" className="text-sm font-medium text-ink">
-            Email
+            {t.email}
           </label>
           <input
             id="contact-email"
@@ -102,45 +144,45 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            placeholder="jane@example.ca"
+            placeholder={t.emailPlaceholder}
             className={inputClass}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-phone" className="text-sm font-medium text-ink">
-            Phone
+            {t.phone}
           </label>
           <input
             id="contact-phone"
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="(780) 555-0123"
+            placeholder={t.phonePlaceholder}
             className={inputClass}
           />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-address" className="text-sm font-medium text-ink">
-            Cell site address
+            {t.address}
           </label>
           <input
             id="contact-address"
             name="address"
             type="text"
             autoComplete="street-address"
-            placeholder="123 Range Rd, Alberta"
+            placeholder={t.addressPlaceholder}
             className={inputClass}
           />
         </div>
         <div className="flex flex-col gap-2 sm:col-span-2">
           <label htmlFor="contact-message" className="text-sm font-medium text-ink">
-            How can we help?
+            {t.message}
           </label>
           <textarea
             id="contact-message"
             name="message"
             rows={6}
-            placeholder="Tell us about your lease or the carrier's offer."
+            placeholder={t.messagePlaceholder}
             className="min-h-[160px] w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:min-h-[184px]"
           />
         </div>
@@ -155,11 +197,11 @@ export function ContactForm() {
         disabled={status === "sending"}
         className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand px-6 text-base font-semibold text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
-        {status === "sending" ? "Sending..." : "Request free consultation"}
+        {status === "sending" ? t.sending : t.submit}
         <Send className="h-4 w-4" strokeWidth="2" />
       </button>
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-        No obligation. Your details stay confidential.
+        {t.footnote}
       </p>
     </form>
   )

@@ -4,26 +4,23 @@ import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { FOOTER_ABOUT, TEAM } from "@/lib/content"
-import { localeFromPath } from "@/lib/i18n"
-
-const locale = localeFromPath(Astro.url.pathname)
 ---
 
 <Base
-  title="About Us - CellWaves"
-  description="Learn about CellWaves, a trusted consulting firm specializing in cell tower lease agreements, landlord negotiations, and wireless carrier contracts. Meet our team."
+  title="À propos de nous - CellWaves"
+  description="Apprenez à connaître CellWaves, un cabinet de consultation de confiance spécialisé dans les baux de tours de téléphonie mobile, la négociation avec les propriétaires et les contrats des opérateurs sans fil. Rencontrez notre équipe."
 >
   <Header />
   <main class="bg-background">
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
       <!-- Intro -->
       <div class="reveal max-w-2xl">
-        <p class="text-sm font-semibold uppercase tracking-widest text-brand">About us</p>
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand">À propos de nous</p>
         <h1 class="mt-3 text-4xl font-bold leading-tight text-ink sm:text-5xl">
-          Meet our team
+          Rencontrez notre équipe
         </h1>
         <p class="mt-4 text-base leading-relaxed text-muted-foreground">
-          {FOOTER_ABOUT[locale]}
+          {FOOTER_ABOUT.fr}
         </p>
       </div>
 
@@ -53,18 +50,19 @@ const locale = localeFromPath(Astro.url.pathname)
       <!-- CTA -->
       <div class="reveal mt-20 rounded-2xl bg-brand px-6 py-12 text-center sm:px-12">
         <h2 class="text-3xl font-bold leading-tight text-brand-foreground">
-          Ready to unlock your property's full value?
+          Prêt à libérer toute la valeur de votre propriété ?
         </h2>
         <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-foreground/85">
-          Don't settle for less when it comes to your telecom lease. Take the
-          first step toward maximizing your lease income. With CellWaves, your
-          property's potential is just a negotiation away.
+          Ne vous contentez pas de moins quand il s'agit de votre bail de
+          télécommunication. Faites le premier pas vers la maximisation de vos
+          revenus de bail. Avec CellWaves, le potentiel de votre propriété
+          n'est qu'à une négociation près.
         </p>
         <a
-          href="/#contact"
+          href="/fr/#contact"
           class="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold uppercase tracking-wide text-brand shadow-sm transition-all hover:brightness-95 active:translate-y-[1px]"
         >
-          Schedule a free consultation
+          Planifier une consultation gratuite
           <ArrowRight className="h-3.5 w-3.5" strokeWidth={2} />
         </a>
       </div>

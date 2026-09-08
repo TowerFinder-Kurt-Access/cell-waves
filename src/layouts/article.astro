@@ -5,6 +5,8 @@ import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { ADVICE_PAGES, PHONE_DISPLAY, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
 import { absoluteUrl, serviceSchema } from "@/lib/seo"
+import { localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
+import type { Localized } from "@/lib/i18n"
 
 export interface ServiceSection {
   heading?: string
@@ -21,11 +23,12 @@ interface Props {
   image?: { src: string; alt: string }
   sections: ServiceSection[]
   eyebrow?: string
-  related?: { title: string; href: string }[]
+  related?: Localized<{ title: string; href: string }[]> | { title: string; href: string }[]
   relatedLabel?: string
   showCta?: boolean
 }
 
+const locale = localeFromPath(Astro.url.pathname)
 const {
   title,
   description,
@@ -33,24 +36,40 @@ const {
   intro,
   image,
   sections,
-  eyebrow = "Our services",
-  related = SERVICE_PAGES,
-  relatedLabel = "Our services",
+  eyebrow = locale === "fr" ? "Nos services" : "Our services",
+  related: relatedProp = SERVICE_PAGES,
+  relatedLabel = locale === "fr" ? "Nos services" : "Our services",
   showCta = true,
 } = Astro.props
 
-const pathname = Astro.url.pathname
+const related = Array.isArray(relatedProp) ? relatedProp : relatedProp[locale]
+const pathname = stripLocale(Astro.url.pathname)
 const normalizedPath = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname
 const isServicePage = normalizedPath.startsWith("/services/")
-const serviceMeta = [...SERVICE_PAGES, ...ADVICE_PAGES].find((s) => normalizedPath === s.href)
+const serviceMeta = [...SERVICE_PAGES[locale], ...ADVICE_PAGES[locale]].find((s) => normalizedPath === s.href)
 const pageKeywords = serviceMeta?.keywords?.join(", ")
 const serviceSchemaBlock = isServicePage
   ? serviceSchema({
       name: serviceMeta?.title ?? heading,
       description: serviceMeta?.description ?? description,
-      url: absoluteUrl(normalizedPath),
+      url: absoluteUrl(Astro.url.pathname),
     })
   : undefined
+const t =
+  locale === "fr"
+    ? {
+        callAnytime: "Appelez-nous en tout temps",
+        ctaHeading: "Obtenez une évaluation gratuite de votre bail",
+        ctaBody:
+          "Envoyez-nous les détails de votre bail et nous vous répondrons dans un jour ouvrable. Sans obligation.",
+        ctaButton: "Obtenir une évaluation gratuite",
+      }
+    : {
+        callAnytime: "Call us anytime",
+        ctaHeading: "Get a free review of your lease",
+        ctaBody: "Send us your lease details and we will come back within one business day. No obligation.",
+        ctaButton: "Get a free review",
+      }
 let revealIndex = 0
 ---
 
@@ -121,7 +140,7 @@ let revealIndex = 0
                   related.map((page) => (
                     <li>
                       <a
-                        href={page.href}
+                        href={localizePath(locale, page.href)}
                         aria-current={pathname === page.href ? "page" : undefined}
                         class:list={[
                           "block rounded-lg px-3 py-2 text-sm transition-colors",
@@ -147,7 +166,7 @@ let revealIndex = 0
                 <Phone className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
               </span>
               <span>
-                <span class="block text-sm font-semibold text-ink">Call us anytime</span>
+                <span class="block text-sm font-semibold text-ink">{t.callAnytime}</span>
                 <span class="mt-0.5 block text-sm text-muted-foreground">{PHONE_DISPLAY}</span>
               </span>
             </a>
@@ -158,18 +177,17 @@ let revealIndex = 0
       {showCta && (
         <div class="reveal mt-16 rounded-2xl bg-brand px-6 py-12 text-center sm:px-12">
           <h2 class="text-3xl font-bold leading-tight text-brand-foreground">
-            Get a free review of your lease
+            {t.ctaHeading}
           </h2>
           <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-brand-foreground/85">
-            Send us your lease details and we will come back within one business
-            day. No obligation.
+            {t.ctaBody}
           </p>
           <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="/#contact"
+              href={localizePath(locale, "/#contact")}
               class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-brand shadow-sm transition-all hover:bg-white/90 active:translate-y-[1px]"
             >
-              Get a free review
+              {t.ctaButton}
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
             </a>
             <a

@@ -1,20 +1,32 @@
 ---
 import { TestimonialCarousel } from "@/components/site/testimonial-carousel"
+import { localeFromPath } from "@/lib/i18n"
+
+const locale = localeFromPath(Astro.url.pathname)
+const en = {
+  title: "What landlords say after the lease is signed",
+  sub: "Seven reports from Quebec to British Columbia. Huge names, cities, and sites you can verify. Feedback first, identity below. No stock quotes.",
+}
+const fr: typeof en = {
+  title: "Ce que disent les propriétaires après la signature du bail",
+  sub: "Sept témoignages du Québec à la Colombie-Britannique. Des noms, des villes et des sites que vous pouvez vérifier. D’abord le retour, puis l’identité. Aucune citation toute faite.",
+}
+const t = locale === "fr" ? fr : en
 ---
 
 <section id="testimonials" class="bg-background">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
     <div class="reveal max-w-3xl">
       <h2 class="text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl lg:text-[3rem]">
-        What landlords say after the lease is signed
+        {t.title}
       </h2>
       <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-        Seven reports from Quebec to British Columbia. Huge names, cities, and sites you can verify. Feedback first, identity below. No stock quotes.
+        {t.sub}
       </p>
     </div>
 
     <div class="mt-10 sm:mt-14 lg:mt-16">
-      <TestimonialCarousel client:visible />
+      <TestimonialCarousel client:visible locale={locale} />
     </div>
   </div>
 </section>

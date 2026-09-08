@@ -1,7 +1,34 @@
 ---
 import { ContactForm } from "@/components/site/contact-form"
 import { EMAIL, LOCATION, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
+import { localeFromPath } from "@/lib/i18n"
 import { Mail, MapPin, Phone } from "lucide-react"
+
+const locale = localeFromPath(Astro.url.pathname)
+const en = {
+  title: "Talk to a landlord side specialist",
+  intro:
+    "Free review. No obligation. Tell us about your lease and we respond within one business day.",
+  privacy: "Your details stay private. We never share with carriers. No carrier affiliation.",
+  phone: "Phone",
+  email: "Email",
+  office: "Office",
+  callAnytime: "Call anytime",
+  mapTitle: "CellWaves office on Google Maps",
+}
+const fr: typeof en = {
+  title: "Parlez à un spécialiste du côté propriétaire",
+  intro:
+    "Analyse gratuite. Sans obligation. Parlez-nous de votre bail et nous vous répondons dans un délai d’un jour ouvrable.",
+  privacy:
+    "Vos coordonnées restent confidentielles. Nous ne les partageons jamais avec les opérateurs. Aucune affiliation avec un opérateur.",
+  phone: "Téléphone",
+  email: "Courriel",
+  office: "Bureau",
+  callAnytime: "Appelez à toute heure",
+  mapTitle: "Bureau de CellWaves sur Google Maps",
+}
+const t = locale === "fr" ? fr : en
 ---
 
 <section id="contact" class="bg-background">
@@ -9,10 +36,10 @@ import { Mail, MapPin, Phone } from "lucide-react"
     <!-- Header - vertical stack, not split -->
     <div class="reveal max-w-2xl">
       <h2 class="text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl lg:text-[2.95rem]">
-        Talk to a landlord side specialist
+        {t.title}
       </h2>
       <p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-        Free review. No obligation. Tell us about your lease and we respond within one business day.
+        {t.intro}
       </p>
     </div>
 
@@ -20,9 +47,9 @@ import { Mail, MapPin, Phone } from "lucide-react"
     <div class="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-12">
       <!-- Form - 7 cols, primary -->
       <div class="reveal lg:col-span-7">
-        <ContactForm client:load />
+        <ContactForm client:load locale={locale} />
         <p class="mt-4 text-center text-xs leading-5 text-muted-foreground sm:text-left">
-          Your details stay private. We never share with carriers. No carrier affiliation.
+          {t.privacy}
         </p>
       </div>
 
@@ -36,17 +63,17 @@ import { Mail, MapPin, Phone } from "lucide-react"
                 <Phone className="h-4 w-4" strokeWidth="2" />
               </span>
               <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">Phone</span>
+                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.phone}</span>
                 <span class="block text-sm font-semibold text-ink">{PHONE_DISPLAY}</span>
               </span>
-              <span class="ml-auto hidden text-xs text-muted-foreground sm:block">Call anytime</span>
+              <span class="ml-auto hidden text-xs text-muted-foreground sm:block">{t.callAnytime}</span>
             </a>
             <a href={`mailto:${EMAIL}`} class="flex items-center gap-4 px-6 py-5 transition-colors hover:bg-secondary/40">
               <span class="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-ink">
                 <Mail className="h-4 w-4" strokeWidth="2" />
               </span>
               <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">Email</span>
+                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.email}</span>
                 <span class="block text-sm font-semibold text-ink">{EMAIL}</span>
               </span>
             </a>
@@ -55,7 +82,7 @@ import { Mail, MapPin, Phone } from "lucide-react"
                 <MapPin className="h-4 w-4" strokeWidth="2" />
               </span>
               <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">Office</span>
+                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.office}</span>
                 <span class="block max-w-[28ch] text-sm leading-6 text-muted-foreground">{LOCATION}</span>
               </span>
             </div>
@@ -66,7 +93,7 @@ import { Mail, MapPin, Phone } from "lucide-react"
         <div class="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
           <div class="relative aspect-[16/11] w-full overflow-hidden bg-secondary lg:aspect-[4/3]">
             <iframe
-              title="CellWaves office on Google Maps"
+              title={t.mapTitle}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.429!2d-106.678!3d52.131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5304f6dc5a5a5a5a%3A0x0!2s1539%20Bradwell%20Ave%2C%20Saskatoon%2C%20SK!5e0!3m2!1sen!2sca!4v1720000000000"
               width="600"
               height="450"
