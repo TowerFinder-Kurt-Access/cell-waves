@@ -4,7 +4,7 @@ import dataEn from "@/i18n/locales/en/data.json"
 import dataFr from "@/i18n/locales/fr/data.json"
 
 // Structured content lives in the JSON locale catalogs (src/i18n/locales).
-function localized<T>(key: "nav" | "footerUsefulLinks" | "footerServices" | "footerAbout" | "servicePages" | "advicePages" | "services" | "reasons" | "steps" | "leaseTopics"): Localized<T> {
+function localized<T>(key: "nav" | "footerUsefulLinks" | "footerServices" | "footerAbout" | "servicePages" | "advicePages" | "services" | "reasons" | "steps" | "leaseTopics" | "posts"): Localized<T> {
   return {
     en: (dataEn as Record<string, unknown>)[key] as T,
     fr: (dataFr as Record<string, unknown>)[key] as T,
@@ -162,118 +162,7 @@ export interface Post {
   alt: string
 }
 
-export const POSTS: Post[] = [
-  {
-    slug: "how-to-find-the-best-land-for-cell-tower-companies-looking-for-land",
-    title: "How To Find The Best Land For Cell Tower Companies Looking For Land",
-    excerpt:
-      "Looking for a smart way to generate passive income from your land? Leasing to cell tower companies could be the perfect solution.",
-    date: "March 15, 2025",
-    image:
-      "/images/blog/blog-11.jpg",
-    alt: "Telecommunications tower",
-  },
-  {
-    slug: "the-blurbs-of-wireless-towers-why-hiring-a-cell-tower-lease-consultant-is-beneficial-for-landowners",
-    title: "Why Hiring a Cell Tower Lease Consultant is Beneficial for Landowners",
-    excerpt:
-      "Caught off guard by a cell tower lease offer? It feels like a golden opportunity, but the details decide whether it really is.",
-    date: "March 6, 2025",
-    image:
-      "/images/blog/blog-10.jpg",
-    alt: "Cell tower antenna",
-  },
-  {
-    slug: "cell-tower-lease-friendly-list",
-    title: "Cell Tower Lease Friendly List",
-    excerpt:
-      "If you've thought about leasing your property for a cell tower, it takes more than having space to spare.",
-    date: "January 30, 2025",
-    image:
-      "/images/blog/blog-5.jpg",
-    alt: "Telecommunication tower",
-  },
-  {
-    slug: "how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide",
-    title: "How to Negotiate My Cell Tower Lease: A Comprehensive Guide",
-    excerpt:
-      "Turning your land into passive income through a cell tower lease sounds appealing. Here's how to make sure the deal works for you.",
-    date: "September 25, 2024",
-    image:
-      "/images/blog/blog-2.webp",
-    alt: "Cell tower and microwave equipment",
-  },
-  {
-    slug: "how-to-get-more-money-for-my-cell-tower-lease-tips-and-strategies",
-    title: "How to Get More Money for My Cell Tower Lease: Tips and Strategies",
-    excerpt:
-      "If you have a cell tower lease, you might wonder if you're maximizing its potential. Here's how to push for more.",
-    date: "September 25, 2024",
-    image:
-      "/images/blog/blog-8.jpg",
-    alt: "Reviewing lease documents",
-  },
-  {
-    slug: "how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
-    title: "How Much Is My Cell Tower Lease Worth? Understanding Lease Valuation",
-    excerpt:
-      "Approached by a telecom company to lease space for a tower? Your first question is likely what it's actually worth.",
-    date: "September 25, 2024",
-    image:
-      "/images/blog/blog-3.jpg",
-    alt: "Transmission system",
-  },
-  {
-    slug: "why-should-i-use-a-wireless-consultant-for-my-cell-phone-tower-lease",
-    title: "Why Should I Use a Wireless Consultant for My Cell Phone Tower Lease?",
-    excerpt:
-      "A wireless consultant works for you, not the carrier. Here's what that changes at the negotiating table.",
-    date: "May 5, 2023",
-    image:
-      "/images/blog/blog-9.jpg",
-    alt: "Consultant at work",
-  },
-  {
-    slug: "small-cells-in-deployment",
-    title: "Small Cells In Deployment",
-    excerpt:
-      "Carriers are densifying networks with small cells. Here's what that means for property owners and lease value.",
-    date: "October 1, 2019",
-    image:
-      "/images/blog/blog-6.jpg",
-    alt: "Small cell deployment",
-  },
-  {
-    slug: "i-want-a-cell-tower",
-    title: "I Want A Cell Tower",
-    excerpt:
-      "Many landowners want a tower on their property. Here's the reality of how carriers actually pick sites.",
-    date: "September 5, 2017",
-    image:
-      "/images/blog/blog-7.jpg",
-    alt: "Cell tower in a desert",
-  },
-  {
-    slug: "5g-technologys-impact-on-your-cell-site",
-    title: "5G Technology's Impact On Your Cell Site",
-    excerpt:
-      "5G upgrades are changing what carriers need from existing sites. Here's how it affects your lease.",
-    date: "August 30, 2017",
-    image:
-      "/images/blog/blog-1.jpg",
-    alt: "5G cell site",
-  },
-  {
-    slug: "46-billion-firstnet-awarded-to-att-whats-your-cut",
-    title: "$46 Billion FirstNet Awarded To AT&T. What's Your Cut?",
-    excerpt:
-      "The FirstNet build reshapes carrier spending. Here's what it could mean for the value of your site.",
-    date: "August 5, 2017",
-    image:
-      "/images/blog/blog-4.jpg",
-    alt: "FirstNet network graphic",
-  },
-]
+export const POSTS: Localized<Post[]> = localized("posts")
 
 export const LEASE_TOPICS: Localized<{ title: string; body: string; href: string }[]> = localized("leaseTopics")
 

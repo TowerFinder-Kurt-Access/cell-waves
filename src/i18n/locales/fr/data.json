@@ -380,5 +380,95 @@
       "body": "Ce que vaut votre bail et ce qu'on vous verse ne correspondent souvent pas. Voici pourquoi cet écart existe.",
       "href": "/blog"
     }
+  ],
+  "posts": [
+    {
+      "slug": "how-to-find-the-best-land-for-cell-tower-companies-looking-for-land",
+      "title": "Comment trouver le meilleur terrain pour les entreprises de tours de téléphonie mobile",
+      "excerpt": "Vous cherchez un moyen judicieux de tirer un revenu passif de votre terrain? Louer aux entreprises de tours de téléphonie mobile pourrait être la solution idéale.",
+      "date": "15 mars 2025",
+      "image": "/images/blog/blog-11.jpg",
+      "alt": "Tour de télécommunications"
+    },
+    {
+      "slug": "the-blurbs-of-wireless-towers-why-hiring-a-cell-tower-lease-consultant-is-beneficial-for-landowners",
+      "title": "Pourquoi retenir les services d'un consultant en baux de tours de téléphonie mobile est avantageux pour les propriétaires",
+      "excerpt": "Une offre de bail de tour de téléphonie mobile vous a pris au dépourvu? Elle semble une occasion en or, mais les détails décident si c'est vraiment le cas.",
+      "date": "6 mars 2025",
+      "image": "/images/blog/blog-10.jpg",
+      "alt": "Antenne de tour de téléphonie mobile"
+    },
+    {
+      "slug": "cell-tower-lease-friendly-list",
+      "title": "Liste des atouts pour un bail de tour de téléphonie mobile",
+      "excerpt": "Si vous avez songé à louer votre propriété pour une tour de téléphonie mobile, il faut plus que de l'espace libre.",
+      "date": "30 janvier 2025",
+      "image": "/images/blog/blog-5.jpg",
+      "alt": "Tour de télécommunication"
+    },
+    {
+      "slug": "how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide",
+      "title": "Comment négocier mon bail de tour de téléphonie mobile : guide complet",
+      "excerpt": "Transformer votre terrain en revenu passif grâce à un bail de tour de téléphonie mobile semble attrayant. Voici comment vous assurer que l'entente joue en votre faveur.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-2.webp",
+      "alt": "Tour de téléphonie mobile et équipement à micro-ondes"
+    },
+    {
+      "slug": "how-to-get-more-money-for-my-cell-tower-lease-tips-and-strategies",
+      "title": "Comment obtenir plus d'argent pour mon bail de tour de téléphonie mobile : conseils et stratégies",
+      "excerpt": "Si vous détenez un bail de tour de téléphonie mobile, vous vous demandez peut-être si vous en tirez le maximum. Voici comment exiger davantage.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-8.jpg",
+      "alt": "Examen de documents de bail"
+    },
+    {
+      "slug": "how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
+      "title": "Combien vaut mon bail de tour de téléphonie mobile? Comprendre l'évaluation du bail",
+      "excerpt": "Une entreprise de télécommunications vous a approché pour louer un espace pour une tour? Votre première question est sans doute ce que cela vaut vraiment.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-3.jpg",
+      "alt": "Système de transmission"
+    },
+    {
+      "slug": "why-should-i-use-a-wireless-consultant-for-my-cell-phone-tower-lease",
+      "title": "Pourquoi retenir un consultant sans fil pour mon bail de tour de téléphonie mobile?",
+      "excerpt": "Un consultant sans fil travaille pour vous, pas pour l'opérateur. Voici ce que cela change à la table de négociation.",
+      "date": "5 mai 2023",
+      "image": "/images/blog/blog-9.jpg",
+      "alt": "Consultant au travail"
+    },
+    {
+      "slug": "small-cells-in-deployment",
+      "title": "Petites cellules en déploiement",
+      "excerpt": "Les opérateurs densifient leurs réseaux avec des petites cellules. Voici ce que cela signifie pour les propriétaires et la valeur du bail.",
+      "date": "1er octobre 2019",
+      "image": "/images/blog/blog-6.jpg",
+      "alt": "Déploiement de petites cellules"
+    },
+    {
+      "slug": "i-want-a-cell-tower",
+      "title": "Je veux une tour de téléphonie mobile",
+      "excerpt": "Beaucoup de propriétaires veulent une tour de téléphonie mobile sur leur terrain. Voici comment les opérateurs choisissent vraiment les sites.",
+      "date": "5 septembre 2017",
+      "image": "/images/blog/blog-7.jpg",
+      "alt": "Tour de téléphonie mobile dans un désert"
+    },
+    {
+      "slug": "5g-technologys-impact-on-your-cell-site",
+      "title": "L'incidence de la technologie 5G sur votre site cellulaire",
+      "excerpt": "Les mises à niveau 5G changent ce que les opérateurs attendent des sites existants. Voici l'effet sur votre bail.",
+      "date": "30 août 2017",
+      "image": "/images/blog/blog-1.jpg",
+      "alt": "Site cellulaire 5G"
+    },
+    {
+      "slug": "46-billion-firstnet-awarded-to-att-whats-your-cut",
+      "title": "46 milliards de dollars de FirstNet accordés à AT&T. Quelle est votre part?",
+      "excerpt": "Le déploiement de FirstNet redéfinit les dépenses des opérateurs. Voici ce que cela pourrait signifier pour la valeur de votre site.",
+      "date": "5 août 2017",
+      "image": "/images/blog/blog-4.jpg",
+      "alt": "Graphique du réseau FirstNet"
+    }
   ]
 }

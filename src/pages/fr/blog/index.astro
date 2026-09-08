@@ -7,7 +7,7 @@ import { POSTS } from "@/lib/content"
 
 const entries = await getCollection("blog")
 const bySlug = new Map(entries.map((e) => [e.id, e]))
-const posts = POSTS.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
+const posts = POSTS.fr.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
 ---
 
 <Base
@@ -31,7 +31,7 @@ const posts = POSTS.map((p) => ({ meta: p, entry: bySlug.get(p.slug) }))
       <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map(({ meta, entry }, i) => (
           <a
-            href={entry ? `/blog/${meta.slug}` : "#"}
+            href={entry ? `/fr/blog/${meta.slug}` : "#"}
             style={`--reveal-delay: ${(i % 3) * 80}ms`}
             class="reveal group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
           >

@@ -49,8 +49,8 @@ const allSchema = [
   breadcrumbSchema(Astro.url.pathname, title, locale),
   ...extraSchema,
 ]
-// Blog posts exist in English only; a /fr twin would 404, so skip that alternate.
-const hasFrTwin = !/^\/blog\/.+/.test(neutralPath)
+// Every route ships an /fr twin, so both hreflang alternates always render.
+const hasFrTwin = true
 ---
 
 <html lang={HTML_LANG[locale]}>

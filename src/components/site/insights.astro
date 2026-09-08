@@ -6,7 +6,7 @@ import { localeFromPath, localizePath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 const t = getBundle<Record<string, string>>(locale, "ui", "insights")
-const posts = POSTS.slice(0, 3)
+const posts = POSTS[locale].slice(0, 3)
 ---
 
 <section id="insights" class="border-y border-border bg-secondary/40">
@@ -33,7 +33,7 @@ const posts = POSTS.slice(0, 3)
     <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post, i) => (
         <a
-          href={`/blog/${post.slug}`}
+          href={localizePath(locale, `/blog/${post.slug}`)}
           style={`--reveal-delay: ${i * 80}ms`}
           class="reveal group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
         >
