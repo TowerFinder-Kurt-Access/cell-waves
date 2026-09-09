@@ -43,6 +43,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         return
       }
       form.reset()
+      window.gtag?.("event", "generate_lead", { currency: "CAD" })
       setStatus("sent")
     } catch {
       setErrorMessage(t.networkError)

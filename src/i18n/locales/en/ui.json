@@ -87,7 +87,7 @@
   },
   "cookieConsent": {
     "label": "Cookie consent",
-    "body": "We use privacy-friendly analytics. No cookies. Decline anytime.",
+    "body": "We use analytics to measure site traffic. Analytics load only with your consent. Decline anytime.",
     "privacy": "Privacy policy",
     "decline": "Decline",
     "accept": "Accept"

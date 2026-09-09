@@ -8,6 +8,38 @@ import { localizePath, type Locale } from "@/lib/i18n"
 const CONSENT_KEY = "cw-consent"
 const CF_BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js"
 const CF_BEACON_TOKEN = "c01d42984c2243b39ad0a8786c74fe6d"
+const GA4_ID = "G-XYNNZYWQF4"
+
+declare global {
+  interface Window {
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
+function loadGoogleAnalytics() {
+  if (document.getElementById("ga4-script")) return
+  const script = document.createElement("script")
+  script.async = true
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`
+  script.id = "ga4-script"
+  document.head.appendChild(script)
+  window.dataLayer = window.dataLayer || []
+  window.gtag = (...args: unknown[]) => {
+    window.dataLayer!.push(args)
+  }
+  window.gtag("js", new Date())
+  window.gtag("config", GA4_ID)
+}
+
+function trackPhoneClick() {
+  // Delegated listener so tel: links anywhere (header, contact, footer) are captured.
+  document.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target as Element | null
+    if (!target?.closest || !target.closest('a[href^="tel:"]')) return
+    window.gtag?.("event", "click_phone", { event_category: "contact" })
+  })
+}
 
 function loadCloudflareBeacon() {
   if (document.querySelector('script[data-cf-beacon]')) return
@@ -34,6 +66,8 @@ export function CookieConsent({ locale }: { locale: Locale }) {
     }
     if (consent === "accepted") {
       loadCloudflareBeacon()
+      loadGoogleAnalytics()
+      trackPhoneClick()
     } else if (consent === null) {
       setVisible(true)
     }
@@ -45,7 +79,11 @@ export function CookieConsent({ locale }: { locale: Locale }) {
     } catch {
       // Storage unavailable: still close the banner.
     }
-    if (value === "accepted") loadCloudflareBeacon()
+    if (value === "accepted") {
+      loadCloudflareBeacon()
+      loadGoogleAnalytics()
+      trackPhoneClick()
+    }
     setVisible(false)
   }
 

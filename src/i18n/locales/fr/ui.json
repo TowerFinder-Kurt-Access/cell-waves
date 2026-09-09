@@ -87,7 +87,7 @@
   },
   "cookieConsent": {
     "label": "Gestion des témoins",
-    "body": "Nous utilisons des outils d’analyse respectueux de la vie privée. Aucun témoin. Vous pouvez refuser à tout moment.",
+    "body": "Nous utilisons des outils d’analyse pour mesurer la fréquentation du site. Les outils d’analyse ne se chargent qu’avec votre consentement. Vous pouvez refuser à tout moment.",
     "privacy": "Politique de confidentialité",
     "decline": "Refuser",
     "accept": "Accepter"
