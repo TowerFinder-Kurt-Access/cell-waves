@@ -1,0 +1,125 @@
+{
+  "hero": {
+    "towerAlt": "Tour de téléphonie mobile dans un ciel lumineux",
+    "eyebrow": "Baux de tours de téléphonie mobile avec des propriétaires",
+    "headline": "BAIL DE TOUR DE TÉLÉPHONIE MOBILE",
+    "subhead": "Des professionnels à vos côtés.",
+    "body": "La juste valeur marchande commence par connaître ce que votre site apporte au réseau. Nous négocions les renouvellements, les prolongations et les rachats de bail pour les propriétaires canadiens.",
+    "cta": "Commencer"
+  },
+  "about": {
+    "imageAlt": "Deux professionnels se serrant la main au-dessus d'un bail",
+    "years": "ans",
+    "eyebrow": "À propos de nous",
+    "heading": "Libérez tout le potentiel de votre renouvellement de bail télécom",
+    "body1": "Chez CellWaves, nous aidons les propriétaires à tirer la pleine valeur de leurs baux télécoms. Nous négocions de meilleures ententes de renouvellement pour les propriétaires qui louent leur terrain aux entreprises de télécommunications, dont les antennes mesurent généralement 15 à 24 pieds.",
+    "body2": "Contrairement à d'autres courtiers, nous n'obtenons pas de nouvelles ententes pour les propriétaires. Nous nous concentrons sur ceux qu'on approche pour un renouvellement de bail, transformant une offre de quelques centaines de dollars en une entente valant des milliers de dollars.",
+    "statLeaseTerms": "Baux d'envergure que nous passons en revue",
+    "statAffiliates": "Succursales affiliées à l'échelle nationale",
+    "cta": "À propos de nous"
+  },
+  "contact": {
+    "title": "Parlez à un spécialiste du côté propriétaire",
+    "intro": "Analyse gratuite. Sans obligation. Parlez-nous de votre bail et nous vous répondons dans un délai d’un jour ouvrable.",
+    "privacy": "Vos coordonnées restent confidentielles. Nous ne les partageons jamais avec les opérateurs. Aucune affiliation avec un opérateur.",
+    "phone": "Téléphone",
+    "email": "Courriel",
+    "office": "Bureau",
+    "callAnytime": "Appelez à toute heure",
+    "mapTitle": "Bureau de CellWaves sur Google Maps"
+  },
+  "insights": {
+    "eyebrow": "Blogue et articles",
+    "heading": "Nos plus récents articles de blogue",
+    "sub": "Des lectures pratiques sur les taux de bail, la négociation et la réelle valeur de votre site.",
+    "viewAll": "Voir tous les articles"
+  },
+  "leaseTopics": {
+    "learnMore": "En savoir plus"
+  },
+  "process": {
+    "heading": "Comment ça fonctionne",
+    "sub": "Trois étapes, aucun frais initial, et vous gardez le contrôle de chaque décision.",
+    "cta": "Lancez votre analyse gratuite"
+  },
+  "sections": {
+    "heading": "Notre expertise couvre toute la vie de votre bail",
+    "sub": "De la première lettre de proposition jusqu'à la signature du rachat de bail, nous visons un seul résultat : une entente plus forte pour le propriétaire.",
+    "readMore": "En savoir plus"
+  },
+  "testimonials": {
+    "title": "Ce que disent les propriétaires après la signature du bail",
+    "sub": "Sept témoignages du Québec à la Colombie-Britannique. Des noms, des villes et des sites que vous pouvez vérifier. D’abord le retour, puis l’identité. Aucune citation toute faite."
+  },
+  "whyChoose": {
+    "heading": "Pourquoi les propriétaires choisissent CellWaves",
+    "sub": "Les opérateurs sans fil négocient des centaines de baux par année. La plupart des propriétaires en signent un seul dans leur vie. Nous comblons cet écart d'expérience."
+  },
+  "contactForm": {
+    "fullName": "Nom complet",
+    "namePlaceholder": "Marie Tremblay",
+    "email": "Courriel",
+    "emailPlaceholder": "marie@example.ca",
+    "phone": "Téléphone",
+    "phonePlaceholder": "(780) 555-0123",
+    "address": "Adresse du site de la tour",
+    "addressPlaceholder": "123 Range Rd, Alberta",
+    "message": "Comment pouvons-nous vous aider?",
+    "messagePlaceholder": "Parlez-nous de votre bail ou de l’offre de l’opérateur.",
+    "sending": "Envoi en cours...",
+    "submit": "Demander une consultation gratuite",
+    "footnote": "Sans obligation. Vos coordonnées restent confidentielles.",
+    "successTitle": "Demande reçue",
+    "successBody": "Merci de nous avoir contactés. Nous examinerons vos informations et vous répondrons dans un délai d’un jour ouvrable.",
+    "networkError": "Erreur réseau. Vérifiez votre connexion et réessayez.",
+    "fallbackError": "Un problème est survenu. Veuillez réessayer."
+  },
+  "footer": {
+    "useful": "Liens utiles",
+    "services": "Nos services",
+    "contact": "Nous joindre",
+    "cta": "Consultation gratuite",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales",
+    "language": "Langue",
+    "homeAria": "CellWaves accueil"
+  },
+  "cookieConsent": {
+    "label": "Gestion des témoins",
+    "body": "Nous utilisons des outils d’analyse respectueux de la vie privée. Aucun témoin. Vous pouvez refuser à tout moment.",
+    "privacy": "Politique de confidentialité",
+    "decline": "Refuser",
+    "accept": "Accepter"
+  },
+  "mobileNav": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "navLabel": "Navigation mobile",
+    "cta": "Consultation gratuite"
+  },
+  "carousel": {
+    "pages": "Pages de témoignages",
+    "goTo": "Aller au témoignage {{n}}",
+    "prev": "Témoignage précédent",
+    "next": "Témoignage suivant"
+  },
+  "header": {
+    "homeAria": "CellWaves accueil",
+    "primaryNav": "Principale",
+    "cta": "Consultation gratuite"
+  },
+  "meta": {
+    "defaultTitle": "Cell Waves Canada - Experts en bail de site de téléphonie mobile",
+    "defaultDescription": "Cell Waves Canada négocie les baux de tours et de toitures pour les propriétaires canadiens. Maximisez vos revenus issus des renouvellements, des rachats et des modernisations de sites.",
+    "ogImageAlt": "Cell Waves Canada - experts en bail de site de téléphonie mobile"
+  },
+  "article": {
+    "callAnytime": "Appelez-nous en tout temps",
+    "ctaHeading": "Obtenez une évaluation gratuite de votre bail",
+    "ctaBody": "Envoyez-nous les détails de votre bail et nous vous répondrons dans un jour ouvrable. Sans obligation.",
+    "ctaButton": "Obtenir une évaluation gratuite",
+    "eyebrow": "Nos services",
+    "relatedLabel": "Nos services"
+  }
+}

@@ -4,6 +4,9 @@ import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { FOOTER_ABOUT, TEAM } from "@/lib/content"
+import { localeFromPath } from "@/lib/i18n"
+
+const locale = localeFromPath(Astro.url.pathname)
 ---
 
 <Base
@@ -20,7 +23,7 @@ import { FOOTER_ABOUT, TEAM } from "@/lib/content"
           Meet our team
         </h1>
         <p class="mt-4 text-base leading-relaxed text-muted-foreground">
-          {FOOTER_ABOUT}
+          {FOOTER_ABOUT[locale]}
         </p>
       </div>
 

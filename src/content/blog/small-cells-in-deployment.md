@@ -2,7 +2,7 @@
 title: "Small Cells In Deployment"
 description: "Small cells are reshaping wireless infrastructure. Learn how small cell deployment impacts property owners, lease rates, and opportunities in urban and suburban areas."
 pubDate: 2019-10-01
-heroImage: "https://cell-waves.ca/wp-content/uploads/2025/02/New-Project-2022-07-07T092522.458-1024x743-1.jpg"
+heroImage: "/images/blog/blog-6.jpg"
 ---
 
 We’re beginning to see more requests for Small Cell installations within our property portfolio. Unfortunately, the offer on the table is just $200 per month, which is significantly lower compared to the rent paid for traditional macro cell sites. Typically, a small cell setup involves installing a 50-foot wooden pole on the property with most of the necessary equipment attached to it, leaving only a few utilities aside. However, it’s important to note that rent isn’t solely based on the square footage occupied by the equipment. It also takes into account the access and utility easements required, as well as the level of disruption to the privacy of surrounding homes or businesses.

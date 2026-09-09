@@ -1,0 +1,93 @@
+---
+import { Star } from "lucide-react"
+import Footer from "@/components/site/footer.astro"
+import Header from "@/components/site/header.astro"
+import Base from "@/layouts/base.astro"
+import { PAGE_TESTIMONIALS } from "@/lib/content"
+
+const items = PAGE_TESTIMONIALS.map((t) => {
+  const idx = t.paragraphs[0].indexOf(". ")
+  const excerpt = idx === -1 ? t.paragraphs[0] : t.paragraphs[0].slice(0, idx + 1)
+  const leadRest = idx === -1 ? "" : t.paragraphs[0].slice(idx + 2)
+  const body = [leadRest, ...t.paragraphs.slice(1)].filter(Boolean)
+  return { ...t, excerpt, body }
+})
+---
+
+<Base
+  title="Témoignages de clients - CellWaves"
+  description="Découvrez ce que les propriétaires, les gestionnaires immobiliers et les propriétaires de sites de tours disent de leur collaboration avec CellWaves. De véritables réussites en consultation et négociation de baux de tours de téléphonie mobile."
+>
+  <Header />
+  <main class="bg-background">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <!-- Intro -->
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-brand">Témoignages</p>
+        <h1 class="mt-3 text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl">
+          Ce que disent les propriétaires une fois le bail signé
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
+          Dix comptes rendus, du Québec à la Colombie-Britannique. De vrais
+          noms, des villes et des sites que vous pouvez vérifier.
+        </p>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="mt-16 space-y-20 sm:space-y-24">
+        {
+          items.map((t) => (
+            <article class="grid gap-10 lg:grid-cols-12 lg:gap-14">
+              <div class="reveal lg:col-span-8">
+                <p class="text-xs font-semibold uppercase tracking-widest text-brand">
+                  {t.title}
+                </p>
+
+                <blockquote class="mt-4 max-w-[42ch] text-xl font-bold leading-[1.15] tracking-tighter text-ink sm:text-2xl">
+                  <span class="text-brand/30">&ldquo;</span>
+                  {t.excerpt}
+                  <span class="text-brand/30">&rdquo;</span>
+                </blockquote>
+
+                <div class="mt-6 max-w-2xl space-y-4">
+                  {t.body.map((p) => (
+                    <p class="text-[15px] leading-relaxed text-muted-foreground sm:text-base">{p}</p>
+                  ))}
+                </div>
+              </div>
+
+              <div class="reveal reveal-right lg:col-span-4">
+                <div class="border-t border-border pt-6 lg:sticky lg:top-32">
+                  <div class="flex gap-1 text-brand" aria-label="5 étoiles sur 5">
+                    {Array.from({ length: 5 }).map(() => (
+                      <Star className="size-4" fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                    ))}
+                  </div>
+                  <div class="mt-5 flex items-center gap-4">
+                    <img
+                      src={t.image}
+                      alt={`Site de ${t.name}`}
+                      width={80}
+                      height={80}
+                      loading="lazy"
+                      class="h-16 w-16 shrink-0 rounded-full object-cover ring-1 ring-border"
+                    />
+                    <div class="min-w-0">
+                      <p class="text-lg font-bold leading-tight tracking-tighter text-ink">
+                        {t.name}
+                      </p>
+                      <p class="mt-1 text-[15px] font-medium leading-tight tracking-wide text-muted-foreground">
+                        {t.location}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

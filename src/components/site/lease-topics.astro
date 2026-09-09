@@ -1,7 +1,11 @@
 ---
 import { ArrowRight, BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { LEASE_TOPICS } from "@/lib/content"
+import { localeFromPath } from "@/lib/i18n"
 
+const locale = localeFromPath(Astro.url.pathname)
+const t = getBundle<Record<string, string>>(locale, "ui", "leaseTopics")
 const icons = [BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp]
 ---
 
@@ -9,7 +13,7 @@ const icons = [BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp]
   <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
       {
-        LEASE_TOPICS.map((topic, i) => {
+        LEASE_TOPICS[locale].map((topic, i) => {
           const Icon = icons[i] ?? BadgeDollarSign
           const isAccent = i % 2 === 1
           return (
@@ -37,7 +41,7 @@ const icons = [BadgeDollarSign, ShieldAlert, PhoneIncoming, TrendingUp]
               <h3 class="mt-4 text-sm font-semibold leading-snug text-ink">{topic.title}</h3>
               <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{topic.body}</p>
               <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand">
-                Learn more
+                {t.learnMore}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" strokeWidth="2" />
               </span>
             </a>

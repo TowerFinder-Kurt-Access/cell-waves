@@ -1,7 +1,11 @@
 ---
 import { FileCheck, PenLine, RadioTower, TrendingUp } from "lucide-react"
+import { getBundle } from "@/i18n"
 import { REASONS } from "@/lib/content"
+import { localeFromPath } from "@/lib/i18n"
 
+const locale = localeFromPath(Astro.url.pathname)
+const t = getBundle<Record<string, string>>(locale, "ui", "whyChoose")
 const icons = [TrendingUp, PenLine, RadioTower, FileCheck]
 ---
 
@@ -11,11 +15,10 @@ const icons = [TrendingUp, PenLine, RadioTower, FileCheck]
       <!-- Heading column -->
       <div class="reveal lg:col-span-4">
         <h2 class="text-3xl font-bold leading-tight text-ink sm:text-4xl">
-          Why landlords choose CellWaves
+          {t.heading}
         </h2>
         <p class="mt-4 text-base leading-relaxed text-muted-foreground">
-          Carriers negotiate hundreds of leases a year. Most landlords sign one
-          in a lifetime. We close that experience gap.
+          {t.sub}
         </p>
       </div>
 
@@ -23,7 +26,7 @@ const icons = [TrendingUp, PenLine, RadioTower, FileCheck]
       <div class="lg:col-span-8">
         <div class="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
           {
-            REASONS.map((r, i) => {
+            REASONS[locale].map((r, i) => {
               const Icon = icons[i] ?? RadioTower
               return (
                 <div class="reveal border-t-2 border-brand/20 pt-5" style={`--reveal-delay: ${i * 70}ms`}>

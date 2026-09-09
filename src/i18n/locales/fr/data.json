@@ -1,0 +1,474 @@
+{
+  "nav": [
+    {
+      "label": "Accueil",
+      "href": "/"
+    },
+    {
+      "label": "À propos",
+      "href": "/about-us",
+      "children": [
+        {
+          "label": "À propos de Cell Waves",
+          "href": "/about-us"
+        },
+        {
+          "label": "Pourquoi nous choisir",
+          "href": "/why-select-us"
+        },
+        {
+          "label": "Témoignages",
+          "href": "/testimonials"
+        }
+      ]
+    },
+    {
+      "label": "Nos services",
+      "href": "/#services",
+      "children": [
+        {
+          "label": "Contrats de bail de tour de téléphonie mobile",
+          "href": "/services/cell-tower-lease-agreements"
+        },
+        {
+          "label": "Renouvellements et prolongations de bail",
+          "href": "/services/lease-renewals-and-extensions"
+        },
+        {
+          "label": "Négociation de baux de tours de téléphonie mobile",
+          "href": "/services/negotiating-cell-tower-leases"
+        },
+        {
+          "label": "Baux sur toiture",
+          "href": "/services/rooftop-leases"
+        },
+        {
+          "label": "Rachat de bail sans fil disponible",
+          "href": "/services/wireless-lease-buyout-available"
+        },
+        {
+          "label": "Coût des services d'un consultant",
+          "href": "/services/how-much-do-cell-tower-lease-consultant-services-cost"
+        },
+        {
+          "label": "Engager un consultant en bail de tour de téléphonie mobile",
+          "href": "/services/hiring-a-cell-tower-lease-consultant"
+        }
+      ]
+    },
+    {
+      "label": "Nos conseils",
+      "href": "/blog",
+      "children": [
+        {
+          "label": "Taux des baux de tours de téléphonie mobile",
+          "href": "/advice/cell-phone-tower-lease-rates"
+        },
+        {
+          "label": "Quelle est la valeur de mon bail sans fil ?",
+          "href": "/advice/what-is-my-wireless-lease-worth"
+        },
+        {
+          "label": "Fusions et risques technologiques pour vos revenus",
+          "href": "/advice/mergers-and-technology-risks-to-revenue"
+        },
+        {
+          "label": "Valeur marchande de votre loyer",
+          "href": "/advice/market-value-of-your-rent"
+        },
+        {
+          "label": "Dois-je accepter les demandes de mise à niveau ?",
+          "href": "/advice/should-i-consent-to-upgrade-requests"
+        },
+        {
+          "label": "Le locataire demande le renouvellement de mon bail",
+          "href": "/advice/tenant-requests-to-renew-my-lease"
+        },
+        {
+          "label": "Avocat en baux de tours de téléphonie mobile",
+          "href": "/advice/cell-tower-attorney"
+        }
+      ]
+    },
+    {
+      "label": "Blogue",
+      "href": "/blog"
+    }
+  ],
+  "footerUsefulLinks": [
+    {
+      "label": "À propos",
+      "href": "/about-us"
+    },
+    {
+      "label": "Témoignages",
+      "href": "/testimonials"
+    },
+    {
+      "label": "Pourquoi nous choisir",
+      "href": "/why-select-us"
+    },
+    {
+      "label": "Nos conseils",
+      "href": "/blog"
+    },
+    {
+      "label": "Blogue",
+      "href": "/blog"
+    },
+    {
+      "label": "Nous joindre",
+      "href": "/#contact"
+    }
+  ],
+  "footerServices": [
+    {
+      "label": "Contrats de bail de tour de téléphonie mobile",
+      "href": "/services/cell-tower-lease-agreements"
+    },
+    {
+      "label": "Renouvellements et prolongations de bail",
+      "href": "/services/lease-renewals-and-extensions"
+    },
+    {
+      "label": "Négociation de baux de tours de téléphonie mobile",
+      "href": "/services/negotiating-cell-tower-leases"
+    },
+    {
+      "label": "Baux sur toiture",
+      "href": "/services/rooftop-leases"
+    },
+    {
+      "label": "Rachat de bail sans fil",
+      "href": "/services/wireless-lease-buyout-available"
+    },
+    {
+      "label": "Choisir un consultant en bail",
+      "href": "/services/hiring-a-cell-tower-lease-consultant"
+    }
+  ],
+  "footerAbout": "L'équipe de direction de CellWaves cumule plus de 35 années d'expérience dans tous les volets de l'industrie : location de sites de tours de téléphonie mobile, développement, génie sans fil, rachat de baux moyennant une somme forfaitaire et construction de tours de téléphonie mobile.",
+  "servicePages": [
+    {
+      "title": "Contrats de bail de tour de téléphonie mobile",
+      "href": "/services/cell-tower-lease-agreements",
+      "description": "Des conditions justes et rentables pour les ententes concernant les tours nouvelles ou déjà érigées.",
+      "keywords": [
+        "contrat de bail tour de téléphonie mobile",
+        "bail de tour cellulaire",
+        "conditions de bail de site cellulaire",
+        "contrat de bail sans fil"
+      ]
+    },
+    {
+      "title": "Renouvellements et prolongations de bail",
+      "href": "/services/lease-renewals-and-extensions",
+      "description": "Renegociez les baux qui arrivent à échéance avant que l'opérateur n'impose définitivement ses conditions.",
+      "keywords": [
+        "renouvellement de bail de tour de téléphonie mobile",
+        "prolongation de bail de tour",
+        "renégociation de bail",
+        "renouvellement de bail opérateur sans fil"
+      ]
+    },
+    {
+      "title": "Négociation de baux de tours de téléphonie mobile",
+      "href": "/services/negotiating-cell-tower-leases",
+      "description": "Négociation du côté des propriétaires face aux agents d'emplacement des opérateurs.",
+      "keywords": [
+        "négociation de bail de tour cellulaire",
+        "négocier un bail de tour",
+        "remplacer un avocat en bail de tour",
+        "négociation de bail pour propriétaire"
+      ]
+    },
+    {
+      "title": "Baux sur toiture",
+      "href": "/services/rooftop-leases",
+      "description": "Ententes relatives aux antennes et à l'équipement en toiture pour les propriétaires d'immeubles.",
+      "keywords": [
+        "bail de site cellulaire en toiture",
+        "bail d'antenne sur toiture",
+        "location de toiture pour opérateur sans fil",
+        "bail de toiture commerciale"
+      ]
+    },
+    {
+      "title": "Rachat de bail sans fil disponible",
+      "href": "/services/wireless-lease-buyout-available",
+      "description": "Des offres de rachat moyennant une somme forfaitaire qui reflètent la valeur à long terme de votre bail.",
+      "keywords": [
+        "rachat de bail de tour cellulaire",
+        "rachat de bail sans fil",
+        "somme forfaitaire pour bail de tour",
+        "offre de rachat de bail"
+      ]
+    },
+    {
+      "title": "Combien coûtent les services d'un consultant en bail de tour de téléphonie mobile ?",
+      "href": "/services/how-much-do-cell-tower-lease-consultant-services-cost",
+      "description": "Le fonctionnement des frais de consultation et ce à quoi vous attendre.",
+      "keywords": [
+        "frais de consultant en tour de téléphonie mobile",
+        "coût d'un consultant en bail",
+        "prix d'une consultation pour bail de tour"
+      ]
+    },
+    {
+      "title": "Engager un consultant en bail de tour de téléphonie mobile",
+      "href": "/services/hiring-a-cell-tower-lease-consultant",
+      "description": "Les critères à vérifier avant de vous engager avec un consultant.",
+      "keywords": [
+        "consultant en bail de tour de téléphonie mobile",
+        "engager un consultant en bail de tour",
+        "expert en bail sans fil",
+        "consultant en site de tour cellulaire"
+      ]
+    }
+  ],
+  "advicePages": [
+    {
+      "title": "Taux des baux de tours de téléphonie mobile",
+      "href": "/advice/cell-phone-tower-lease-rates",
+      "description": "Comment sont fixés les taux des baux sans fil et ce que le vôtre devrait vous rapporter.",
+      "keywords": [
+        "taux de bail de tour cellulaire",
+        "tarif de loyer pour tour de téléphonie mobile",
+        "loyer de site cellulaire",
+        "loyer mensuel d'une tour cellulaire"
+      ]
+    },
+    {
+      "title": "Quelle est la valeur de mon bail sans fil ?",
+      "href": "/advice/what-is-my-wireless-lease-worth",
+      "description": "Les facteurs qui déterminent la véritable valeur de votre bail.",
+      "keywords": [
+        "valeur d'un bail sans fil",
+        "valeur d'un bail de tour cellulaire",
+        "évaluation de bail de tour",
+        "valeur d'un site cellulaire"
+      ]
+    },
+    {
+      "title": "Fusions et risques technologiques pour vos revenus",
+      "href": "/advice/mergers-and-technology-risks-to-revenue",
+      "description": "Les fusions d'opérateurs et les transformations du réseau qui menacent votre loyer.",
+      "keywords": [
+        "risque de fusion pour un bail de tour",
+        "impact de la 5G sur un bail de tour",
+        "risque pour les revenus sans fil",
+        "consolidation dans les télécommunications"
+      ]
+    },
+    {
+      "title": "Valeur marchande de votre loyer",
+      "href": "/advice/market-value-of-your-rent",
+      "description": "Comparez votre loyer aux véritables données comparables du marché.",
+      "keywords": [
+        "loyer du marché pour tour de téléphonie mobile",
+        "valeur marchande du loyer d'un bail",
+        "comparaison de loyers de tours"
+      ]
+    },
+    {
+      "title": "Dois-je accepter les demandes de mise à niveau ?",
+      "href": "/advice/should-i-consent-to-upgrade-requests",
+      "description": "Ce que les demandes de mise à niveau des opérateurs signifient pour votre levier de négociation.",
+      "keywords": [
+        "consentement à une mise à niveau de tour cellulaire",
+        "bail et mise à niveau 5G",
+        "entente de mise à niveau d'une tour",
+        "consentement à une mise à niveau d'antenne"
+      ]
+    },
+    {
+      "title": "Le locataire demande le renouvellement de mon bail",
+      "href": "/advice/tenant-requests-to-renew-my-lease",
+      "description": "Comment réagir lorsque le locataire prend l'initiative du renouvellement.",
+      "keywords": [
+        "demande de renouvellement de bail",
+        "droits de renouvellement d'un opérateur sans fil",
+        "réponse à une demande de renouvellement de bail de tour"
+      ]
+    },
+    {
+      "title": "Avocat en baux de tours de téléphonie mobile",
+      "href": "/advice/cell-tower-attorney",
+      "description": "Ce qu'un avocat spécialisé peut faire pour vous, et ce que nous faisons de plus.",
+      "keywords": [
+        "avocat en tour de téléphonie mobile",
+        "avocat en bail de tour cellulaire",
+        "avocat en bail sans fil",
+        "avocat en télécommunications"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "title": "Nouveaux baux de tours de téléphonie mobile",
+      "description": "Nous aidons les propriétaires à obtenir de meilleures ententes pour les tours déjà présentes sur leur terrain. Nous ne négocions pas de nouvelles ententes avec de nouveaux clients, mais notre expertise vous garantit de retirer la pleine valeur des renouvellements de bail des tours existantes.",
+      "image": "https://images.unsplash.com/photo-1602823284936-463177448097?q=80&w=1600&auto=format&fit=crop",
+      "alt": "Tour de téléphonie mobile en métal sous un ciel bleu",
+      "href": "/#services",
+      "large": true
+    },
+    {
+      "title": "Baux de tours de téléphonie mobile existants",
+      "description": "De nombreuses sociétés de télécommunications installent des antennes sur des toitures dans le cadre d'ententes qui durent des décennies. À l'approche de l'échéance de ces baux de 30 ans, nous renegocions des versements plus élevés pour la poursuite de l'utilisation de votre espace.",
+      "image": "https://images.unsplash.com/photo-1557174360-3f4f7c724501?q=80&w=1200&auto=format&fit=crop",
+      "alt": "Site cellulaire rouge et gris installé sur une toiture",
+      "href": "/#services"
+    },
+    {
+      "title": "Rachats de baux de tours de téléphonie mobile",
+      "description": "Vous envisagez de vendre le flux de revenus généré par votre bail ? Nous négocions des ententes de rachat afin que vous receviez une somme forfaitaire qui reflète la véritable valeur locative à long terme de votre propriété.",
+      "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
+      "alt": "Stylo signant un document financier à côté d'une calculatrice",
+      "href": "/#services"
+    }
+  ],
+  "reasons": [
+    {
+      "title": "Un succès éprouvé",
+      "body": "Fort d'une solide compréhension de l'industrie des télécommunications et des taux du marché, nous avons aidé des propriétaires à obtenir des hausses de revenus importantes. Nous savons évoluer dans la complexité de l'industrie et défendre vos meilleurs intérêts."
+    },
+    {
+      "title": "Des stratégies de négociation sur mesure",
+      "body": "Chaque propriété est unique, et chaque bail aussi. Nous évaluons votre situation, estimons la valeur marchande de votre propriété et concevons une stratégie personnalisée pour obtenir la meilleure entente possible."
+    },
+    {
+      "title": "Aucune nouvelle entente, seulement des renouvellements",
+      "body": "Contrairement aux courtiers à la recherche de nouveaux clients, notre expertise de niche est consacrée exclusivement aux renouvellements de baux. Cette spécialisation vous donne un avantage dans les négociations."
+    },
+    {
+      "title": "Un processus sans tracas",
+      "body": "Nous prenons en charge les négociations complexes, le jargon du métier et la paperasse, afin que vous n'ayez pas à le faire. Du début à la fin, nous sommes à vos côtés."
+    }
+  ],
+  "steps": [
+    {
+      "title": "Évaluation initiale",
+      "body": "Nous évaluons le potentiel marché de votre propriété dès que vous nous transmettez les détails de votre bail. Cette étape est simple et sans engagement, et permet de cerner les occasions d'accroître la valeur de votre bail."
+    },
+    {
+      "title": "Négociation",
+      "body": "Notre équipe communique avec la société de télécommunications en votre nom et met son expertise à profit pour obtenir une meilleure entente. Nous faisons le travail lourd afin que votre bail reflète la véritable valeur de votre propriété."
+    },
+    {
+      "title": "Des revenus maximisés",
+      "body": "Une fois les négociations terminées, vous profitez des avantages d'une entente de bail ou d'un rachat nettement améliorée. Plus de revenus, une meilleure sécurité et un avantage à long terme."
+    }
+  ],
+  "leaseTopics": [
+    {
+      "title": "Recevez-vous un loyer équivalent à la valeur du marché ?",
+      "body": "La juste valeur marchande de votre site cellulaire ne peut être établie qu'en fonction de la valeur qu'il apporte au réseau.",
+      "href": "/blog/how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation"
+    },
+    {
+      "title": "Des baux résiliés. Cela peut-il vous arriver ?",
+      "body": "À de rares exceptions près, tous les baux sans fil renferment des clauses de résiliation anticipée qui permettent à l'opérateur de passer son chemin. Mesurez votre niveau d'exposition.",
+      "href": "/blog"
+    },
+    {
+      "title": "On vous a contacté. Une nouvelle tour sur votre terrain.",
+      "body": "Le loyer compte, mais le contrat de 30 ans en compte 22 pages. Qu'est-ce qui vous échappe dans les deux douzaines d'autres clauses ?",
+      "href": "/blog/how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide"
+    },
+    {
+      "title": "Pourquoi votre bail a-t-il de la valeur ?",
+      "body": "Ce que vaut votre bail et ce qu'on vous verse ne correspondent souvent pas. Voici pourquoi cet écart existe.",
+      "href": "/blog"
+    }
+  ],
+  "posts": [
+    {
+      "slug": "how-to-find-the-best-land-for-cell-tower-companies-looking-for-land",
+      "title": "Comment trouver le meilleur terrain pour les entreprises de tours de téléphonie mobile",
+      "excerpt": "Vous cherchez un moyen judicieux de tirer un revenu passif de votre terrain? Louer aux entreprises de tours de téléphonie mobile pourrait être la solution idéale.",
+      "date": "15 mars 2025",
+      "image": "/images/blog/blog-11.jpg",
+      "alt": "Tour de télécommunications"
+    },
+    {
+      "slug": "the-blurbs-of-wireless-towers-why-hiring-a-cell-tower-lease-consultant-is-beneficial-for-landowners",
+      "title": "Pourquoi retenir les services d'un consultant en baux de tours de téléphonie mobile est avantageux pour les propriétaires",
+      "excerpt": "Une offre de bail de tour de téléphonie mobile vous a pris au dépourvu? Elle semble une occasion en or, mais les détails décident si c'est vraiment le cas.",
+      "date": "6 mars 2025",
+      "image": "/images/blog/blog-10.jpg",
+      "alt": "Antenne de tour de téléphonie mobile"
+    },
+    {
+      "slug": "cell-tower-lease-friendly-list",
+      "title": "Liste des atouts pour un bail de tour de téléphonie mobile",
+      "excerpt": "Si vous avez songé à louer votre propriété pour une tour de téléphonie mobile, il faut plus que de l'espace libre.",
+      "date": "30 janvier 2025",
+      "image": "/images/blog/blog-5.jpg",
+      "alt": "Tour de télécommunication"
+    },
+    {
+      "slug": "how-to-negotiate-my-cell-tower-lease-a-comprehensive-guide",
+      "title": "Comment négocier mon bail de tour de téléphonie mobile : guide complet",
+      "excerpt": "Transformer votre terrain en revenu passif grâce à un bail de tour de téléphonie mobile semble attrayant. Voici comment vous assurer que l'entente joue en votre faveur.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-2.webp",
+      "alt": "Tour de téléphonie mobile et équipement à micro-ondes"
+    },
+    {
+      "slug": "how-to-get-more-money-for-my-cell-tower-lease-tips-and-strategies",
+      "title": "Comment obtenir plus d'argent pour mon bail de tour de téléphonie mobile : conseils et stratégies",
+      "excerpt": "Si vous détenez un bail de tour de téléphonie mobile, vous vous demandez peut-être si vous en tirez le maximum. Voici comment exiger davantage.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-8.jpg",
+      "alt": "Examen de documents de bail"
+    },
+    {
+      "slug": "how-much-is-my-cell-tower-lease-worth-understanding-lease-valuation",
+      "title": "Combien vaut mon bail de tour de téléphonie mobile? Comprendre l'évaluation du bail",
+      "excerpt": "Une entreprise de télécommunications vous a approché pour louer un espace pour une tour? Votre première question est sans doute ce que cela vaut vraiment.",
+      "date": "25 septembre 2024",
+      "image": "/images/blog/blog-3.jpg",
+      "alt": "Système de transmission"
+    },
+    {
+      "slug": "why-should-i-use-a-wireless-consultant-for-my-cell-phone-tower-lease",
+      "title": "Pourquoi retenir un consultant sans fil pour mon bail de tour de téléphonie mobile?",
+      "excerpt": "Un consultant sans fil travaille pour vous, pas pour l'opérateur. Voici ce que cela change à la table de négociation.",
+      "date": "5 mai 2023",
+      "image": "/images/blog/blog-9.jpg",
+      "alt": "Consultant au travail"
+    },
+    {
+      "slug": "small-cells-in-deployment",
+      "title": "Petites cellules en déploiement",
+      "excerpt": "Les opérateurs densifient leurs réseaux avec des petites cellules. Voici ce que cela signifie pour les propriétaires et la valeur du bail.",
+      "date": "1er octobre 2019",
+      "image": "/images/blog/blog-6.jpg",
+      "alt": "Déploiement de petites cellules"
+    },
+    {
+      "slug": "i-want-a-cell-tower",
+      "title": "Je veux une tour de téléphonie mobile",
+      "excerpt": "Beaucoup de propriétaires veulent une tour de téléphonie mobile sur leur terrain. Voici comment les opérateurs choisissent vraiment les sites.",
+      "date": "5 septembre 2017",
+      "image": "/images/blog/blog-7.jpg",
+      "alt": "Tour de téléphonie mobile dans un désert"
+    },
+    {
+      "slug": "5g-technologys-impact-on-your-cell-site",
+      "title": "L'incidence de la technologie 5G sur votre site cellulaire",
+      "excerpt": "Les mises à niveau 5G changent ce que les opérateurs attendent des sites existants. Voici l'effet sur votre bail.",
+      "date": "30 août 2017",
+      "image": "/images/blog/blog-1.jpg",
+      "alt": "Site cellulaire 5G"
+    },
+    {
+      "slug": "46-billion-firstnet-awarded-to-att-whats-your-cut",
+      "title": "46 milliards de dollars de FirstNet accordés à AT&T. Quelle est votre part?",
+      "excerpt": "Le déploiement de FirstNet redéfinit les dépenses des opérateurs. Voici ce que cela pourrait signifier pour la valeur de votre site.",
+      "date": "5 août 2017",
+      "image": "/images/blog/blog-4.jpg",
+      "alt": "Graphique du réseau FirstNet"
+    }
+  ]
+}

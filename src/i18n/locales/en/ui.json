@@ -1,0 +1,125 @@
+{
+  "hero": {
+    "towerAlt": "Cell tower against bright sky",
+    "eyebrow": "Cell tower lease with wireless landlords",
+    "headline": "CELL TOWER LEASE",
+    "subhead": "Professionals on your side.",
+    "body": "Fair market value starts with knowing what your site delivers. We negotiate renewals, extensions, and buyouts for Canadian property owners.",
+    "cta": "Let's Get Started"
+  },
+  "about": {
+    "imageAlt": "Two professionals shaking hands over a lease agreement",
+    "years": "Years",
+    "eyebrow": "About us",
+    "heading": "Unlock the full potential of your telecom lease renewal",
+    "body1": "At CellWaves, we specialize in helping property owners maximize the value of their telecom lease agreements. We negotiate better lease renewal deals for owners leasing their land to telecom companies, the antennas typically 15-24 feet tall.",
+    "body2": "Unlike other brokers, we don't secure new deals for property owners. We focus on those approached for lease renewals, turning an offer of a few hundred dollars into a deal worth thousands.",
+    "statLeaseTerms": "Significant lease terms we review",
+    "statAffiliates": "Branch affiliates nationwide",
+    "cta": "Read about us"
+  },
+  "contact": {
+    "title": "Talk to a landlord side specialist",
+    "intro": "Free review. No obligation. Tell us about your lease and we respond within one business day.",
+    "privacy": "Your details stay private. We never share with carriers. No carrier affiliation.",
+    "phone": "Phone",
+    "email": "Email",
+    "office": "Office",
+    "callAnytime": "Call anytime",
+    "mapTitle": "CellWaves office on Google Maps"
+  },
+  "insights": {
+    "eyebrow": "Blog and articles",
+    "heading": "Our latest blog and article",
+    "sub": "Practical reading on lease rates, negotiation, and what your site is really worth.",
+    "viewAll": "View all articles"
+  },
+  "leaseTopics": {
+    "learnMore": "Learn more"
+  },
+  "process": {
+    "heading": "How it works",
+    "sub": "Three steps, no upfront fees, and you keep control of every decision.",
+    "cta": "Start your free review"
+  },
+  "sections": {
+    "heading": "Our expertise covers the full life of your lease",
+    "sub": "From the first proposal letter to the final buyout signature, we focus on one outcome: a stronger agreement for the property owner.",
+    "readMore": "Read more"
+  },
+  "testimonials": {
+    "title": "What landlords say after the lease is signed",
+    "sub": "Seven reports from Quebec to British Columbia. Huge names, cities, and sites you can verify. Feedback first, identity below. No stock quotes."
+  },
+  "whyChoose": {
+    "heading": "Why landlords choose CellWaves",
+    "sub": "Carriers negotiate hundreds of leases a year. Most landlords sign one in a lifetime. We close that experience gap."
+  },
+  "contactForm": {
+    "fullName": "Full name",
+    "namePlaceholder": "Jane Tremblay",
+    "email": "Email",
+    "emailPlaceholder": "jane@example.ca",
+    "phone": "Phone",
+    "phonePlaceholder": "(780) 555-0123",
+    "address": "Cell site address",
+    "addressPlaceholder": "123 Range Rd, Alberta",
+    "message": "How can we help?",
+    "messagePlaceholder": "Tell us about your lease or the carrier's offer.",
+    "sending": "Sending...",
+    "submit": "Request free consultation",
+    "footnote": "No obligation. Your details stay confidential.",
+    "successTitle": "Request received",
+    "successBody": "Thanks for reaching out. We will review your details and reply within one business day.",
+    "networkError": "Network error. Please check your connection and try again.",
+    "fallbackError": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "useful": "Useful links",
+    "services": "Our Services",
+    "contact": "Contact Us",
+    "cta": "Free consultation",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions",
+    "language": "Language",
+    "homeAria": "CellWaves home"
+  },
+  "cookieConsent": {
+    "label": "Cookie consent",
+    "body": "We use privacy-friendly analytics. No cookies. Decline anytime.",
+    "privacy": "Privacy policy",
+    "decline": "Decline",
+    "accept": "Accept"
+  },
+  "mobileNav": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "navLabel": "Mobile",
+    "cta": "Free consultation"
+  },
+  "carousel": {
+    "pages": "Testimonial pages",
+    "goTo": "Go to testimonial {{n}}",
+    "prev": "Previous testimonial",
+    "next": "Next testimonial"
+  },
+  "header": {
+    "homeAria": "CellWaves home",
+    "primaryNav": "Primary",
+    "cta": "Free consultation"
+  },
+  "meta": {
+    "defaultTitle": "Cell Waves Canada - Cell Tower Lease Experts for Landlords",
+    "defaultDescription": "Cell Waves Canada negotiates cell tower and rooftop leases for Canadian landlords. Maximize income from renewals, buyouts, and site upgrades.",
+    "ogImageAlt": "Cell Waves Canada - cell tower lease experts for landlords"
+  },
+  "article": {
+    "callAnytime": "Call us anytime",
+    "ctaHeading": "Get a free review of your lease",
+    "ctaBody": "Send us your lease details and we will come back within one business day. No obligation.",
+    "ctaButton": "Get a free review",
+    "eyebrow": "Our services",
+    "relatedLabel": "Our services"
+  }
+}

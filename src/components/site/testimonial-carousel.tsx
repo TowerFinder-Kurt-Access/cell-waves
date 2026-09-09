@@ -2,10 +2,13 @@ import useEmblaCarousel from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, useReducedMotion } from "motion/react"
 import { useEffect, useState } from "react"
+import { getBundle, getT } from "@/i18n"
 import { TESTIMONIALS } from "@/lib/content"
+import { type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
-export function TestimonialCarousel() {
+export function TestimonialCarousel({ locale }: { locale: Locale }) {
+  const t = getBundle<Record<string, string>>(locale, "ui", "carousel")
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" })
   const [selected, setSelected] = useState(0)
   const [snaps, setSnaps] = useState<number[]>([])
@@ -80,12 +83,12 @@ export function TestimonialCarousel() {
       </div>
 
       <div className="mt-8 flex items-center justify-between gap-4 sm:mt-10">
-        <div className="flex items-center gap-2" role="tablist" aria-label="Testimonial pages">
+        <div className="flex items-center gap-2" role="tablist" aria-label={t.pages}>
           {snaps.map((_, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`Go to testimonial ${i + 1}`}
+              aria-label={getT(locale)("carousel.goTo", { n: i + 1 })}
               aria-selected={selected === i}
               onClick={() => emblaApi?.scrollTo(i)}
               className={cn(
@@ -102,7 +105,7 @@ export function TestimonialCarousel() {
         <div className="flex gap-2">
           <button
             type="button"
-            aria-label="Previous testimonial"
+            aria-label={t.prev}
             onClick={() => emblaApi?.scrollPrev()}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent active:scale-[0.98]"
           >
@@ -110,7 +113,7 @@ export function TestimonialCarousel() {
           </button>
           <button
             type="button"
-            aria-label="Next testimonial"
+            aria-label={t.next}
             onClick={() => emblaApi?.scrollNext()}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-ink transition-colors hover:bg-accent active:scale-[0.98]"
           >

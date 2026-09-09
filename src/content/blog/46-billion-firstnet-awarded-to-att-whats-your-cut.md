@@ -2,7 +2,7 @@
 title: "$46 Billion FirstNet Awarded To AT&T. What’s Your Cut?"
 description: "AT&T won the $46 billion FirstNet contract to expand emergency wireless networks. Could your property be next for a cell site? Learn how landowners can benefit."
 pubDate: 2017-08-05
-heroImage: "https://cell-waves.ca/wp-content/uploads/2025/01/firstnet_1280x720_techybg-1024x576-1.jpg"
+heroImage: "/images/blog/blog-4.jpg"
 ---
 
 In March 2017, the National First Responder Program was established to fund a nationwide wireless broadband network dedicated to first responders. This $46 billion initiative, funded by the Department of Commerce, was created in response to the limitations exposed during the 9/11 attacks, where a lack of reliable communication hindered emergency response efforts. AT&T was awarded the first phase of the contract, positioning them to benefit significantly from the program.

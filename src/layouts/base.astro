@@ -11,6 +11,8 @@ import {
   webPageSchema,
   websiteSchema,
 } from "@/lib/seo"
+import { getBundle } from "@/i18n"
+import { HTML_LANG, localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
 
 interface Props {
   title?: string
@@ -24,16 +26,18 @@ interface Props {
   schema?: Record<string, unknown> | Record<string, unknown>[]
 }
 
+const locale = localeFromPath(Astro.url.pathname)
+const meta = getBundle<Record<string, string>>(locale, "ui", "meta")
 const {
-  title = "Cell Waves Canada - Cell Tower Lease Experts for Landlords",
-  description = SITE.description,
+  title = meta.defaultTitle,
+  description = meta.defaultDescription,
   image = SITE.ogImage,
   type = "website",
   keywords = SITE.keywords.join(", "),
   noindex = false,
   schema,
 } = Astro.props
-
+const neutralPath = stripLocale(Astro.url.pathname)
 const canonical = absoluteUrl(Astro.url.pathname)
 const imageUrl = absoluteUrl(image)
 const extraSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : []
@@ -41,15 +45,42 @@ const allSchema = [
   organizationSchema(),
   websiteSchema(),
   ogImageSchema(),
-  webPageSchema({ title, description, url: canonical, type }),
-  breadcrumbSchema(Astro.url.pathname, title),
+  webPageSchema({ title, description, url: canonical, type, locale }),
+  breadcrumbSchema(Astro.url.pathname, title, locale),
   ...extraSchema,
 ]
+// Every route ships an /fr twin, so both hreflang alternates always render.
+const hasFrTwin = true
 ---
 
-<html lang={SITE.locale}>
+<html lang={HTML_LANG[locale]}>
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      // Locale preference: explicit choice (footer toggle, stored in localStorage)
+      // wins; otherwise French-browser visitors land on the /fr twin. Runs before
+      // paint so the redirect is invisible. Blog posts are English-only: never touch.
+      ;(() => {
+        try {
+          const KEY = "cw-locale"
+          const path = location.pathname
+          if (/^\/blog\//.test(path)) return
+          const onFr = path === "/fr" || path.startsWith("/fr/")
+          const current = onFr ? "fr" : "en"
+          const browserFr = (navigator.language || "").toLowerCase().startsWith("fr")
+          const wanted = localStorage.getItem(KEY) || (browserFr ? "fr" : null)
+          if (wanted === "fr" && current !== "fr") {
+            location.replace("/fr" + path + location.search + location.hash)
+          } else if (wanted === "en" && current === "fr") {
+            location.replace(path.slice(3) + location.search + location.hash || "/")
+          }
+          document.addEventListener("click", (e) => {
+            const a = e.target && e.target.closest ? e.target.closest("a[data-locale]") : null
+            if (a) localStorage.setItem(KEY, a.getAttribute("data-locale"))
+          })
+        } catch {}
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{title}</title>
@@ -63,6 +94,9 @@ const allSchema = [
       content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1"}
     />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={absoluteUrl(localizePath("en", neutralPath))} />
+    {hasFrTwin && <link rel="alternate" hreflang="fr" href={absoluteUrl(localizePath("fr", neutralPath))} />}
+    <link rel="alternate" hreflang="x-default" href={absoluteUrl(localizePath("en", neutralPath))} />
 
     <link rel="icon" type="image/webp" href="/brand.webp?v=1" />
     <link rel="icon" href="/favicon.ico?v=3" sizes="48x48" />
@@ -71,14 +105,14 @@ const allSchema = [
 
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.name} />
-    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:locale" content={HTML_LANG[locale].replace("-", "_")} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content={String(SITE.ogImageWidth)} />
     <meta property="og:image:height" content={String(SITE.ogImageHeight)} />
-    <meta property="og:image:alt" content="Cell Waves Canada - cell tower lease experts for landlords" />
+    <meta property="og:image:alt" content={meta.ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -92,7 +126,7 @@ const allSchema = [
   <body>
     <slot />
     <Analytics />
-    <CookieConsent client:load />
+    <CookieConsent client:load locale={locale} />
     <script>
       // Scroll-reveal trigger: hide .reveal elements only once JS is confirmed,
       // then play each entrance once when it enters the viewport.

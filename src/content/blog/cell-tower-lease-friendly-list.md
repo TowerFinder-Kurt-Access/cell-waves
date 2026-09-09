@@ -2,7 +2,7 @@
 title: "Cell Tower Lease Friendly List"
 description: "Looking to lease your land for a cell tower? Explore the top property types and locations carriers prefer when selecting cell tower lease sites."
 pubDate: 2025-01-30
-heroImage: "https://cell-waves.ca/wp-content/uploads/2025/01/telecommunication-5053730_1280.jpg"
+heroImage: "/images/blog/blog-5.jpg"
 ---
 
 If you’ve ever thought about leasing your property for a cell tower, you might assume it’s just about having space to spare. In reality, it’s a bit more strategic than that. Carriers and tower companies aren’t looking for just *any* land-they’re searching for very specific types of properties that meet their coverage and infrastructure goals.

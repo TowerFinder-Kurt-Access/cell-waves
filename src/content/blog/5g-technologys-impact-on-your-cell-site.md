@@ -2,7 +2,7 @@
 title: "5G Technology’s Impact On Your Cell Site"
 description: "Discover how 5G technology affects your cell tower lease, site value, and tenant demands. Learn what landowners need to know to protect and increase revenue."
 pubDate: 2017-08-30
-heroImage: "https://cell-waves.ca/wp-content/uploads/2017/08/GettyImages-1126630372-1024x570.jpg"
+heroImage: "/images/blog/blog-1.jpg"
 ---
 
 The wireless industry typically introduces a new generation of technology every five years, bringing improved performance and infrastructure. Currently, 4G is the standard, providing fast data speeds on devices like iPhones and Samsung Galaxies. However, real-world speeds are often slower than the technology’s theoretical potential demonstrated in lab tests.

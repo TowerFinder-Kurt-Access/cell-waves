@@ -1,7 +1,9 @@
 import { ShieldCheck } from "lucide-react"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
+import { getBundle } from "@/i18n"
 import { Button } from "@/components/ui/button"
+import { localizePath, type Locale } from "@/lib/i18n"
 
 const CONSENT_KEY = "cw-consent"
 const CF_BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js"
@@ -17,7 +19,9 @@ function loadCloudflareBeacon() {
   document.head.appendChild(script)
 }
 
-export function CookieConsent() {
+
+export function CookieConsent({ locale }: { locale: Locale }) {
+  const t = getBundle<Record<string, string>>(locale, "ui", "cookieConsent")
   const [visible, setVisible] = useState(false)
   const reduceMotion = useReducedMotion()
 
@@ -50,7 +54,7 @@ export function CookieConsent() {
       {visible && (
         <motion.div
           role="dialog"
-          aria-label="Cookie consent"
+          aria-label={t.label}
           className="fixed bottom-0 left-0 z-[200] w-full p-3 sm:w-auto sm:max-w-sm sm:p-4"
           initial={reduceMotion ? false : { opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
@@ -63,21 +67,21 @@ export function CookieConsent() {
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-[13px] leading-snug text-muted-foreground">
-                We use privacy-friendly analytics. No cookies. Decline anytime.{" "}
+                {t.body}{" "}
                 <a
-                  href="/privacy-policy"
+                  href={localizePath(locale, "/privacy-policy")}
                   className="font-medium text-brand underline underline-offset-2"
                 >
-                  Privacy policy
+                  {t.privacy}
                 </a>
               </p>
             </div>
             <div className="grid shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-col sm:gap-2">
               <Button size="sm" variant="outline" onClick={() => decide("declined")}>
-                Decline
+                {t.decline}
               </Button>
               <Button size="sm" onClick={() => decide("accepted")}>
-                Accept
+                {t.accept}
               </Button>
             </div>
           </div>

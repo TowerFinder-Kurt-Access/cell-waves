@@ -11,7 +11,12 @@ import {
   PHONE_HREF,
   SITE_NAME,
 } from "@/lib/content"
+import { getBundle } from "@/i18n"
+import { localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
+const locale = localeFromPath(Astro.url.pathname)
+const neutral = stripLocale(Astro.url.pathname)
+const t = getBundle<Record<string, string>>(locale, "ui", "footer")
 const year = new Date().getFullYear()
 ---
 
@@ -29,7 +34,7 @@ const year = new Date().getFullYear()
       <!-- Brand - editorial, airy -->
       <div class="lg:pr-8">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
-          <a href="/" class="flex items-center gap-2.5" aria-label="CellWaves home">
+          <a href={localizePath(locale, "/")} class="flex items-center gap-2.5" aria-label={t.homeAria}>
             <img
               src="/cellwaves-logo.webp"
               alt=""
@@ -53,17 +58,17 @@ const year = new Date().getFullYear()
           />
         </div>
         <p class="mt-5 max-w-sm text-sm leading-7 text-white/55">
-          {FOOTER_ABOUT}
+          {FOOTER_ABOUT[locale]}
         </p>
       </div>
 
       <!-- Useful links - divider as whitespace, not heavy borders -->
-      <nav aria-label="Useful links">
-        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">Useful links</h4>
+      <nav aria-label={t.useful}>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">{t.useful}</h4>
         <ul class="mt-6 space-y-3.5">
-          {FOOTER_USEFUL_LINKS.map((item) => (
+          {FOOTER_USEFUL_LINKS[locale].map((item) => (
             <li>
-              <a href={item.href} class="text-sm leading-6 text-white/60 transition-colors hover:text-white">
+              <a href={localizePath(locale, item.href)} class="text-sm leading-6 text-white/60 transition-colors hover:text-white">
                 {item.label}
               </a>
             </li>
@@ -72,12 +77,12 @@ const year = new Date().getFullYear()
       </nav>
 
       <!-- Our services -->
-      <nav aria-label="Our services">
-        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">Our Services</h4>
+      <nav aria-label={t.services}>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">{t.services}</h4>
         <ul class="mt-6 space-y-3.5">
-          {FOOTER_SERVICES.map((item) => (
+          {FOOTER_SERVICES[locale].map((item) => (
             <li>
-              <a href={item.href} class="text-sm leading-6 text-white/60 transition-colors hover:text-white">
+              <a href={localizePath(locale, item.href)} class="text-sm leading-6 text-white/60 transition-colors hover:text-white">
                 {item.label}
               </a>
             </li>
@@ -87,7 +92,7 @@ const year = new Date().getFullYear()
 
       <!-- Contact - no heavy bento, just breathing list -->
       <div>
-        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">Contact Us</h4>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-white/35">{t.contact}</h4>
         <ul class="mt-6 space-y-5">
           <li>
             <a href={PHONE_HREF} class="group flex items-start gap-3 text-sm">
@@ -114,19 +119,36 @@ const year = new Date().getFullYear()
           </li>
         </ul>
         <a
-          href="/#contact"
+          href={localizePath(locale, "/#contact")}
           class="mt-8 inline-flex h-10 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-black transition-colors hover:bg-white/90 active:translate-y-px"
         >
-          Free consultation
+          {t.cta}
         </a>
       </div>
     </div>
 
     <div class="mt-20 flex flex-col gap-4 border-t border-white/5 pt-8 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-xs leading-6 text-white/30">Copyright {year} {SITE_NAME}. All rights reserved.</p>
-      <div class="flex items-center gap-6 text-xs text-white/30">
-        <a href="/privacy-policy" class="transition-colors hover:text-white">Privacy Policy</a>
-        <a href="/terms-and-conditions" class="transition-colors hover:text-white">Terms and Conditions</a>
+      <p class="text-xs leading-6 text-white/30">Copyright {year} {SITE_NAME}. {t.rights}</p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-white/30">
+        <a href={localizePath(locale, "/privacy-policy")} class="transition-colors hover:text-white">{t.privacy}</a>
+        <a href={localizePath(locale, "/terms-and-conditions")} class="transition-colors hover:text-white">{t.terms}</a>
+        <nav aria-label={t.language} class="flex items-center gap-0.5 rounded-full border border-white/10 p-0.5">
+          {(["en", "fr"] as Locale[]).map((code) => (
+            <a
+              href={localizePath(code, neutral)}
+              data-locale={code}
+              hreflang={code}
+              aria-current={code === locale ? "true" : undefined}
+              class:list={[
+                "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest transition-colors",
+                code === locale ? "bg-white/10 text-white" : "text-white/40 hover:text-white/70",
+              ]}
+            >
+              <span class="text-sm leading-none" aria-hidden="true">🇨🇦</span>
+              {code}
+            </a>
+          ))}
+        </nav>
       </div>
     </div>
   </div>

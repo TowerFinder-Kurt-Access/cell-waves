@@ -1,20 +1,25 @@
 ---
+import { getBundle } from "@/i18n"
 import { TestimonialCarousel } from "@/components/site/testimonial-carousel"
+import { localeFromPath } from "@/lib/i18n"
+
+const locale = localeFromPath(Astro.url.pathname)
+const t = getBundle<Record<string, string>>(locale, "ui", "testimonials")
 ---
 
 <section id="testimonials" class="bg-background">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
     <div class="reveal max-w-3xl">
       <h2 class="text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl lg:text-[3rem]">
-        What landlords say after the lease is signed
+        {t.title}
       </h2>
       <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
-        Seven reports from Quebec to British Columbia. Huge names, cities, and sites you can verify. Feedback first, identity below. No stock quotes.
+        {t.sub}
       </p>
     </div>
 
     <div class="mt-10 sm:mt-14 lg:mt-16">
-      <TestimonialCarousel client:visible />
+      <TestimonialCarousel client:visible locale={locale} />
     </div>
   </div>
 </section>
