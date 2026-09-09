@@ -7,7 +7,7 @@ import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { absoluteUrl, blogPostingSchema } from "@/lib/seo"
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog")
+  const posts = await getCollection("blogFr")
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<"blogFr">
 }
 
 const { post } = Astro.props

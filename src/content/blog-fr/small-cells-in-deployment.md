@@ -1,0 +1,18 @@
+---
+title: "Petites cellules en déploiement"
+description: "Les petites cellules transforment l'infrastructure sans fil. Apprenez comment le déploiement des petites cellules touche les propriétaires, les taux de loyer et les occasions en milieux urbain et suburbain."
+pubDate: 2019-10-01
+heroImage: "/images/blog/blog-6.jpg"
+---
+
+Nous commençons à voir davantage de demandes d'installation de petites cellules dans notre portefeuille immobilier. Malheureusement, l'offre sur la table n'est que de 200 $ par mois, ce qui est nettement inférieur au loyer versé pour les sites macro traditionnels. En règle générale, une installation de petite cellule consiste à installer un poteau en bois de 15 mètres sur la propriété, la majeure partie de l'équipement nécessaire y étant fixée, ne laissant que quelques services publics de côté. Cependant, il importe de noter que le loyer ne repose pas uniquement sur la superficie occupée par l'équipement. Il tient aussi compte des servitudes d'accès et de services publics requises, ainsi que du niveau de dérangement pour l'intimité des résidences ou des commerces environnants.
+
+En revanche, les sites macro, qui offrent une couverture étendue, rapportent habituellement environ 1 000 $ ou plus en loyer, selon divers facteurs. Les opérateurs sans fil prétendent souvent, par l'entremise de leurs agents de location, que les petites cellules ont un impact minime sur le terrain, justifiant ainsi des loyers moins élevés. Toutefois, des sociétés de contrats de location ont confié qu'elles peinent à convaincre les propriétaires d'accepter des offres de loyer de 200 $, car les coûts d'infrastructure et d'entretien de l'électronique demeurent considérables. Cela a rendu le déploiement des petites cellules de plus en plus difficile sur les propriétés privées. Si on vous a approché pour héberger une petite cellule pour seulement 200 $ par mois, il importe de reconnaître que cela fait partie d'un effort à l'échelle de l'industrie par les opérateurs pour réduire les coûts de loyer, bien qu'ils aient…
+
+En mai 2016, CommScope a rapporté que les opérateurs nationaux s'étaient engagés à déployer un vaste réseau de petites cellules dans les emplacements d'affaires dans le cadre de leur stratégie visant à améliorer la couverture et à se préparer aux services 5G. Ces petites cellules sont fondées sur des puces avancées de Qualcomm prenant en charge à la fois la LTE et le Wi-Fi.
+
+Sprint, par exemple, mise sur les petites cellules pour améliorer son réseau tout en maîtrisant les coûts. Le chef de la direction de Sprint, Marcelo Claure, a déclaré qu'à titre d'opérateur plus soucieux de son budget, Sprint adopte une stratégie de déploiement plus intelligente, site par site, plutôt que de signer des ententes à long terme avec les entreprises de tours.
+
+En mars 2016, l'industrie sans fil a vu un intérêt accru pour le déploiement de petites cellules sur les poteaux de services publics, avec des loyers parfois aussi bas que 60 $ par mois. Ce virage indique que les [tours de téléphonie mobile](/fr/) macro traditionnelles pourraient devenir moins nécessaires à mesure que les petites cellules sont déployées dans les milieux plus urbains.
+
+La demande croissante d'ingénieurs en petites cellules est aussi un signe de la rapidité avec laquelle ce segment prend de l'expansion. De nombreux opérateurs sans fil recherchent activement des ingénieurs en petites cellules pour soutenir leurs réseaux en croissance. Cette tendance fait de 2016 une année charnière pour le déploiement des petites cellules dans l'industrie.
