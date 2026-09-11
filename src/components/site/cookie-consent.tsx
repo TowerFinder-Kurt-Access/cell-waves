@@ -93,7 +93,7 @@ export function CookieConsent({ locale }: { locale: Locale }) {
         <motion.div
           role="dialog"
           aria-label={t.label}
-          className="fixed bottom-0 left-0 z-[200] w-full p-3 sm:w-auto sm:max-w-sm sm:p-4"
+          className="fixed bottom-0 left-0 z-[90] w-full p-3 sm:w-auto sm:max-w-sm sm:p-4"
           initial={reduceMotion ? false : { opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
           exit={reduceMotion ? undefined : { opacity: 0, x: -16 }}

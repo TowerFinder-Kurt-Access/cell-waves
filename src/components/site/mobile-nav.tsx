@@ -137,6 +137,27 @@ export function MobileNav({ locale }: { locale: Locale }) {
         </nav>
 
         <div className="mt-auto flex flex-col gap-3 border-t border-white/10 pt-6">
+          <nav aria-label={t.language} className="grid grid-cols-2 gap-1 rounded-full bg-white/5 p-1 ring-1 ring-white/10">
+            {(["en", "fr"] as Locale[]).map((code) => (
+              <a
+                key={code}
+                href={localizePath(code, stripLocale(loc.path))}
+                hreflang={code}
+                data-locale={code}
+                aria-current={code === locale ? "true" : undefined}
+                onClick={() => setOpen(false)}
+                className={cn(
+                  "inline-flex h-9 items-center justify-center gap-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.2em] transition-colors active:translate-y-[1px]",
+                  code === locale
+                    ? "bg-white text-ink shadow-sm"
+                    : "text-white/50 hover:text-white focus-visible:text-white",
+                )}
+              >
+                <span className="text-sm leading-none" aria-hidden="true">🇨🇦</span>
+                {code}
+              </a>
+            ))}
+          </nav>
           <a href={PHONE_HREF} className="flex items-center gap-2 text-sm font-semibold text-brand">
             <Phone className="h-4 w-4" strokeWidth="2" />
             {PHONE_DISPLAY}
