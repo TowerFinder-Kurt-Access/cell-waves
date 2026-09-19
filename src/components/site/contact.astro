@@ -1,89 +1,253 @@
 ---
 import { getBundle } from "@/i18n"
 import { ContactForm } from "@/components/site/contact-form"
-import { EMAIL, LOCATION, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
+import {
+  EMAIL,
+  LOCATION,
+  LOCATION_HREF,
+  LOCATION_LINES,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+} from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
-import { Mail, MapPin, Phone } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Phone, type LucideIcon } from "lucide-react"
+import {
+  FACEBOOK_HREF,
+  FACEBOOK_HREF_MOBILE,
+  FACEBOOK_ICON_PATH,
+  LINKEDIN_HREF,
+  LINKEDIN_ICON_PATH,
+} from "@/lib/social"
 
 const locale = localeFromPath(Astro.url.pathname)
 const t = getBundle<Record<string, string>>(locale, "ui", "contact")
+
+interface Channel {
+  label: string
+  href: string
+  icon: LucideIcon
+  external?: boolean
+  /** Single-line data printed under the label. */
+  value?: string
+  /** Multi-line data printed under the label, never clipped. */
+  lines?: string[]
+}
+
+// One row per channel: label above, tap target below. Keeps the rail short.
+const CHANNELS: Channel[] = [
+  { label: t.phone, value: PHONE_DISPLAY, href: PHONE_HREF, icon: Phone },
+  { label: t.email, value: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
+  {
+    label: t.office,
+    href: LOCATION_HREF,
+    icon: MapPin,
+    external: true,
+    lines: LOCATION_LINES,
+  },
+]
 ---
 
-<section id="contact" class="bg-background">
-  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-    <!-- Header - vertical stack, not split -->
-    <div class="reveal max-w-2xl">
-      <h2 class="text-4xl font-bold leading-none tracking-tighter text-ink sm:text-5xl lg:text-[2.95rem]">
+<section id="contact" class="relative overflow-hidden bg-background">
+  <!-- ambient depth: never flat -->
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.6]"
+    aria-hidden="true"
+    style="background:
+      radial-gradient(900px 520px at 8% 0%, oklch(0.92 0.04 232 / 0.55), transparent 55%),
+      radial-gradient(700px 420px at 100% 100%, oklch(0.94 0.05 230 / 0.45), transparent 60%);"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <!-- Header: one wide block, two lines maximum -->
+    <div class="reveal mx-auto max-w-4xl text-center">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
+        {t.eyebrow ?? "Direct line to a landlord-side expert"}
+      </p>
+      <h2
+        class="mt-4 font-heading text-[clamp(1.9rem,3.4vw,3rem)] font-bold leading-[1.06] tracking-tighter text-ink"
+      >
         {t.title}
       </h2>
-      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-[17px]">
+      <p
+        class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[17px]"
+      >
         {t.intro}
       </p>
     </div>
 
-    <!-- Body - asymmetric 12-col bento, map is visual -->
-    <div class="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-12">
-      <!-- Form - 7 cols, primary -->
-      <div class="reveal lg:col-span-7">
-        <ContactForm client:load locale={locale} />
-        <p class="mt-4 text-center text-xs leading-5 text-muted-foreground sm:text-left">
-          {t.privacy}
-        </p>
-      </div>
+    <!-- Single shell: gapless rail + form row, slim map row underneath -->
+    <div
+      class="reveal mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-sm lg:mt-12"
+      style="--reveal-delay: 80ms"
+    >
+      <div class="grid lg:grid-cols-12">
+        <aside
+          class="relative isolate flex flex-col justify-between gap-7 overflow-hidden bg-brand p-6 text-brand-foreground sm:p-8 lg:col-span-5"
+        >
+          <div
+            class="pointer-events-none absolute inset-0 -z-10 opacity-30"
+            aria-hidden="true"
+            style="background:
+              radial-gradient(420px 320px at 90% 0%, oklch(1 0 0 / 0.18), transparent 60%),
+              radial-gradient(380px 260px at 0% 100%, oklch(1 0 0 / 0.12), transparent 60%);"
+          >
+          </div>
 
-      <!-- Info + Map - 5 cols, stacked with breathing -->
-      <div class="reveal flex flex-col gap-6 lg:col-span-5">
-        <!-- Info - no heavy card, border-y grouping -->
-        <div class="rounded-2xl border border-border bg-card">
-          <div class="space-y-0 divide-y divide-border">
-            <a href={PHONE_HREF} class="flex items-center gap-4 px-6 py-5 transition-colors hover:bg-secondary/40">
-              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-brand-foreground">
-                <Phone className="h-4 w-4" strokeWidth="2" />
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand-foreground/70">
+              {t.directLabel ?? "Direct contact"}
+            </p>
+
+            <ul class="mt-4 divide-y divide-brand-foreground/15 text-sm">
+              {
+                CHANNELS.map(({ icon: Icon, label, value, lines, href, external }) => {
+                  const arrow = (
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 shrink-0 text-brand-foreground/50 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-foreground"
+                      strokeWidth="2.2"
+                      aria-hidden="true"
+                    />
+                  )
+                  return (
+                    <li>
+                      <a
+                        href={href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        class="group block py-4 transition-opacity hover:opacity-90 lg:py-5"
+                      >
+                        <span class="flex items-center justify-between gap-4">
+                          <span class="flex items-center gap-2.5 text-[13px] text-brand-foreground/70">
+                            <Icon className="h-3.5 w-3.5" strokeWidth="2.4" aria-hidden="true" />
+                            {label}
+                          </span>
+                          {arrow}
+                        </span>
+                        <!-- Contact data: left aligned under the label, never clipped -->
+                        <span class="mt-2.5 block font-semibold leading-relaxed">
+                          {(lines ?? [value ?? ""]).map((line) => (
+                            <span class="block">{line}</span>
+                          ))}
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+
+          <!-- Rail footer: availability + social channels, icon-only to save height -->
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <span
+              class="inline-flex items-center gap-2.5 rounded-full bg-brand-foreground/15 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em]"
+            >
+              <span class="relative flex h-2 w-2" aria-hidden="true">
+                <span
+                  class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70 motion-reduce:animate-none"
+                ></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
               </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.phone}</span>
-                <span class="block text-sm font-semibold text-ink">{PHONE_DISPLAY}</span>
-              </span>
-              <span class="ml-auto hidden text-xs text-muted-foreground sm:block">{t.callAnytime}</span>
-            </a>
-            <a href={`mailto:${EMAIL}`} class="flex items-center gap-4 px-6 py-5 transition-colors hover:bg-secondary/40">
-              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-ink">
-                <Mail className="h-4 w-4" strokeWidth="2" />
-              </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.email}</span>
-                <span class="block text-sm font-semibold text-ink">{EMAIL}</span>
-              </span>
-            </a>
-            <div class="flex items-start gap-4 px-6 py-5">
-              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-ink">
-                <MapPin className="h-4 w-4" strokeWidth="2" />
-              </span>
-              <span>
-                <span class="block text-xs uppercase tracking-widest text-muted-foreground">{t.office}</span>
-                <span class="block max-w-[28ch] text-sm leading-6 text-muted-foreground">{LOCATION}</span>
-              </span>
+              {t.openLabel ?? "Open today"}
+            </span>
+            <div class="flex items-center gap-2">
+              <a
+                href={LINKEDIN_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.linkedin}
+                title={t.linkedin}
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d={LINKEDIN_ICON_PATH} />
+                </svg>
+              </a>
+              <a
+                href={FACEBOOK_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.facebook}
+                title={t.facebook}
+                class="hidden h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25 md:flex"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d={FACEBOOK_ICON_PATH} />
+                </svg>
+              </a>
+              <a
+                href={FACEBOOK_HREF_MOBILE}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.facebook}
+                title={t.facebook}
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25 md:hidden"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d={FACEBOOK_ICON_PATH} />
+                </svg>
+              </a>
             </div>
           </div>
-        </div>
+        </aside>
 
-        <!-- Google Maps embed - real visual, bento diversity -->
-        <div class="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-          <div class="relative aspect-[16/11] w-full overflow-hidden bg-secondary lg:aspect-[4/3]">
-            <iframe
-              title={t.mapTitle}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.429!2d-106.678!3d52.131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5304f6dc5a5a5a5a%3A0x0!2s1539%20Bradwell%20Ave%2C%20Saskatoon%2C%20SK!5e0!3m2!1sen!2sca!4v1720000000000"
-              width="600"
-              height="450"
-              style="border:0;"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen
-              class="absolute inset-0 h-full w-full"
-            ></iframe>
+        <!-- Form panel: flat surface, the shell already provides the frame -->
+        <div class="relative border-t border-border lg:col-span-7 lg:border-l lg:border-t-0">
+          <div
+            class="pointer-events-none absolute inset-0 opacity-[0.05]"
+            aria-hidden="true"
+            style="background-image: linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px); background-size: 36px 36px; color: oklch(0.205 0.035 240);"
+          >
+          </div>
+          <div class="relative p-6 sm:p-8 lg:p-9">
+            <ContactForm client:load locale={locale} />
           </div>
         </div>
       </div>
+
+      <!-- Map row: slim band inside the shell, so it costs no extra page gap -->
+      <a
+        href={LOCATION_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.mapTitle}
+        class="group relative block border-t border-border"
+      >
+        <div class="relative h-28 w-full sm:h-40 lg:h-48">
+          <iframe
+            title={t.mapTitle}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.429!2d-106.678!3d52.131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5304f6dc5a5a5a5a%3A0x0!2s1539%20Bradwell%20Ave%2C%20Saskatoon%2C%20SK!5e0!3m2!1sen!2sca!4v1720000000000"
+            style="border:0; filter: grayscale(0.4) contrast(1.05) saturate(0.85);"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="absolute inset-0 h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+          ></iframe>
+
+          <!-- edge wash so the chips read on the map -->
+          <div
+            class="pointer-events-none absolute inset-0"
+            aria-hidden="true"
+            style="background: linear-gradient(to right, oklch(0.99 0.005 230 / 0.85), transparent 30%, transparent 70%, oklch(0.99 0.005 230 / 0.85));"
+          >
+          </div>
+
+          <div class="absolute inset-0 flex items-center justify-between gap-4 px-4 sm:px-6">
+            <span
+              class="hidden max-w-[55%] items-center gap-2 rounded-full bg-card/95 py-2 pl-4 pr-5 text-xs font-semibold text-ink shadow-sm backdrop-blur-sm sm:inline-flex"
+            >
+              <MapPin className="h-3.5 w-3.5 shrink-0 text-brand" strokeWidth="2.4" aria-hidden="true" />
+              <span class="truncate">{LOCATION}</span>
+            </span>
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-brand-foreground shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-xs"
+            >
+              {t.directionsLabel ?? "Get directions"}
+              <ArrowUpRight className="h-3.5 w-3.5" strokeWidth="2.4" aria-hidden="true" />
+            </span>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>

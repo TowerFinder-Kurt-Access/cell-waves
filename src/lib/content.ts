@@ -18,6 +18,13 @@ export const PHONE_ALT_HREF = "tel:+15878828813"
 export const EMAIL = "brett@cell-waves.ca"
 export const SITE_NAME = "CellWaves"
 export const LOCATION = "1539 Bradwell Avenue Saskatoon, Saskatchewan, Canada S7N2K5"
+// Display form for narrow columns: the single-line string above cannot render in
+// full beside a label, so the contact rail prints these lines instead.
+export const LOCATION_LINES = [
+  "1539 Bradwell Avenue",
+  "Saskatoon, Saskatchewan",
+  "Canada S7N 2K5",
+]
 export const LOCATION_HREF = "https://maps.app.goo.gl/ycUu1uSz2Y89hNB87"
 
 export interface NavItem {

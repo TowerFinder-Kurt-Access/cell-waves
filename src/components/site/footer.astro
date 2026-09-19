@@ -14,6 +14,7 @@ import {
 import { getBundle } from "@/i18n"
 import { localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
+// Social icons moved into the contact section (see contact.astro "Follow us").
 const locale = localeFromPath(Astro.url.pathname)
 const neutral = stripLocale(Astro.url.pathname)
 const t = getBundle<Record<string, string>>(locale, "ui", "footer")

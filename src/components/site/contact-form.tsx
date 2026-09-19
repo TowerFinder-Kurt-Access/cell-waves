@@ -1,9 +1,7 @@
-import { Mail, MapPin, Phone, Send } from "lucide-react"
+import { Send } from "lucide-react"
 import { useState } from "react"
 import { getBundle } from "@/i18n"
-import { EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { type Locale } from "@/lib/i18n"
-
 
 const inputClass =
   "h-11 w-full rounded-lg border border-input bg-background px-3.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -53,7 +51,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
   if (status === "sent") {
     return (
-      <div className="flex h-full min-h-[24rem] flex-col items-center justify-center rounded-2xl border border-border bg-card p-8 text-center shadow-sm">
+      <div className="flex h-full min-h-[20rem] flex-col items-center justify-center px-2 py-10 text-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-muted text-brand">
           <Send className="h-5 w-5" strokeWidth="2" />
         </span>
@@ -66,11 +64,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
   }
 
   return (
-    <form
-      className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
-      onSubmit={handleSubmit}
-      noValidate
-    >
+    <form onSubmit={handleSubmit} noValidate>
       {/* Spam protection: hidden from users, filled only by bots. */}
       <input
         type="text"
@@ -81,7 +75,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         className="absolute -left-[9999px] h-px w-px opacity-0"
       />
       <input type="hidden" name="startedAt" value={startedAt} />
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="contact-name" className="text-sm font-medium text-ink">
             {t.fullName}
@@ -143,9 +137,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
           <textarea
             id="contact-message"
             name="message"
-            rows={6}
+            rows={4}
             placeholder={t.messagePlaceholder}
-            className="min-h-[160px] w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:min-h-[184px]"
+            className="min-h-[112px] w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:min-h-[128px]"
           />
         </div>
       </div>
@@ -154,59 +148,17 @@ export function ContactForm({ locale }: { locale: Locale }) {
           {errorMessage}
         </p>
       )}
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand px-6 text-base font-semibold text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
-      >
-        {status === "sending" ? t.sending : t.submit}
-        <Send className="h-4 w-4" strokeWidth="2" />
-      </button>
-      <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-        {t.footnote}
-      </p>
-    </form>
-  )
-}
-
-export function ContactAside() {
-  return (
-    <div className="flex flex-col gap-6">
-      <a
-        href={PHONE_HREF}
-        className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
-      >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-          <Phone className="h-5 w-5" strokeWidth="2" />
-        </span>
-        <div>
-          <p className="text-sm font-semibold text-ink">Call us anytime</p>
-          <p className="mt-1 text-sm text-muted-foreground">{PHONE_DISPLAY}</p>
-        </div>
-      </a>
-      <a
-        href={`mailto:${EMAIL}`}
-        className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
-      >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-          <Mail className="h-5 w-5" strokeWidth="2" />
-        </span>
-        <div>
-          <p className="text-sm font-semibold text-ink">Email</p>
-          <p className="mt-1 text-sm text-muted-foreground">{EMAIL}</p>
-        </div>
-      </a>
-      <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
-          <MapPin className="h-5 w-5" strokeWidth="2" />
-        </span>
-        <div>
-          <p className="text-sm font-semibold text-ink">Serving Canada</p>
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-            Landlords in every province, coast to coast.
-          </p>
-        </div>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand px-6 text-sm font-semibold text-brand-foreground shadow-sm transition-all hover:brightness-110 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {status === "sending" ? t.sending : t.submit}
+          <Send className="h-4 w-4" strokeWidth="2" />
+        </button>
+        <p className="text-xs leading-5 text-muted-foreground">{t.footnote}</p>
       </div>
-    </div>
+    </form>
   )
 }
