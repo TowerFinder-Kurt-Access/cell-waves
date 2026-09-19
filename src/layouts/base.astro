@@ -6,6 +6,8 @@ import {
   SITE,
   absoluteUrl,
   breadcrumbSchema,
+  metaDescription,
+  metaTitle,
   ogImageSchema,
   organizationSchema,
   webPageSchema,
@@ -37,6 +39,10 @@ const {
   noindex = false,
   schema,
 } = Astro.props
+// Head tags are clamped to search-snippet length: authored copy stays intact in
+// the page body and in JSON-LD, only the <head> values are trimmed.
+const headTitle = metaTitle(title)
+const headDescription = metaDescription(description)
 const neutralPath = stripLocale(Astro.url.pathname)
 const canonical = absoluteUrl(Astro.url.pathname)
 const imageUrl = absoluteUrl(image)
@@ -45,7 +51,7 @@ const allSchema = [
   organizationSchema(),
   websiteSchema(),
   ogImageSchema(),
-  webPageSchema({ title, description, url: canonical, type, locale }),
+  webPageSchema({ title: headTitle, description: headDescription, url: canonical, type, locale }),
   breadcrumbSchema(Astro.url.pathname, title, locale),
   ...extraSchema,
 ]
@@ -83,8 +89,8 @@ const hasFrTwin = true
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>{headTitle}</title>
+    <meta name="description" content={headDescription} />
     <meta name="keywords" content={keywords} />
     <meta name="author" content={SITE.name} />
     <meta name="creator" content={SITE.name} />
@@ -106,8 +112,8 @@ const hasFrTwin = true
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:locale" content={HTML_LANG[locale].replace("-", "_")} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={headTitle} />
+    <meta property="og:description" content={headDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content={String(SITE.ogImageWidth)} />
@@ -115,8 +121,8 @@ const hasFrTwin = true
     <meta property="og:image:alt" content={meta.ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={headTitle} />
+    <meta name="twitter:description" content={headDescription} />
     <meta name="twitter:image" content={imageUrl} />
 
     {allSchema.map((s) => (

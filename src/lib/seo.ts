@@ -43,6 +43,44 @@ export function absoluteUrl(path: string): string {
   return new URL(path, SITE.url).toString()
 }
 
+// Search results cut titles near 60 characters and descriptions near 155.
+export const META_TITLE_MAX = 60
+export const META_DESCRIPTION_MAX = 155
+
+/** Cut on a word boundary and mark the cut, so no snippet ends mid-word. */
+function truncateHead(value: string, max: number): string {
+  const text = value.trim().replace(/\s+/g, " ")
+  if (text.length <= max) return text
+  const cut = text.slice(0, max - 1)
+  const lastSpace = cut.lastIndexOf(" ")
+  const head = lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut
+  return `${head.replace(/[\s,;:.!?\-–—]+$/, "")}…`
+}
+
+/** Title tag: keep the brand when it fits, drop it before cutting the topic. */
+export function metaTitle(title: string, max: number = META_TITLE_MAX): string {
+  const clean = title.trim()
+  const branded = `${clean} - ${SITE.brandName}`
+  const alreadyBranded = clean.includes(SITE.brandName) || clean.includes(SITE.name)
+
+  if (alreadyBranded && clean.length <= max) return clean
+  if (!alreadyBranded && branded.length <= max) return branded
+
+  // Too long: strip the brand so the keyword phrase survives intact.
+  const escape = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  const unbranded = clean
+    .replace(new RegExp(`^\\s*${escape(SITE.name)}\\s*[-–—|:]?\\s*`), "")
+    .replace(new RegExp(`\\s*[-–—|:]?\\s*${escape(SITE.brandName)}\\s*$`), "")
+    .trim()
+  if (unbranded && unbranded !== clean && unbranded.length <= max) return unbranded
+
+  return truncateHead(clean, max)
+}
+
+export function metaDescription(description: string, max: number = META_DESCRIPTION_MAX): string {
+  return truncateHead(description, max)
+}
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",

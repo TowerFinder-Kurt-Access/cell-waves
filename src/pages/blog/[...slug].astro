@@ -28,8 +28,8 @@ const date = post.data.pubDate.toLocaleDateString("en-CA", {
 ---
 
 <Base
-  title={`${post.data.title} - CellWaves`}
-  description={post.data.description}
+  title={post.data.seoTitle ?? post.data.title}
+  description={post.data.seoDescription ?? post.data.description}
   type="article"
   schema={blogPostingSchema({
     title: post.data.title,

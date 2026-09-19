@@ -6,6 +6,9 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // Optional overrides for the <head> only; the article keeps the full title.
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
     pubDate: z.coerce.date(),
     heroImage: z.string().optional(),
   }),
@@ -16,6 +19,9 @@ const blogFr = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    // Optional overrides for the <head> only; the article keeps the full title.
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
     pubDate: z.coerce.date(),
     heroImage: z.string().optional(),
   }),
