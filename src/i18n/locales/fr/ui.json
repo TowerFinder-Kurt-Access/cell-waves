@@ -26,7 +26,13 @@
     "email": "Courriel",
     "office": "Bureau",
     "callAnytime": "Appelez à toute heure",
-    "mapTitle": "Bureau de CellWaves sur Google Maps"
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "mapTitle": "Bureau de CellWaves sur Google Maps",
+    "eyebrow": "Ligne directe avec un expert côté propriétaire",
+    "directLabel": "Contact direct",
+    "openLabel": "Ouvert aujourd’hui",
+    "directionsLabel": "Itinéraire"
   },
   "insights": {
     "eyebrow": "Blogue et articles",
@@ -84,6 +90,17 @@
     "terms": "Conditions générales",
     "language": "Langue",
     "homeAria": "CellWaves accueil"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "heading": "Cette page n'est pas sur le réseau",
+    "body": "Le lien est peut-être brisé ou la page a été déplacée. Utilisez un de ces chemins pour retrouver ce qu'il vous faut.",
+    "home": "Retour à l'accueil",
+    "services": "Nos services",
+    "blog": "Blogue et articles",
+    "about": "À propos de nous",
+    "testimonials": "Témoignages",
+    "switch": "English"
   },
   "cookieConsent": {
     "label": "Gestion des témoins",

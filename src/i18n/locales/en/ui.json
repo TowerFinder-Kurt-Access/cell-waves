@@ -26,7 +26,13 @@
     "email": "Email",
     "office": "Office",
     "callAnytime": "Call anytime",
-    "mapTitle": "CellWaves office on Google Maps"
+    "linkedin": "LinkedIn",
+    "facebook": "Facebook",
+    "mapTitle": "CellWaves office on Google Maps",
+    "eyebrow": "Direct line to a landlord-side expert",
+    "directLabel": "Direct contact",
+    "openLabel": "Open today",
+    "directionsLabel": "Get directions"
   },
   "insights": {
     "eyebrow": "Blog and articles",
@@ -84,6 +90,17 @@
     "terms": "Terms and Conditions",
     "language": "Language",
     "homeAria": "CellWaves home"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "heading": "This page is off the network",
+    "body": "The link may be broken or the page may have moved. Use one of these paths to get back to what you need.",
+    "home": "Back to home",
+    "services": "Our services",
+    "blog": "Blog and articles",
+    "about": "About us",
+    "testimonials": "Testimonials",
+    "switch": "Français"
   },
   "cookieConsent": {
     "label": "Cookie consent",
