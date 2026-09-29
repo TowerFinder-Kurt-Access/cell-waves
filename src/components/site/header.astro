@@ -112,7 +112,7 @@ const localizedCurrent = stripLocale(Astro.url.pathname) + Astro.url.hash
             ]}
           >
             <span class="text-sm leading-none" aria-hidden="true">
-              <img src={LOCALE_MARKS[code].src} alt="" class:list={["h-3.5", LOCALE_MARKS[code].width, "rounded-[2px] object-cover"]} />
+              <img src={LOCALE_MARKS[code].src} alt="" class:list={["h-5", LOCALE_MARKS[code].width, "rounded-[2px] object-cover"]} />
             </span>
             {code.toUpperCase()}
           </a>
@@ -122,9 +122,9 @@ const localizedCurrent = stripLocale(Astro.url.pathname) + Astro.url.hash
         <span class="h-5 w-px shrink-0 bg-white/10" aria-hidden="true"></span>
         <a
           href={PHONE_HREF}
-          class="inline-flex items-center gap-2 rounded-full px-3 py-2 text-[13px] font-semibold text-white/80 transition-colors hover:text-white"
+          class="inline-flex h-10 items-center gap-2 rounded-full bg-brand px-5 text-[13px] font-semibold text-brand-foreground transition-all hover:brightness-110 active:translate-y-[1px]"
         >
-          <Phone className="h-3.5 w-3.5 text-brand" strokeWidth="2" />
+          <Phone className="h-3.5 w-3.5" strokeWidth="2" />
           {PHONE_DISPLAY}
         </a>
       </div>

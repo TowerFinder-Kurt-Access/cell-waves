@@ -157,7 +157,7 @@ export function MobileNav({ locale }: { locale: Locale }) {
                   <img
                     src={LOCALE_MARKS[code].src}
                     alt=""
-                    className={cn("h-3.5 rounded-[2px] object-cover", LOCALE_MARKS[code].width)}
+                    className={cn("h-5 rounded-[2px] object-cover", LOCALE_MARKS[code].width)}
                   />
                 </span>
                 {code.toUpperCase()}

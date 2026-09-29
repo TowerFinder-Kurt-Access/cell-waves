@@ -16,8 +16,11 @@ export interface LocaleMark {
 }
 
 export const LOCALE_MARKS: Record<Locale, LocaleMark> = {
-  en: { src: "/flags/canada.svg", width: "w-7" },
-  fr: { src: "/flags/quebec.svg", width: "w-[21px]" },
+  // Both at a 20px height, each keeping its true ratio: Canada 2:1 (40px wide),
+  // Quebec 3:2 (30px). Matching the height instead of the width leaves the
+  // fleurdelise too small to read next to the maple leaf.
+  en: { src: "/flags/canada.webp", width: "w-10" },
+  fr: { src: "/flags/quebec.webp", width: "w-[30px]" },
 }
 
 /** A value translated into every locale. */
