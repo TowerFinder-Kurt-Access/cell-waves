@@ -125,7 +125,8 @@
   "header": {
     "homeAria": "CellWaves accueil",
     "primaryNav": "Principale",
-    "cta": "Consultation gratuite"
+    "cta": "Consultation gratuite",
+    "language": "Langue"
   },
   "meta": {
     "defaultTitle": "Cell Waves Canada - Experts en bail de site de téléphonie mobile",

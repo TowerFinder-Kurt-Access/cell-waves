@@ -5,6 +5,21 @@ export const LOCALES: readonly Locale[] = ["en", "fr"] as const
 /** Values for `html lang` / `og:locale`. */
 export const HTML_LANG: Record<Locale, string> = { en: "en-CA", fr: "fr-CA" }
 
+// One mark per locale, so a switch can never show the same flag for both.
+// Neither has a dependable flag emoji: Canada is an emoji but renders
+// differently per platform, and the Quebec sequence (CA-QC) is not RGI so
+// almost nothing supports it. Both ship as self-hosted public-domain SVGs
+// instead, each at its own true ratio: Canada 2:1, Quebec 3:2.
+export interface LocaleMark {
+  src: string;
+  width: string;
+}
+
+export const LOCALE_MARKS: Record<Locale, LocaleMark> = {
+  en: { src: "/flags/canada.svg", width: "w-7" },
+  fr: { src: "/flags/quebec.svg", width: "w-[21px]" },
+}
+
 /** A value translated into every locale. */
 export type Localized<T> = { en: T; fr: T }
 

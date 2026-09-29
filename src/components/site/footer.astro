@@ -12,7 +12,7 @@ import {
   SITE_NAME,
 } from "@/lib/content"
 import { getBundle } from "@/i18n"
-import { localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
+import { LOCALE_MARKS, localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
 // Social icons moved into the contact section (see contact.astro "Follow us").
 const locale = localeFromPath(Astro.url.pathname)
@@ -145,8 +145,10 @@ const year = new Date().getFullYear()
                 code === locale ? "bg-white/10 text-white" : "text-white/40 hover:text-white/70",
               ]}
             >
-              <span class="text-sm leading-none" aria-hidden="true">🇨🇦</span>
-              {code}
+              <span class="text-sm leading-none" aria-hidden="true">
+                <img src={LOCALE_MARKS[code].src} alt="" class:list={["h-3.5", LOCALE_MARKS[code].width, "rounded-[2px] object-cover"]} />
+              </span>
+              {code.toUpperCase()}
             </a>
           ))}
         </nav>

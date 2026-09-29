@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { getBundle } from "@/i18n"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
-import { localizePath, stripLocale, type Locale } from "@/lib/i18n"
+import { LOCALE_MARKS, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
 
@@ -147,14 +147,20 @@ export function MobileNav({ locale }: { locale: Locale }) {
                 aria-current={code === locale ? "true" : undefined}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "inline-flex h-9 items-center justify-center gap-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.2em] transition-colors active:translate-y-[1px]",
+                  "inline-flex h-9 items-center justify-center gap-1.5 rounded-full text-xs font-semibold tracking-[0.2em] transition-colors active:translate-y-[1px]",
                   code === locale
                     ? "bg-white text-ink shadow-sm"
                     : "text-white/50 hover:text-white focus-visible:text-white",
                 )}
               >
-                <span className="text-sm leading-none" aria-hidden="true">🇨🇦</span>
-                {code}
+                <span className="text-sm leading-none" aria-hidden="true">
+                  <img
+                    src={LOCALE_MARKS[code].src}
+                    alt=""
+                    className={cn("h-3.5 rounded-[2px] object-cover", LOCALE_MARKS[code].width)}
+                  />
+                </span>
+                {code.toUpperCase()}
               </a>
             ))}
           </nav>

@@ -3,7 +3,7 @@ import { ChevronDown, Phone } from "lucide-react"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { MobileNav } from "@/components/site/mobile-nav"
 import { getBundle } from "@/i18n"
-import { localeFromPath, localizePath, stripLocale } from "@/lib/i18n"
+import { LOCALE_MARKS, localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 const nav = NAV_ITEMS[locale]
@@ -16,6 +16,8 @@ const isActive = (href: string) => {
 }
 const isParentActive = (item: (typeof nav)[number]) =>
   isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false)
+// Keep the hash so the switch drops the visitor on the same section.
+const localizedCurrent = stripLocale(Astro.url.pathname) + Astro.url.hash
 ---
 
 <header class="fixed inset-x-0 top-4 z-50 px-4 sm:top-5 sm:px-6">
@@ -93,24 +95,43 @@ const isParentActive = (item: (typeof nav)[number]) =>
       }
     </nav>
 
-    <div class="hidden shrink-0 items-center gap-2 lg:flex">
-      <a
-        href={PHONE_HREF}
-        class="flex items-center gap-2 rounded-full px-3 py-2 text-[13px] font-semibold text-white/80 transition-colors hover:text-white"
+    <div class="flex shrink-0 items-center gap-2">
+      <nav
+        aria-label={t.language}
+        class="hidden items-center gap-0.5 rounded-full border border-white/10 p-0.5 sm:flex"
       >
-        <Phone className="h-3.5 w-3.5 text-brand" strokeWidth="2" />
-        {PHONE_DISPLAY}
-      </a>
-      <a
-        href={localizePath(locale, "/#contact")}
-        class="inline-flex h-10 items-center justify-center rounded-full bg-brand px-5 text-[13px] font-semibold text-brand-foreground transition-all hover:brightness-110 active:translate-y-[1px]"
-      >
-        {t.cta}
-      </a>
-    </div>
+        {(["en", "fr"] as Locale[]).map((code) => (
+          <a
+            href={localizePath(code, localizedCurrent)}
+            data-locale={code}
+            hreflang={code}
+            aria-current={code === locale ? "true" : undefined}
+            class:list={[
+              "flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
+              code === locale ? "bg-white/10 text-white" : "text-white/40 hover:text-white/70",
+            ]}
+          >
+            <span class="text-sm leading-none" aria-hidden="true">
+              <img src={LOCALE_MARKS[code].src} alt="" class:list={["h-3.5", LOCALE_MARKS[code].width, "rounded-[2px] object-cover"]} />
+            </span>
+            {code.toUpperCase()}
+          </a>
+        ))}
+      </nav>
+      <div class="hidden shrink-0 items-center gap-2 lg:flex">
+        <span class="h-5 w-px shrink-0 bg-white/10" aria-hidden="true"></span>
+        <a
+          href={PHONE_HREF}
+          class="inline-flex items-center gap-2 rounded-full px-3 py-2 text-[13px] font-semibold text-white/80 transition-colors hover:text-white"
+        >
+          <Phone className="h-3.5 w-3.5 text-brand" strokeWidth="2" />
+          {PHONE_DISPLAY}
+        </a>
+      </div>
 
-    <div class="lg:hidden">
-      <MobileNav client:load locale={locale} />
+      <div class="lg:hidden">
+        <MobileNav client:load locale={locale} />
+      </div>
     </div>
   </div>
 </header>
