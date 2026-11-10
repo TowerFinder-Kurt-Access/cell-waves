@@ -30,12 +30,18 @@ User-agent: CCBot
 User-agent: Bytespider
 Allow: /
 
-# --- Search engines: classic and independent ---
+# --- Search engines: classic and independent. Each runs its own index ---
 User-agent: Googlebot
 User-agent: bingbot
 User-agent: Applebot
 User-agent: MojeekBot
 User-agent: Kagibot
+User-agent: MarginaliaBot
+User-agent: StractBot
+User-agent: yacybot
+User-agent: Qwantify
+User-agent: YepBot
+User-agent: Bravebot
 Allow: /
 
 Sitemap: https://www.cell-waves.ca/sitemap-index.xml
