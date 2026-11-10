@@ -36,6 +36,12 @@ export function stripLocale(pathname: string): string {
   return stripped === "" ? "/" : stripped
 }
 
+/** Target for a language switch: a 404 page has no twin, so go to the other home. */
+export function localeSwitchPath(pathname: string): string {
+  const neutral = stripLocale(pathname)
+  return neutral === "/404" || neutral === "/404/" ? "/" : neutral
+}
+
 /**
  * Point a site-relative EN href at the given locale.
  * Anchors (`#x`), absolute URLs, and tel:/mailto: pass through untouched.

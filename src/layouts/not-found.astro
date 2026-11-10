@@ -19,7 +19,8 @@ const PATHS = [
   { href: "/testimonials", label: t.testimonials },
 ]
 const otherLocale = locale === "fr" ? "en" : "fr"
-const otherHref = locale === "fr" ? "/404" : "/fr/404"
+// A 404 page has no twin: send the language switch to the other locale's home.
+const otherHref = localizePath(otherLocale, "/")
 ---
 
 <Base title={t.title} description={t.body} noindex>

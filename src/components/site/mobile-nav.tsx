@@ -1,29 +1,50 @@
 import { ChevronDown, Menu, Phone, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useSyncExternalStore, useState } from "react"
 import { createPortal } from "react-dom"
 import { getBundle } from "@/i18n"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
-import { LOCALE_MARKS, localizePath, stripLocale, type Locale } from "@/lib/i18n"
+import { LOCALE_MARKS, localeSwitchPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
+
+interface Location {
+  path: string
+  hash: string
+}
+
+const SERVER_LOCATION: Location = { path: "/", hash: "" }
+let cachedLocation: Location = SERVER_LOCATION
+
+// The menu reads window.location, which SSR cannot see. A store keeps that read
+// out of an effect, so no render is spent on a value that is always slash.
+function subscribeLocation(onChange: () => void): () => void {
+  window.addEventListener("hashchange", onChange)
+  window.addEventListener("popstate", onChange)
+  return () => {
+    window.removeEventListener("hashchange", onChange)
+    window.removeEventListener("popstate", onChange)
+  }
+}
+
+function getLocation(): Location {
+  const path = window.location.pathname
+  const hash = window.location.hash
+  if (path !== cachedLocation.path || hash !== cachedLocation.hash) cachedLocation = { path, hash }
+  return cachedLocation
+}
+
+function getServerLocation(): Location {
+  return SERVER_LOCATION
+}
+
+const subscribeNever = () => () => {}
 
 export function MobileNav({ locale }: { locale: Locale }) {
   const t = getBundle<Record<string, string>>(locale, "ui", "mobileNav")
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
-  const [loc, setLoc] = useState({ path: "/", hash: "" })
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-    const upd = () => setLoc({ path: window.location.pathname, hash: window.location.hash })
-    upd()
-    window.addEventListener("hashchange", upd)
-    window.addEventListener("popstate", upd)
-    return () => {
-      window.removeEventListener("hashchange", upd)
-      window.removeEventListener("popstate", upd)
-    }
-  }, [])
+  const loc = useSyncExternalStore(subscribeLocation, getLocation, getServerLocation)
+  const mounted = useSyncExternalStore(subscribeNever, () => true, () => false)
   const isActive = (href: string) => {
     const path = stripLocale(loc.path)
     if (href === "/") return path === "/" && !loc.hash
@@ -141,8 +162,8 @@ export function MobileNav({ locale }: { locale: Locale }) {
             {(["en", "fr"] as Locale[]).map((code) => (
               <a
                 key={code}
-                href={localizePath(code, stripLocale(loc.path))}
-                hreflang={code}
+                href={localizePath(code, localeSwitchPath(loc.path))}
+                hrefLang={code}
                 data-locale={code}
                 aria-current={code === locale ? "true" : undefined}
                 onClick={() => setOpen(false)}

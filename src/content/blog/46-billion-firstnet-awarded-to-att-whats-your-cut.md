@@ -20,4 +20,4 @@ However, most existing tower landlords will see little benefit, as they don’t 
 
 For landlords who have negotiated revenue-sharing agreements in their contracts, the impact could be more substantial. If their site is selected as part of the FirstNet network, they could see an increase in their monthly income. For landlords with older lease terms, this presents an opportunity to renegotiate better terms. At CellWaves, we specialize in helping landlords adjust these agreements to maximize their income.
 
-[Reach out](/contact-us/) to us today to learn how we can help you take advantage of this opportunity and increase your earnings.
+[Reach out](/#contact) to us today to learn how we can help you take advantage of this opportunity and increase your earnings.

@@ -4,7 +4,7 @@ import { HTML_LANG, stripLocale, type Locale } from "@/lib/i18n"
 export const SITE = {
   name: "Cell Waves Canada",
   brandName: "CellWaves",
-  url: "https://cell-waves.ca",
+  url: "https://www.cell-waves.ca",
   locale: "en-CA",
   description:
     "Cell Waves Canada negotiates cell tower and rooftop leases for Canadian landlords. Maximize income from renewals, buyouts, and site upgrades.",

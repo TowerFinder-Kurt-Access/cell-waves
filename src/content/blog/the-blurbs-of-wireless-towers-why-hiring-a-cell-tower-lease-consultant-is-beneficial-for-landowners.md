@@ -24,7 +24,7 @@ Leasing your land for a cell tower can be a significant financial opportunity, b
 
 It’s easy to get swept up in an offer that seems great at first glance, but many deals can leave you underpaid or locked into unfavorable conditions without you even realizing it. Wireless carriers have mastered the art of structuring contracts in ways that benefit them, often including clauses that make it nearly impossible to renegotiate terms in the future.
 
-That’s where a [Cell Tower Consultant](/hiring-a-cell-tower-lease-consultant/) comes in. They ensure that you don’t get trapped by unfair agreements, helping you secure a lease that accurately reflects the true value of your property-now and in the years to come.
+That’s where a [Cell Tower Consultant](/services/hiring-a-cell-tower-lease-consultant/) comes in. They ensure that you don’t get trapped by unfair agreements, helping you secure a lease that accurately reflects the true value of your property-now and in the years to come.
 
 ## **Hidden Risks in Cell Tower Lease Contracts: What You Might Be Overlooking**
 
