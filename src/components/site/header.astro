@@ -3,7 +3,7 @@ import { ChevronDown, Phone } from "lucide-react"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
 import { MobileNav } from "@/components/site/mobile-nav"
 import { getBundle } from "@/i18n"
-import { LOCALE_MARKS, localeFromPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
+import { LOCALE_MARKS, localeFromPath, localeSwitchPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 const nav = NAV_ITEMS[locale]
@@ -17,7 +17,7 @@ const isActive = (href: string) => {
 const isParentActive = (item: (typeof nav)[number]) =>
   isActive(item.href) || (item.children?.some((c) => isActive(c.href)) ?? false)
 // Keep the hash so the switch drops the visitor on the same section.
-const localizedCurrent = stripLocale(Astro.url.pathname) + Astro.url.hash
+const localizedCurrent = localeSwitchPath(Astro.url.pathname) + Astro.url.hash
 ---
 
 <header class="fixed inset-x-0 top-4 z-50 px-4 sm:top-5 sm:px-6">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 import { getBundle } from "@/i18n"
 import { NAV_ITEMS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/content"
-import { LOCALE_MARKS, localizePath, stripLocale, type Locale } from "@/lib/i18n"
+import { LOCALE_MARKS, localeSwitchPath, localizePath, stripLocale, type Locale } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 
 
@@ -141,8 +141,8 @@ export function MobileNav({ locale }: { locale: Locale }) {
             {(["en", "fr"] as Locale[]).map((code) => (
               <a
                 key={code}
-                href={localizePath(code, stripLocale(loc.path))}
-                hreflang={code}
+                href={localizePath(code, localeSwitchPath(loc.path))}
+                hrefLang={code}
                 data-locale={code}
                 aria-current={code === locale ? "true" : undefined}
                 onClick={() => setOpen(false)}
