@@ -4,12 +4,14 @@ import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { FOOTER_ABOUT, TEAM } from "@/lib/content"
+import { teamSchema } from "@/lib/seo"
 import { localeFromPath } from "@/lib/i18n"
 
 const locale = localeFromPath(Astro.url.pathname)
 ---
 
 <Base
+  schema={teamSchema(TEAM, "/about-us/")}
   title="About Us - CellWaves"
   description="Learn about CellWaves, a trusted consulting firm specializing in cell tower lease agreements, landlord negotiations, and wireless carrier contracts. Meet our team."
 >

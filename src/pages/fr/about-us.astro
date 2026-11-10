@@ -4,9 +4,11 @@ import Footer from "@/components/site/footer.astro"
 import Header from "@/components/site/header.astro"
 import Base from "@/layouts/base.astro"
 import { FOOTER_ABOUT, TEAM } from "@/lib/content"
+import { teamSchema } from "@/lib/seo"
 ---
 
 <Base
+  schema={teamSchema(TEAM, "/fr/about-us/")}
   title="À propos de nous - CellWaves"
   description="Apprenez à connaître CellWaves, un cabinet de consultation de confiance spécialisé dans les baux de tours de téléphonie mobile, la négociation avec les propriétaires et les contrats des opérateurs sans fil. Rencontrez notre équipe."
 >
