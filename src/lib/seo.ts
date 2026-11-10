@@ -1,5 +1,5 @@
 import { EMAIL, PHONE_ALT_HREF, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
-import { FACEBOOK_HREF, LINKEDIN_HREF } from "@/lib/social"
+import { FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/social"
 import { HTML_LANG, stripLocale, type Locale } from "@/lib/i18n"
 
 export const SITE = {
@@ -143,7 +143,7 @@ export function organizationSchema() {
     },
     areaServed: { "@type": "Country", name: "Canada" },
     // Entity identity: tells answer engines these profiles are the same company.
-    sameAs: [LINKEDIN_HREF, FACEBOOK_HREF],
+    sameAs: [INSTAGRAM_HREF, FACEBOOK_HREF],
   }
 }
 
