@@ -5,7 +5,7 @@ pubDate: 2024-09-25
 heroImage: "/images/blog/blog-3.jpg"
 ---
 
-As a landowner approached by a telecom company to lease space for a cell tower, one of your initial questions is likely: [How much is my cell tower lease worth?](/what-is-my-wireless-lease-worth/) The value of your lease can vary based on several key factors, and understanding these elements is essential for securing a fair and beneficial agreement.
+As a landowner approached by a telecom company to lease space for a cell tower, one of your initial questions is likely: [How much is my cell tower lease worth?](/advice/what-is-my-wireless-lease-worth/) The value of your lease can vary based on several key factors, and understanding these elements is essential for securing a fair and beneficial agreement.
 
 In this blog, we’ll break down the main factors that influence the value of your cell tower lease and share tips on how to maximize its potential. Whether you’re new to the process or considering lease renewals, knowing what impacts lease rates will help you make an informed decision that best benefits your property and financial goals.
 

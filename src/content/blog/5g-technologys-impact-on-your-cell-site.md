@@ -13,4 +13,4 @@ One significant difference with 5G is its use of higher frequencies, which, whil
 
 For landlords, this shift to 5G may impact revenue. In areas where 5G is deployed, carriers may prioritize smaller, more cost-effective equipment, reducing the need for traditional cell sites. This could result in lower lease payments for cell towers. While this change won’t happen immediately, it’s important to consider how the rollout of 5G may affect lease agreements in the future.
 
-For guidance on how 5G might impact your property and lease, [Contact](/contact-us/) CellWaves. We can help you navigate these changes and ensure you’re prepared.
+For guidance on how 5G might impact your property and lease, [Contact](/#contact) CellWaves. We can help you navigate these changes and ensure you’re prepared.

@@ -39,4 +39,4 @@ Without a consultant, you may miss potential pitfalls in the lease agreement, su
 
 Bringing a cell tower consultant on board is a smart investment for your property’s future. With their specialized knowledge and understanding of market trends, they can help you unlock the full potential of your lease. A consultant takes the complexities off your plate, ensuring you get the best deal today and long-term financial benefits in the years ahead.
 
-Ready to take control of your cell tower lease and ensure you’re getting the best deal possible? [Contact us](/contact-us/) today to get connected with a consultant who can help you navigate the entire process with confidence and ease.
+Ready to take control of your cell tower lease and ensure you’re getting the best deal possible? [Contact us](/#contact) today to get connected with a consultant who can help you navigate the entire process with confidence and ease.
