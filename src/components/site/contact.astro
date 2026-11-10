@@ -11,13 +11,7 @@ import {
 } from "@/lib/content"
 import { localeFromPath } from "@/lib/i18n"
 import { ArrowUpRight, Mail, MapPin, Phone, type LucideIcon } from "lucide-react"
-import {
-  FACEBOOK_HREF,
-  FACEBOOK_HREF_MOBILE,
-  FACEBOOK_ICON_PATH,
-  LINKEDIN_HREF,
-  LINKEDIN_ICON_PATH,
-} from "@/lib/social"
+import { FACEBOOK_HREF, FACEBOOK_ICON_PATH, INSTAGRAM_HREF, INSTAGRAM_ICON_PATH } from "@/lib/social"
 
 const locale = localeFromPath(Astro.url.pathname)
 const t = getBundle<Record<string, string>>(locale, "ui", "contact")
@@ -153,15 +147,15 @@ const CHANNELS: Channel[] = [
             </span>
             <div class="flex items-center gap-2">
               <a
-                href={LINKEDIN_HREF}
+                href={INSTAGRAM_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={t.linkedin}
-                title={t.linkedin}
+                aria-label={t.instagram}
+                title={t.instagram}
                 class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25"
               >
                 <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
-                  <path d={LINKEDIN_ICON_PATH} />
+                  <path d={INSTAGRAM_ICON_PATH} />
                 </svg>
               </a>
               <a
@@ -170,19 +164,7 @@ const CHANNELS: Channel[] = [
                 rel="noopener noreferrer"
                 aria-label={t.facebook}
                 title={t.facebook}
-                class="hidden h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25 md:flex"
-              >
-                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
-                  <path d={FACEBOOK_ICON_PATH} />
-                </svg>
-              </a>
-              <a
-                href={FACEBOOK_HREF_MOBILE}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t.facebook}
-                title={t.facebook}
-                class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25 md:hidden"
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-foreground/15 transition-colors hover:bg-brand-foreground/25"
               >
                 <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
                   <path d={FACEBOOK_ICON_PATH} />

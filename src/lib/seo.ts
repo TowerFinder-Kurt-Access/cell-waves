@@ -1,4 +1,5 @@
 import { EMAIL, PHONE_ALT_HREF, PHONE_HREF, SERVICE_PAGES } from "@/lib/content"
+import { FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/social"
 import { HTML_LANG, stripLocale, type Locale } from "@/lib/i18n"
 
 export const SITE = {
@@ -141,6 +142,8 @@ export function organizationSchema() {
       availableLanguage: ["en", "fr"],
     },
     areaServed: { "@type": "Country", name: "Canada" },
+    // Entity identity: tells answer engines these profiles are the same company.
+    sameAs: [INSTAGRAM_HREF, FACEBOOK_HREF],
   }
 }
 
@@ -222,6 +225,27 @@ export function breadcrumbSchema(pathname: string, pageTitle: string, locale: Lo
     "@id": `${SITE.url}${pathname}#breadcrumb`,
     itemListElement: crumbs.map(({ position, name, item }) => ({ "@type": "ListItem", position, name, item })),
   }
+}
+
+interface TeamMemberArgs {
+  name: string
+  role: string
+  image: string
+}
+
+/** One Person node per team member, tied to the Organization identity node. */
+export function teamSchema(members: readonly TeamMemberArgs[], pagePath = "/about-us/") {
+  const url = absoluteUrl(pagePath)
+  return members.map((member) => ({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${url}#${member.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`,
+    name: member.name,
+    jobTitle: member.role,
+    image: absoluteUrl(member.image),
+    url,
+    worksFor: { "@id": `${SITE.url}/#organization` },
+  }))
 }
 
 interface ServiceSchemaArgs {
