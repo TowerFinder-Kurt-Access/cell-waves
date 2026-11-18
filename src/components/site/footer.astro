@@ -13,12 +13,19 @@ import {
 } from "@/lib/content"
 import { getBundle } from "@/i18n"
 import { LOCALE_MARKS, localeFromPath, localeSwitchPath, localizePath, type Locale } from "@/lib/i18n"
+import { FACEBOOK_HREF, FACEBOOK_ICON_PATH, INSTAGRAM_HREF, INSTAGRAM_ICON_PATH } from "@/lib/social"
 
-// Social icons moved into the contact section (see contact.astro "Follow us").
 const locale = localeFromPath(Astro.url.pathname)
 const neutral = localeSwitchPath(Astro.url.pathname)
 const t = getBundle<Record<string, string>>(locale, "ui", "footer")
+// Social labels live in the contact bundle; the footer bundle has no copy for them.
+const tContact = getBundle<Record<string, string>>(locale, "ui", "contact")
 const year = new Date().getFullYear()
+
+const socials = [
+  { href: INSTAGRAM_HREF, path: INSTAGRAM_ICON_PATH, label: tContact.instagram },
+  { href: FACEBOOK_HREF, path: FACEBOOK_ICON_PATH, label: tContact.facebook },
+]
 ---
 
 <footer class="relative overflow-hidden border-t border-white/10 bg-[#0A0A0A] text-white">
@@ -61,6 +68,22 @@ const year = new Date().getFullYear()
         <p class="mt-5 max-w-sm text-sm leading-7 text-white/55">
           {FOOTER_ABOUT[locale]}
         </p>
+        <div class="mt-7 flex items-center gap-2.5">
+          {socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              title={social.label}
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-white/25 hover:text-white"
+            >
+              <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                <path d={social.path} />
+              </svg>
+            </a>
+          ))}
+        </div>
       </div>
 
       <!-- Useful links - divider as whitespace, not heavy borders -->
