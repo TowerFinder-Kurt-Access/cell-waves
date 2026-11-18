@@ -19,4 +19,13 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Vendored shadcn/ui files export constants beside components and sync state from effects.
+    // Both rules are false alarms for generated code, so keep them scoped to app code.
+    files: ["src/components/ui/**/*.{ts,tsx}"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ])

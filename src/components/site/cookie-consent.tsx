@@ -69,6 +69,8 @@ export function CookieConsent({ locale }: { locale: Locale }) {
       loadGoogleAnalytics()
       trackPhoneClick()
     } else if (consent === null) {
+      // Server prerender cannot read storage, so the banner appears one paint after hydration.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true)
     }
   }, [])
