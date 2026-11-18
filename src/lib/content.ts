@@ -16,6 +16,7 @@ export const PHONE_HREF = "tel:+17802301364"
 export const PHONE_ALT_DISPLAY = "1-587-882-8813"
 export const PHONE_ALT_HREF = "tel:+15878828813"
 export const EMAIL = "brett@cell-waves.ca"
+export const EMAIL_ALT = "info@cell-waves.ca"
 export const SITE_NAME = "CellWaves"
 export const LOCATION = "1539 Bradwell Avenue Saskatoon, Saskatchewan, Canada S7N2K5"
 // Display form for narrow columns: the single-line string above cannot render in

@@ -3,6 +3,7 @@ import { getBundle } from "@/i18n"
 import { ContactForm } from "@/components/site/contact-form"
 import {
   EMAIL,
+  EMAIL_ALT,
   LOCATION,
   LOCATION_HREF,
   LOCATION_LINES,
@@ -30,6 +31,7 @@ interface Channel {
 // One row per channel: label above, tap target below. Keeps the rail short.
 const CHANNELS: Channel[] = [
   { label: t.phone, value: PHONE_DISPLAY, href: PHONE_HREF, icon: Phone },
+  { label: t.email, value: EMAIL_ALT, href: `mailto:${EMAIL_ALT}`, icon: Mail },
   { label: t.email, value: EMAIL, href: `mailto:${EMAIL}`, icon: Mail },
   {
     label: t.office,

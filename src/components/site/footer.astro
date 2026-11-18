@@ -2,6 +2,7 @@
 import { Mail, MapPin, Phone } from "lucide-react"
 import {
   EMAIL,
+  EMAIL_ALT,
   FOOTER_ABOUT,
   FOOTER_SERVICES,
   FOOTER_USEFUL_LINKS,
@@ -124,12 +125,14 @@ const socials = [
               <span class="leading-6 text-white/70 group-hover:text-white">{PHONE_DISPLAY}</span>
             </a>
           </li>
-          <li>
-            <a href={`mailto:${EMAIL}`} class="group flex items-start gap-3 text-sm">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" strokeWidth="1.8" />
-              <span class="leading-6 text-white/70 group-hover:text-white">{EMAIL}</span>
-            </a>
-          </li>
+          {[EMAIL_ALT, EMAIL].map((email) => (
+            <li>
+              <a href={`mailto:${email}`} class="group flex items-start gap-3 text-sm">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" strokeWidth="1.8" />
+                <span class="leading-6 text-white/70 group-hover:text-white">{email}</span>
+              </a>
+            </li>
+          ))}
           <li>
             <a
               href={LOCATION_HREF}
